@@ -215,13 +215,112 @@
   </div>
 </div>
 
+<h2 contenteditable="false">二、方差与标准差（Variance & Standard Deviation）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>📐 公式总结</h3>
+
+  <p><strong>概率分布形式：</strong></p>
+  <div class="formula">
+    Var(X) = σ² = E(X²) − [E(X)]² = Σ xᵢ²·P(xᵢ) − μ²
+  </div>
+
+  <p><strong>频数分布形式：</strong></p>
+  <div class="formula">
+    均值 x̄ = Σfᵢxᵢ / Σfᵢ<br>
+    方差 Var(X) = Σfᵢxᵢ² / Σfᵢ − x̄²
+  </div>
+
+  <p><strong>标准差：</strong></p>
+  <div class="formula">
+    σ = √Var(X)
+  </div>
+
+  <h3>🎯 标准差的意义</h3>
+  <ul>
+    <li>衡量数据围绕均值的<strong>离散程度</strong>（波动性/风险）</li>
+    <li>标准差越大 → 数据越分散，结果越不稳定</li>
+    <li>与均值同单位，便于直接比较</li>
+    <li>正态分布经验法则：μ±1σ 含 68%，μ±2σ 含 95%，μ±3σ 含 99.7%</li>
+  </ul>
+</div>
+
+<h2 contenteditable="false">问题 3：基于超市数据计算方差与标准差</h2>
+
+<div class="box" contenteditable="false">
+  <p><strong>使用公式：</strong> Var(X) = E(X²) − [E(X)]²</p>
+
+  <h3>第一步：计算 E(X²) = Σ xᵢ² · P(xᵢ)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>xᵢ</th>
+        <th>xᵢ²</th>
+        <th>P(xᵢ)</th>
+        <th>xᵢ² · P(xᵢ)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>6</td><td>36</td><td>0.2</td><td>7.200</td></tr>
+      <tr><td>7.5</td><td>56.25</td><td>0.3</td><td>16.875</td></tr>
+      <tr><td>8</td><td>64</td><td>0.1</td><td>6.400</td></tr>
+      <tr><td>8.2</td><td>67.24</td><td>0.2</td><td>13.448</td></tr>
+      <tr><td>9</td><td>81</td><td>0.2</td><td>16.200</td></tr>
+      <tr class="total"><td colspan="3">E(X²) =</td><td>60.123</td></tr>
+    </tbody>
+  </table>
+
+  <h3>第二步：计算 [E(X)]²</h3>
+  <p>[E(X)]² = 7.69² = <strong>59.1361</strong></p>
+
+  <h3>第三步：求方差</h3>
+  <div class="formula">
+    Var(X) = 60.123 − 59.1361 = <strong>0.9869</strong>
+  </div>
+
+  <h3>第四步：求标准差</h3>
+  <div class="formula">
+    σ = √0.9869 ≈ <strong>0.9934</strong>
+  </div>
+
+  <h3>✅ 最终结果</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>指标</th>
+        <th>数值</th>
+        <th>单位</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>均值 E(X)</td><td>7.69</td><td>百万先令</td></tr>
+      <tr><td>方差 Var(X)</td><td>0.9869</td><td>（百万先令）²</td></tr>
+      <tr><td>标准差 σ</td><td>0.9934</td><td>百万先令</td></tr>
+    </tbody>
+  </table>
+
+  <div class="answer">
+    💡 解读：销售额平均偏离均值约 0.99 百万先令；变异系数 CV = σ/μ ≈ 12.9%，
+    说明销售波动属于<strong>中等偏低</strong>水平，销售较为稳定。
+  </div>
+</div>
+
 <h2 contenteditable="false">三、核心知识点</h2>
 
 <div class="box" contenteditable="false">
+  <h3>期望值 Expected Value</h3>
   <ul>
-    <li><strong>期望值（Expected Value）</strong>：随机变量在长期试验中的平均结果，即 E(X) = Σ xᵢ·P(xᵢ)</li>
+    <li><strong>定义</strong>：随机变量在长期试验中的平均结果，E(X) = Σ xᵢ·P(xᵢ)</li>
     <li><strong>线性性质</strong>：E(aX) = a·E(X)，E(aX + b) = a·E(X) + b</li>
     <li><strong>概率验证</strong>：所有概率之和必须等于 1</li>
+  </ul>
+
+  <h3>方差与标准差 Variance & Std. Deviation</h3>
+  <ul>
+    <li><strong>方差 Var(X)</strong>：衡量离散程度，Var(X) = E(X²) − [E(X)]²</li>
+    <li><strong>标准差 σ</strong>：σ = √Var(X)，与原数据同单位，实际分析中常用</li>
+    <li><strong>变异系数 CV</strong>：CV = σ/μ，用于比较不同尺度数据的相对波动</li>
+    <li><strong>线性性质</strong>：Var(aX) = a²·Var(X)，Var(aX + b) = a²·Var(X)</li>
   </ul>
 </div>
 
