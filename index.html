@@ -305,6 +305,66 @@
   </div>
 </div>
 
+<h2 contenteditable="false">引理：方差的性质（Lemma — Properties of Variance）</h2>
+
+<div class="box" contenteditable="false">
+  <p>设 X 为离散型随机变量，a 和 b 为任意两个常数，则：</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>性质</th>
+        <th>公式</th>
+        <th>含义</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Var(a) = 0</strong></td>
+        <td>常数的方差为 0（无波动）</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Var(aX) = a² · Var(X)</strong></td>
+        <td>缩放变量时，方差按系数的平方变化</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Var(aX + b) = a² · Var(X)</strong></td>
+        <td>加常数 b 不影响方差（平移不改变离散程度）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>💡 直观理解</h3>
+  <ul>
+    <li><strong>性质 1</strong>：常数永远等于自己，没有波动 → 方差为 0</li>
+    <li><strong>性质 2</strong>：所有数据乘以 a，偏差也乘以 a，平方后变成 a² 倍</li>
+    <li><strong>性质 3</strong>：所有数据加 b，均值也加 b，每个数据到均值的距离不变 → 方差不变</li>
+  </ul>
+
+  <h3>🔁 对比：期望与方差的性质</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>操作</th>
+        <th>期望 E(·)</th>
+        <th>方差 Var(·)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>常数 a</td><td>E(a) = a</td><td>Var(a) = <strong>0</strong></td></tr>
+      <tr><td>乘以 a</td><td>E(aX) = a·E(X)</td><td>Var(aX) = <strong>a²</strong>·Var(X)</td></tr>
+      <tr><td>aX + b</td><td>E(aX+b) = a·E(X) + b</td><td>Var(aX+b) = <strong>a²</strong>·Var(X)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    ⚠️ <strong>关键区别</strong>：方差对常数 b 不敏感（b 消失），而对系数 a 是平方关系。
+  </div>
+</div>
+
 <h2 contenteditable="false">三、核心知识点</h2>
 
 <div class="box" contenteditable="false">
