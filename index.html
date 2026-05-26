@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MBA 8104 课程笔记</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f7f7f5;
+    color: #222;
+    line-height: 1.6;
+  }
+  h1 {
+    border-bottom: 3px solid #2c5282;
+    padding-bottom: 10px;
+    color: #2c5282;
+  }
+  h2 {
+    color: #2b6cb0;
+    margin-top: 30px;
+    border-left: 4px solid #2b6cb0;
+    padding-left: 10px;
+  }
+  h3 { color: #444; margin-top: 20px; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    background: #fff;
+  }
+  th, td {
+    border: 1px solid #cbd5e0;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  th { background: #edf2f7; }
+  tr.total { background: #fefcbf; font-weight: bold; }
+  .box {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .formula {
+    background: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-family: "Times New Roman", serif;
+  }
+  .answer {
+    background: #f0fff4;
+    border-left: 4px solid #38a169;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  .note {
+    background: #fffaf0;
+    border-left: 4px solid #ed8936;
+    padding: 8px 12px;
+    margin: 10px 0;
+    font-size: 0.95em;
+  }
+  .toolbar {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  button {
+    background: #2c5282;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  button:hover { background: #2b6cb0; }
+  button.danger { background: #c53030; }
+  button.danger:hover { background: #9b2c2c; }
+  #status { color: #38a169; font-size: 14px; }
+  [contenteditable="true"]:focus {
+    outline: 2px solid #3182ce;
+    outline-offset: 2px;
+    background: #fffef0;
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="toggleEdit()" id="editBtn">✏️ 进入编辑模式</button>
+  <button onclick="saveNotes()">💾 保存</button>
+  <button onclick="exportHTML()">📥 导出 HTML</button>
+  <button onclick="resetNotes()" class="danger">🔄 重置</button>
+  <span id="status"></span>
+</div>
+
+<div id="content">
+
+<h1 contenteditable="false">MBA 8104 Quantitative Techniques for Business</h1>
+<p contenteditable="false"><em>商业定量分析方法 — 课堂笔记</em></p>
+
+<h2 contenteditable="false">一、例题：超市销售额期望值分析</h2>
+
+<div class="box" contenteditable="false">
+  <h3>题目背景</h3>
+  <p>某超市过去一个月的销售额（单位：百万肯尼亚先令 KES）及其对应的概率分布如下：</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>项目</th>
+        <th colspan="5">数据</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Total amount（销售额）</strong></td>
+        <td>6</td>
+        <td>7.5</td>
+        <td>8</td>
+        <td>8.2</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td><strong>Probability（概率）</strong></td>
+        <td>0.2</td>
+        <td>0.3</td>
+        <td>0.1</td>
+        <td>0.2</td>
+        <td>0.2</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>✓ 概率总和 = 1.0</p>
+</div>
+
+<h2 contenteditable="false">问题 1：求期望销售总额 E(X)</h2>
+
+<div class="box" contenteditable="false">
+  <div class="formula">
+    <strong>公式：</strong> E(X) = Σ [xᵢ × P(xᵢ)]
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>xᵢ</th>
+        <th>P(xᵢ)</th>
+        <th>xᵢ × P(xᵢ)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>6</td><td>0.2</td><td>1.20</td></tr>
+      <tr><td>7.5</td><td>0.3</td><td>2.25</td></tr>
+      <tr><td>8</td><td>0.1</td><td>0.80</td></tr>
+      <tr><td>8.2</td><td>0.2</td><td>1.64</td></tr>
+      <tr><td>9</td><td>0.2</td><td>1.80</td></tr>
+      <tr class="total"><td>合计</td><td>1.0</td><td>7.69</td></tr>
+    </tbody>
+  </table>
+
+  <div class="answer">
+    ✅ E(X) = 7.69 百万肯尼亚先令
+  </div>
+</div>
+
+<h2 contenteditable="false">问题 2：圣诞假期销售额翻倍时的期望销售额</h2>
+
+<div class="box" contenteditable="false">
+  <div class="formula">
+    <strong>原理：</strong> 若 Y = 2X，则 E(Y) = 2 · E(X)
+  </div>
+
+  <p><strong>直接计算：</strong></p>
+  <p>E(2X) = 2 × E(X) = 2 × 7.69 = <strong>15.38</strong></p>
+
+  <p><strong>验证（逐项翻倍）：</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>2xᵢ</th>
+        <th>P(xᵢ)</th>
+        <th>2xᵢ × P(xᵢ)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>12</td><td>0.2</td><td>2.40</td></tr>
+      <tr><td>15</td><td>0.3</td><td>4.50</td></tr>
+      <tr><td>16</td><td>0.1</td><td>1.60</td></tr>
+      <tr><td>16.4</td><td>0.2</td><td>3.28</td></tr>
+      <tr><td>18</td><td>0.2</td><td>3.60</td></tr>
+      <tr class="total"><td>合计</td><td>1.0</td><td>15.38</td></tr>
+    </tbody>
+  </table>
+
+  <div class="answer">
+    ✅ E(2X) = 15.38 百万肯尼亚先令
+  </div>
+</div>
+
+<h2 contenteditable="false">三、核心知识点</h2>
+
+<div class="box" contenteditable="false">
+  <ul>
+    <li><strong>期望值（Expected Value）</strong>：随机变量在长期试验中的平均结果，即 E(X) = Σ xᵢ·P(xᵢ)</li>
+    <li><strong>线性性质</strong>：E(aX) = a·E(X)，E(aX + b) = a·E(X) + b</li>
+    <li><strong>概率验证</strong>：所有概率之和必须等于 1</li>
+  </ul>
+</div>
+
+<h2 contenteditable="false">四、个人笔记区（可编辑）</h2>
+
+<div class="box" contenteditable="true" style="min-height: 100px;">
+  <em>点击"进入编辑模式"后，可在此处添加你自己的笔记、疑问或补充内容……</em>
+</div>
+
+</div>
+
+<script>
+let editMode = false;
+
+function toggleEdit() {
+  editMode = !editMode;
+  const btn = document.getElementById('editBtn');
+  const elements = document.querySelectorAll('#content [contenteditable]');
+  elements.forEach(el => {
+    el.setAttribute('contenteditable', editMode ? 'true' : 'false');
+  });
+  btn.textContent = editMode ? '🔒 退出编辑模式' : '✏️ 进入编辑模式';
+  showStatus(editMode ? '已进入编辑模式 — 点击任意位置即可修改' : '已退出编辑模式');
+}
+
+function saveNotes() {
+  const content = document.getElementById('content').innerHTML;
+  localStorage.setItem('mba8104_notes', content);
+  showStatus('✅ 已保存到浏览器本地存储 (' + new Date().toLocaleTimeString() + ')');
+}
+
+function loadNotes() {
+  const saved = localStorage.getItem('mba8104_notes');
+  if (saved) {
+    document.getElementById('content').innerHTML = saved;
+    showStatus('📂 已加载上次保存的笔记');
+  }
+}
+
+function resetNotes() {
+  if (confirm('确定要重置为初始内容吗？保存的修改将丢失。')) {
+    localStorage.removeItem('mba8104_notes');
+    location.reload();
+  }
+}
+
+function exportHTML() {
+  const html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>MBA 8104 笔记导出</title></head><body>' +
+               document.getElementById('content').innerHTML + '</body></html>';
+  const blob = new Blob([html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'MBA8104_Notes_' + new Date().toISOString().slice(0,10) + '.html';
+  a.click();
+  URL.revokeObjectURL(url);
+  showStatus('📥 已导出为 HTML 文件');
+}
+
+function showStatus(msg) {
+  const s = document.getElementById('status');
+  s.textContent = msg;
+  setTimeout(() => { s.textContent = ''; }, 3000);
+}
+
+// 自动加载已保存的笔记
+window.addEventListener('load', loadNotes);
+
+// 自动保存（每30秒）
+setInterval(() => {
+  if (editMode) saveNotes();
+}, 30000);
+</script>
+
+</body>
+</html>
