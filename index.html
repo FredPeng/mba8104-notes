@@ -493,7 +493,149 @@
   <p>两事件互补：P(至少一人成功) + P(都不成功) = 31/60 + 29/60 = <strong>60/60 = 1</strong> ✓</p>
 </div>
 
-<h2 contenteditable="false">四、核心知识点</h2>
+<h2 contenteditable="false">四、复习题（Probability Revision Questions）</h2>
+
+<p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
+
+<div class="box" contenteditable="false">
+  <h3>📝 Question 1：购车问题</h3>
+  <p>John 的家庭决定购买一辆新车，候选车型为 Ford、Chevrolet 或 Toyota。</p>
+  <ul>
+    <li>P(买 Ford) = 0.3</li>
+    <li>P(买 Chevrolet) = 0.4</li>
+  </ul>
+
+  <p><strong>(i)</strong> 求他们购买 Ford 或 Chevrolet 的概率</p>
+  <p><strong>(ii)</strong> 求他们购买 Toyota 的概率</p>
+  <p><strong>(iii)</strong> 已知：P(Ford) = 0.3，P(station wagon) = 0.2，P(Ford station wagon) = 0.5
+  （⚠️ 注：此处 0.5 似为数据异常，可能应为 0.05），求 P(买 Ford 或 station wagon 或两者)</p>
+
+  <details>
+    <summary><strong>📌 参考解法</strong></summary>
+    <p><strong>(i)</strong> Ford 和 Chevrolet 是互斥事件（一次只能买一辆）：</p>
+    <div class="formula">P(F ∪ C) = P(F) + P(C) = 0.3 + 0.4 = <strong>0.7</strong></div>
+    <p><strong>(ii)</strong> 三个事件互斥且覆盖所有可能：</p>
+    <div class="formula">P(T) = 1 − P(F) − P(C) = 1 − 0.3 − 0.4 = <strong>0.3</strong></div>
+    <p><strong>(iii)</strong> 用加法法则（按题目数值代入）：</p>
+    <div class="formula">P(F ∪ W) = P(F) + P(W) − P(F ∩ W) = 0.3 + 0.2 − 0.5 = <strong>0</strong>（数据可能有误）</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 Question 2：Patricia 面试评估</h3>
+  <p>某医院考虑 Patricia 担任财务管理关键职位。面试和审核后，
+  人事经理认为 Patricia 表现良好的概率为 <strong>75%</strong>，表现不佳的概率为 <strong>25%</strong>。
+  根据其他公司的经验，咨询公司在评估财务经理时的条件概率如下：</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>实际表现</th>
+        <th>咨询公司预测「会表现好」</th>
+        <th>咨询公司预测「不会表现好」</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Manager does well</td><td>0.9</td><td>0.1</td></tr>
+      <tr><td>Manager does NOT do well</td><td>0.2</td><td>0.8</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>(i)</strong> 若咨询公司预测 Patricia 表现良好，求该预测正确的概率</p>
+  <p><strong>(ii)</strong> 若咨询公司预测 Patricia 表现不佳，求该预测正确的概率</p>
+
+  <details>
+    <summary><strong>📌 参考解法（贝叶斯定理）</strong></summary>
+    <p>设 W = Patricia 实际表现好；P = 咨询公司预测 W</p>
+    <p>P(W) = 0.75, P(W') = 0.25, P(P|W) = 0.9, P(P|W') = 0.2</p>
+    <p><strong>(i)</strong> P(W|P) = P(P|W)·P(W) / [P(P|W)·P(W) + P(P|W')·P(W')]<br>
+    = (0.9 × 0.75) / (0.9 × 0.75 + 0.2 × 0.25)<br>
+    = 0.675 / 0.725 ≈ <strong>0.931</strong></p>
+    <p><strong>(ii)</strong> P(W'|P') = P(P'|W')·P(W') / [P(P'|W')·P(W') + P(P'|W)·P(W)]<br>
+    = (0.8 × 0.25) / (0.8 × 0.25 + 0.1 × 0.75)<br>
+    = 0.20 / 0.275 ≈ <strong>0.727</strong></p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 Case：蓝色出租车肇事案（Bayes' Analysis）</h3>
+  <p><em>本案例改编自 S. Salop, "Evaluating Uncertain Evidence" with Sir Thomas Bayes,
+  Journal of Economic Perspectives, Summer 1987.</em></p>
+
+  <p>1994 年 3 月 1 日，一名男子在过马路时被一辆超速出租车撞倒。
+  一名目击证人作证说她认为肇事出租车（未停车）是<strong>蓝色</strong>的。
+  男子起诉 Blue Cab Company 索赔医疗费用。</p>
+
+  <p>该城市只有两家出租车公司：Blue Cab 和 Green Cab。</p>
+  <ul>
+    <li>Green Cab 占该市出租车的 <strong>85%</strong>，Blue Cab 占 <strong>15%</strong></li>
+    <li>目击证人在类似条件下正确识别出租车颜色的可靠率为 <strong>80%</strong></li>
+  </ul>
+
+  <p>原告律师据此认定：男子极有可能被蓝色出租车撞到。</p>
+
+  <p><strong>Required：</strong>使用贝叶斯分析，律师的结论是否正确？</p>
+
+  <details>
+    <summary><strong>📌 参考解法</strong></summary>
+    <p>设 B = 蓝车肇事，G = 绿车肇事，W = 证人说"蓝"</p>
+    <p>P(B) = 0.15, P(G) = 0.85, P(W|B) = 0.8, P(W|G) = 0.2</p>
+    <div class="formula">
+      P(B|W) = P(W|B)·P(B) / [P(W|B)·P(B) + P(W|G)·P(G)]<br>
+      = (0.8 × 0.15) / (0.8 × 0.15 + 0.2 × 0.85)<br>
+      = 0.12 / (0.12 + 0.17)<br>
+      = 0.12 / 0.29 ≈ <strong>0.414</strong>
+    </div>
+    <div class="answer">
+      🎯 结论：实际是蓝车肇事的后验概率只有约 <strong>41.4%</strong>，
+      仍小于 50%！律师的结论<strong>不正确</strong>。这就是著名的"基础率谬误"——
+      虽然证人 80% 可靠，但因为 Blue Cab 本身就少，整体上更可能是绿车被误认。
+    </div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 Exercise：疾病诊断测试</h3>
+  <p>某疾病的诊断测试有以下特性：</p>
+  <ul>
+    <li>对实际患病者：正确检测出疾病的概率为 <strong>90%</strong></li>
+    <li>对未患病者：测试报告"未患病"的概率为 <strong>0.9</strong></li>
+    <li>人群中仅 <strong>1%</strong> 患有该疾病</li>
+  </ul>
+
+  <p>从人群中随机选一人接受测试，若测试结果显示她患病，
+  问：她实际患病的条件概率是多少？</p>
+
+  <h4>✅ 解法（贝叶斯定理）</h4>
+  <p><strong>定义事件：</strong></p>
+  <ul>
+    <li>D = 患有该疾病</li>
+    <li>H = 测试结果显示患病</li>
+  </ul>
+
+  <p><strong>已知：</strong></p>
+  <ul>
+    <li>P(H|D) = 0.9</li>
+    <li>P(D) = 0.01，P(D') = 0.99</li>
+    <li>P(H|D') = 1 − 0.9 = 0.1（假阳性率）</li>
+  </ul>
+
+  <p><strong>应用贝叶斯公式：</strong></p>
+  <div class="formula">
+    P(D|H) = [P(H|D)·P(D)] / [P(H|D)·P(D) + P(H|D')·P(D')]<br>
+    = (0.9 × 0.01) / (0.9 × 0.01 + 0.1 × 0.99)<br>
+    = 0.009 / (0.009 + 0.099)<br>
+    = 0.009 / 0.108<br>
+    = <strong>1/12 ≈ 0.0833</strong>
+  </div>
+
+  <div class="answer">
+    🎯 即使测试结果显示患病，实际患病概率也只有约 <strong>8.33%</strong>。
+    这同样是基础率谬误的经典例子——疾病罕见时，假阳性主导结果。
+  </div>
+</div>
+
+<h2 contenteditable="false">五、核心知识点</h2>
 
 <div class="box" contenteditable="false">
   <h3>期望值 Expected Value</h3>
@@ -512,7 +654,7 @@
   </ul>
 </div>
 
-<h2 contenteditable="false">五、个人笔记区（可编辑）</h2>
+<h2 contenteditable="false">六、个人笔记区（可编辑）</h2>
 
 <div class="box" contenteditable="true" style="min-height: 100px;">
   <em>点击"进入编辑模式"后，可在此处添加你自己的笔记、疑问或补充内容……</em>
