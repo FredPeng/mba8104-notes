@@ -547,6 +547,93 @@
   </div>
 </div>
 
+<h2 contenteditable="false">条件概率（Conditional Probability）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>📐 定义公式</h3>
+  <p>设 A 和 B 是两个事件。在事件 B 已发生的条件下，事件 A 发生的概率记作：</p>
+
+  <div class="formula" style="font-size: 1.1em; text-align: center;">
+    <strong>P(A | B) = P(A ∩ B) / P(B)</strong> &nbsp;&nbsp;(P(B) &gt; 0)
+  </div>
+
+  <h3>🕐 时间直观（理解方式）</h3>
+  <table>
+    <thead>
+      <tr><th>事件</th><th>角色</th><th>时间</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>B</td><td>条件（已知发生）</td><td>过去事件 (past event)</td></tr>
+      <tr><td>A</td><td>待求</td><td>未来事件 (future event)</td></tr>
+    </tbody>
+  </table>
+  <p>→ 即"已知过去发生了 B，求未来 A 发生的概率"。</p>
+
+  <h3>🔗 与乘法定理的联系</h3>
+  <div class="formula">
+    P(A ∩ B) = P(A | B) · P(B) = P(B | A) · P(A)
+  </div>
+
+  <div class="note">
+    ⚠️ 若 A、B <strong>独立</strong>，则 P(A | B) = P(A)（B 不影响 A）；
+    下方 HR 例题是<strong>不独立</strong>的一般情形，需用实际联合数据计算。
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📊 例题：人力资源部数据</h3>
+  <p>随机抽取一名员工，求相关概率。列联表（含行列合计）如下：</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Gender</th>
+        <th>Promoted</th>
+        <th>Not Promoted</th>
+        <th>合计</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Male</strong></td><td>10</td><td>35</td><td>45</td></tr>
+      <tr><td><strong>Female</strong></td><td>15</td><td>40</td><td>55</td></tr>
+      <tr class="total"><td>合计</td><td>25</td><td>75</td><td>100</td></tr>
+    </tbody>
+  </table>
+
+  <h4>a.1) P(Male) — 员工是男性</h4>
+  <div class="formula">P(Male) = 45/100 = <strong>0.45</strong></div>
+
+  <h4>a.2) P(Female) — 员工是女性</h4>
+  <div class="formula">P(Female) = 55/100 = <strong>0.55</strong></div>
+
+  <h4>a.3) P(Promoted | Male) — 已知是男性，求被晋升</h4>
+  <div class="formula">
+    P(Promoted | Male) = P(Promoted ∩ Male) / P(Male)<br>
+    = (10/100) / (45/100) = 10/45 = 2/9 ≈ <strong>0.2222</strong>
+  </div>
+  <p>💡 技巧：条件给定 Male，相当于只看"男性这一行"（45 人），其中被晋升 10 人 → 10/45。</p>
+
+  <h4>b) P(Female | Not Promoted) — 已知未被晋升，求是女性</h4>
+  <div class="formula">
+    P(Female | Not Promoted) = P(Female ∩ Not Promoted) / P(Not Promoted)<br>
+    = (40/100) / (75/100) = 40/75 = 8/15 ≈ <strong>0.5333</strong>
+  </div>
+  <p>💡 技巧：条件给定 Not Promoted，相当于只看"未晋升这一列"（75 人），其中女性 40 人 → 40/75。</p>
+
+  <h4>📊 结果汇总</h4>
+  <table>
+    <thead>
+      <tr><th>题目</th><th>表达式</th><th>分数</th><th>小数</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>a.1</td><td>P(Male)</td><td>45/100</td><td>0.45</td></tr>
+      <tr><td>a.2</td><td>P(Female)</td><td>55/100</td><td>0.55</td></tr>
+      <tr><td>a.3</td><td>P(Promoted | Male)</td><td>2/9</td><td>≈ 0.2222</td></tr>
+      <tr><td>b</td><td>P(Female | Not Promoted)</td><td>8/15</td><td>≈ 0.5333</td></tr>
+    </tbody>
+  </table>
+</div>
+
 <h2 contenteditable="false">四、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
