@@ -424,6 +424,75 @@
   </table>
 </div>
 
+<h2 contenteditable="false">例题：夫妻面试题（Husband &amp; Wife Interview）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>📋 题目</h3>
+  <p>一对夫妻去面试。妻子成功的概率为 <strong>1/6</strong>，丈夫失败的概率为 <strong>2/5</strong>。
+  若两人都成功的概率为 <strong>1/4</strong>，求：</p>
+  <ol>
+    <li>至少一人成功的概率</li>
+    <li>两人都不成功的概率</li>
+  </ol>
+
+  <div class="note">
+    ⚠️ 注意：P(W ∩ H) = 1/4 > P(W) = 1/6，数据存在数学不一致，建议向老师核实。下方按题目给定值计算。
+  </div>
+
+  <h3>🪜 Step 1: Identify Events（识别事件）</h3>
+  <table>
+    <thead>
+      <tr><th>符号</th><th>事件</th><th>含义</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>W</td><td>Wife is successful</td><td>妻子面试成功</td></tr>
+      <tr><td>H</td><td>Husband is successful</td><td>丈夫面试成功</td></tr>
+      <tr><td>W'</td><td>Wife is NOT successful</td><td>妻子面试失败</td></tr>
+      <tr><td>H'</td><td>Husband is NOT successful</td><td>丈夫面试失败</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🪜 Step 2: Write Down the Given Probabilities（写出已知概率）</h3>
+  <table>
+    <thead>
+      <tr><th>概率</th><th>符号</th><th>数值</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>妻子成功</td><td>P(W)</td><td>1/6</td></tr>
+      <tr><td>丈夫失败</td><td>P(H')</td><td>2/5</td></tr>
+      <tr><td>丈夫成功 = 1 − P(H')</td><td>P(H)</td><td>3/5</td></tr>
+      <tr><td>两人都成功</td><td>P(W ∩ H)</td><td>1/4</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🪜 Step 3: Determine the Required Probabilities（求解）</h3>
+
+  <h4>(1) 至少一人成功 — P(W ∪ H)</h4>
+  <div class="formula">
+    P(W ∪ H) = P(W) + P(H) − P(W ∩ H)<br>
+    = 1/6 + 3/5 − 1/4<br>
+    = 10/60 + 36/60 − 15/60<br>
+    = <strong>31/60 ≈ 0.5167</strong>
+  </div>
+  <div class="answer">
+    ✅ P(at least one successful) = 31/60
+  </div>
+
+  <h4>(2) 两人都不成功 — P(W' ∩ H')</h4>
+  <p>"都不成功"是"至少一人成功"的对立事件：</p>
+  <div class="formula">
+    P(W' ∩ H') = 1 − P(W ∪ H)<br>
+    = 1 − 31/60<br>
+    = <strong>29/60 ≈ 0.4833</strong>
+  </div>
+  <div class="answer">
+    ✅ P(none successful) = 29/60
+  </div>
+
+  <h3>✔️ 验证</h3>
+  <p>两事件互补：P(至少一人成功) + P(都不成功) = 31/60 + 29/60 = <strong>60/60 = 1</strong> ✓</p>
+</div>
+
 <h2 contenteditable="false">四、核心知识点</h2>
 
 <div class="box" contenteditable="false">
