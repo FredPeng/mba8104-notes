@@ -634,6 +634,195 @@
   </table>
 </div>
 
+<h2 contenteditable="false">案例研究：The Case of the Body in the Bag（袋中尸体案）</h2>
+
+<p contenteditable="false"><em>来源：BodyintheBag.pdf — Sullivan《Statistics》第 5 章案例研究；数据出自 FBI Uniform Crime Reports 1999。</em></p>
+
+<div class="box" contenteditable="false">
+  <h3>📖 案例背景</h3>
+  <p>一个晚春的早晨，退休老人 Robert Donkin 在河边钓鱼时，发现一个漂浮的大帆布袋，
+  袋口露出疑似头发。报警后，初步调查发现<strong>袋中有一具尸体</strong>，
+  但当场无法辨认死者的性别、种族或年龄。</p>
+  <p>作为负责此案的侦探，在等待法医分析期间，你收集了 FBI 关于
+  <strong>"被害人 / 凶手"关系</strong>的统计数据，需要据此建立被害人与凶手的初步画像。</p>
+
+  <div class="note">
+    🎯 案例核心：用<strong>边际概率、联合概率、条件概率、加法/乘法法则</strong>，
+    从交叉列联表中推断凶手特征——是本课程概率知识的综合应用。
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📊 数据表（FBI 1999）</h3>
+
+  <h4>① 被害人/凶手关系 — 按种族（Race）</h4>
+  <table>
+    <thead>
+      <tr><th>被害人种族 ＼ 凶手种族</th><th>White</th><th>Black</th><th>Other</th><th>Unknown</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>White</td><td>2779</td><td>452</td><td>51</td><td>54</td></tr>
+      <tr><td>Black</td><td>154</td><td>2674</td><td>10</td><td>31</td></tr>
+      <tr><td>Other</td><td>34</td><td>17</td><td>127</td><td>3</td></tr>
+      <tr><td>Unknown</td><td>17</td><td>12</td><td>1</td><td>18</td></tr>
+    </tbody>
+  </table>
+
+  <h4>② 被害人种族 — 按凶手性别（Sex of Offender）</h4>
+  <table>
+    <thead>
+      <tr><th>被害人种族 ＼ 凶手性别</th><th>Male</th><th>Female</th><th>Unknown</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>White</td><td>2939</td><td>343</td><td>54</td></tr>
+      <tr><td>Black</td><td>2510</td><td>328</td><td>31</td></tr>
+      <tr><td>Other</td><td>156</td><td>22</td><td>3</td></tr>
+      <tr><td>Unknown</td><td>26</td><td>4</td><td>18</td></tr>
+    </tbody>
+  </table>
+
+  <h4>③ 被害人性别 — 按凶手种族（Race of Offender）</h4>
+  <table>
+    <thead>
+      <tr><th>被害人性别 ＼ 凶手种族</th><th>White</th><th>Black</th><th>Other</th><th>Unknown</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Male</td><td>1929</td><td>2391</td><td>123</td><td>65</td></tr>
+      <tr><td>Female</td><td>1038</td><td>752</td><td>65</td><td>23</td></tr>
+      <tr><td>Unknown</td><td>17</td><td>12</td><td>1</td><td>18</td></tr>
+    </tbody>
+  </table>
+
+  <h4>④ 被害人/凶手关系 — 按年龄（Age）</h4>
+  <table>
+    <thead>
+      <tr><th>被害人年龄 ＼ 凶手年龄</th><th>Less than 18</th><th>At Least 18</th><th>Unknown</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Less than 18</td><td>148</td><td>596</td><td>32</td></tr>
+      <tr><td>At Least 18</td><td>310</td><td>4870</td><td>399</td></tr>
+      <tr><td>Unknown</td><td>2</td><td>66</td><td>11</td></tr>
+    </tbody>
+  </table>
+
+  <h4>⑤ 被害人/凶手关系 — 按性别（Sex）</h4>
+  <table>
+    <thead>
+      <tr><th>被害人性别 ＼ 凶手性别</th><th>Male</th><th>Female</th><th>Unknown</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Male</td><td>3946</td><td>497</td><td>65</td></tr>
+      <tr><td>Female</td><td>1659</td><td>196</td><td>23</td></tr>
+      <tr><td>Unknown</td><td>26</td><td>4</td><td>18</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size: 0.9em; color: #666;">※ 五张表的总计数均为 <strong>6434</strong>（数据相互一致）。</p>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>❓ 第一阶段问题（尚未拿到法医报告，Q1–Q13）</h3>
+  <ol>
+    <li>凶手至少 18 岁的概率？</li>
+    <li>凶手是白人的概率？</li>
+    <li>凶手是男性的概率？</li>
+    <li>凶手是白人男性的概率？</li>
+    <li>凶手是白人或男性的概率？</li>
+    <li>被害人与凶手属于同一年龄段的概率？</li>
+    <li>被害人与凶手属于不同年龄段的概率？</li>
+    <li>被害人与凶手属于同一种族的概率？</li>
+    <li>被害人与凶手属于不同种族的概率？</li>
+    <li>被害人与凶手属于同一性别的概率？</li>
+    <li>被害人与凶手属于不同性别的概率？</li>
+    <li>在不知法医结果时，对被害人年龄/种族/性别的最佳预测？并说明理由。</li>
+    <li>对凶手年龄/种族/性别的最佳预测？并说明理由。</li>
+  </ol>
+
+  <h3>❓ 第二阶段（已知法医报告，Q14–Q25）</h3>
+  <p>法医报告：死因为<strong>钝器外伤</strong>，尸体已在水中至少两周；被害人为
+  <strong>白人女性、金发、约三十五岁左右</strong>，无生育迹象、未佩戴首饰。</p>
+  <p>据此重新回答 Q14–Q24（与 Q1–Q11 相同，但<strong>已知被害人 = 白人女性、成年</strong>，
+  改用相应的<strong>条件概率</strong>）；Q25 给出对凶手的最佳预测。
+  并讨论：知道被害人特征后，你对凶手的答案是否改变？</p>
+  <p>补充信息：45% 的凶手与被害人<strong>相识/有关系</strong>，15% 为<strong>陌生人</strong>所杀，
+  40% 关系<strong>未知</strong>。据此完成凶手画像。</p>
+
+  <details>
+    <summary><strong>📌 部分参考解答（Q1–Q5，总计 N = 6434）</strong></summary>
+
+    <p><strong>Q1：凶手至少 18 岁</strong>（用表④，凶手年龄列合计）</p>
+    <div class="formula">
+      ≥18 列合计 = 596+4870+66 = 5532<br>
+      P(凶手 ≥18) = 5532 / 6434 ≈ <strong>0.860</strong>
+    </div>
+
+    <p><strong>Q2：凶手是白人</strong>（用表①或③，凶手 White 列合计）</p>
+    <div class="formula">
+      White 列合计 = 2779+154+34+17 = 2984<br>
+      P(凶手 White) = 2984 / 6434 ≈ <strong>0.464</strong>
+    </div>
+
+    <p><strong>Q3：凶手是男性</strong>（用表⑤，凶手 Male 列合计）</p>
+    <div class="formula">
+      Male 列合计 = 3946+1659+26 = 5631<br>
+      P(凶手 Male) = 5631 / 6434 ≈ <strong>0.875</strong>
+    </div>
+
+    <p><strong>Q4：凶手是白人男性</strong> — ⚠️ 没有"凶手种族×凶手性别"的交叉表，
+    需<strong>假设种族与性别独立</strong>，用乘法定理：</p>
+    <div class="formula">
+      P(White ∩ Male) ≈ P(White)·P(Male) = 0.464 × 0.875 ≈ <strong>0.406</strong>
+    </div>
+
+    <p><strong>Q5：凶手是白人或男性</strong> — 用加法法则：</p>
+    <div class="formula">
+      P(White ∪ Male) = P(White) + P(Male) − P(White ∩ Male)<br>
+      ≈ 0.464 + 0.875 − 0.406 ≈ <strong>0.933</strong>
+    </div>
+
+    <div class="answer">
+      💡 初步画像：凶手最可能是<strong>成年（≥18）白人男性</strong>，
+      且被害人与凶手通常<strong>同种族、同性别、同年龄段</strong>（对角线数值最大）。
+    </div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🪒 附：His 'N' Hers Razor 剃须刀研究（条件概率 + 独立性练习）</h3>
+  <p>Consumers Union 让 30 名女性测试三款剃须刀，按 5 分制评分。结果汇总（每款各 30 次，共 90）：</p>
+
+  <table>
+    <thead>
+      <tr><th>Razor</th><th>"Poor"</th><th>"Fair" to "Good"</th><th>"Very Good" to "Excellent"</th><th>合计</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A</td><td>1</td><td>8</td><td>21</td><td>30</td></tr>
+      <tr><td>B</td><td>0</td><td>11</td><td>19</td><td>30</td></tr>
+      <tr><td>C</td><td>6</td><td>11</td><td>13</td><td>30</td></tr>
+      <tr class="total"><td>合计</td><td>7</td><td>30</td><td>53</td><td>90</td></tr>
+    </tbody>
+  </table>
+
+  <details>
+    <summary><strong>📌 参考解答</strong></summary>
+    <p><strong>(a)</strong> P("Very Good" to "Excellent") = 53/90 ≈ <strong>0.589</strong></p>
+    <p><strong>(b)</strong> P("Poor") = 7/90 ≈ <strong>0.078</strong></p>
+    <p><strong>(c)</strong> P(Razor B | "Fair" to "Good") = 11/30 ≈ <strong>0.367</strong></p>
+    <p><strong>(d)</strong> P("Very Good"-"Excellent" | Razor C) = 13/30 ≈ <strong>0.433</strong></p>
+    <p><strong>(e)</strong> 是否独立？检验：P("Poor") = 7/90 ≈ 0.078，但 P("Poor" | A) = 1/30 ≈ 0.033 ≠ 0.078
+    → <strong>剃须刀类型与评分不独立</strong>。</p>
+    <p><strong>(f)</strong> Razor A 的"Very Good"-"Excellent"占比最高（21/30 = 70%），
+    Razor B 无"Poor"评分（0 次）。综合看 <strong>A 表现最优</strong>（顶档评分最多），
+    若极度规避差评则可选 B。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>⚾ 附：Sports Probabilities（条件概率项目）</h3>
+  <p>用体育统计写条件概率，例如波士顿红袜 2001 赛季周三胜率 36%，记作
+  <strong>P(win | Wednesday) = 0.36</strong>；西雅图水手周三胜率 68%，据此预测比赛结果。
+  这是一个开放式项目：为至少 5 场比赛做预测并核对命中率（是否 &gt; 50%）。</p>
+</div>
+
 <h2 contenteditable="false">四、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
