@@ -365,7 +365,66 @@
   </div>
 </div>
 
-<h2 contenteditable="false">三、核心知识点</h2>
+<h2 contenteditable="false">三、概率论与应用（Probability Theory And Application）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>📐 加法法则（Addition Rule of Probability）</h3>
+
+  <div class="formula" style="font-size: 1.1em; text-align: center;">
+    <strong>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</strong>
+  </div>
+
+  <h3>📖 符号含义</h3>
+  <table>
+    <thead>
+      <tr><th>符号</th><th>含义</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>P(A ∪ B)</td><td>事件 A 或 B 发生的概率（A 并 B，至少一个发生）</td></tr>
+      <tr><td>P(A)</td><td>事件 A 发生的概率</td></tr>
+      <tr><td>P(B)</td><td>事件 B 发生的概率</td></tr>
+      <tr><td>P(A ∩ B)</td><td>事件 A 和 B 同时发生的概率（A 交 B）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>💡 为什么要减去 P(A ∩ B)？</h3>
+  <p>直接加 P(A) + P(B) 会把"A 和 B 同时发生"的部分<strong>算两次</strong>，所以必须减去一次，避免重复计算。</p>
+
+  <pre style="background: #f7fafc; padding: 12px; border-radius: 4px; font-family: monospace;">
+   ┌──────────┐
+   │    A     │
+   │   ┌──────┼───┐
+   │   │ A∩B  │   │
+   │   │      │ B │
+   └───┼──────┘   │
+       └──────────┘
+  </pre>
+
+  <h3>🎯 特殊情况</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>情况</th>
+        <th>条件</th>
+        <th>公式简化</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>互斥事件</strong><br>(Mutually Exclusive)</td>
+        <td>A ∩ B = ∅</td>
+        <td>P(A ∪ B) = P(A) + P(B)</td>
+      </tr>
+      <tr>
+        <td><strong>独立事件</strong><br>(Independent)</td>
+        <td>A 与 B 独立</td>
+        <td>P(A ∩ B) = P(A) · P(B)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 contenteditable="false">四、核心知识点</h2>
 
 <div class="box" contenteditable="false">
   <h3>期望值 Expected Value</h3>
@@ -384,7 +443,7 @@
   </ul>
 </div>
 
-<h2 contenteditable="false">四、个人笔记区（可编辑）</h2>
+<h2 contenteditable="false">五、个人笔记区（可编辑）</h2>
 
 <div class="box" contenteditable="true" style="min-height: 100px;">
   <em>点击"进入编辑模式"后，可在此处添加你自己的笔记、疑问或补充内容……</em>
