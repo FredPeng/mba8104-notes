@@ -788,8 +788,51 @@
   </table>
   <p>即条件概率：P(G|A₁)=0.98, P(B|A₁)=0.02, P(G|A₂)=0.95, P(B|A₂)=0.05</p>
 
-  <h4>🌳 概率树 → 联合概率</h4>
-  <p>每个实验结果是两个事件的交集：P(Aᵢ∩B) = P(Aᵢ)·P(B|Aᵢ)</p>
+  <h4>🌳 概率树（Probability Tree）</h4>
+  <p>每个实验结果是两个事件的交集，沿树枝<strong>相乘</strong>即得联合概率：P(Aᵢ∩B) = P(Aᵢ)·P(B|Aᵢ)</p>
+
+  <div style="overflow-x: auto;">
+  <svg viewBox="0 0 720 420" style="width: 100%; max-width: 720px; height: auto; background: #fcfcfc; border: 1px solid #e2e8f0; border-radius: 6px;" xmlns="http://www.w3.org/2000/svg">
+    <!-- branches: root -> A1 / A2 -->
+    <line x1="55" y1="210" x2="250" y2="110" stroke="#2c5282" stroke-width="2"/>
+    <line x1="55" y1="210" x2="250" y2="310" stroke="#2c5282" stroke-width="2"/>
+    <!-- A1 -> G / B -->
+    <line x1="290" y1="110" x2="500" y2="55" stroke="#718096" stroke-width="2"/>
+    <line x1="290" y1="110" x2="500" y2="165" stroke="#c53030" stroke-width="2.5"/>
+    <!-- A2 -> G / B -->
+    <line x1="290" y1="310" x2="500" y2="255" stroke="#718096" stroke-width="2"/>
+    <line x1="290" y1="310" x2="500" y2="365" stroke="#c53030" stroke-width="2.5"/>
+
+    <!-- root -->
+    <circle cx="50" cy="210" r="6" fill="#2c5282"/>
+    <text x="30" y="200" font-size="13" fill="#444">开始</text>
+
+    <!-- branch labels (step 1) -->
+    <text x="80" y="150" font-size="13" fill="#2c5282" font-weight="bold">P(A₁)=0.65</text>
+    <text x="80" y="285" font-size="13" fill="#2c5282" font-weight="bold">P(A₂)=0.35</text>
+
+    <!-- node A1 / A2 -->
+    <circle cx="270" cy="110" r="16" fill="#ebf8ff" stroke="#2c5282" stroke-width="2"/>
+    <text x="270" y="115" font-size="13" fill="#2c5282" text-anchor="middle" font-weight="bold">A₁</text>
+    <circle cx="270" cy="310" r="16" fill="#ebf8ff" stroke="#2c5282" stroke-width="2"/>
+    <text x="270" y="315" font-size="13" fill="#2c5282" text-anchor="middle" font-weight="bold">A₂</text>
+
+    <!-- branch labels (step 2) -->
+    <text x="360" y="70" font-size="12" fill="#718096">P(G|A₁)=0.98</text>
+    <text x="360" y="162" font-size="12" fill="#c53030" font-weight="bold">P(B|A₁)=0.02</text>
+    <text x="360" y="252" font-size="12" fill="#718096">P(G|A₂)=0.95</text>
+    <text x="360" y="362" font-size="12" fill="#c53030" font-weight="bold">P(B|A₂)=0.05</text>
+
+    <!-- leaves -->
+    <text x="510" y="50" font-size="12" fill="#444">(A₁,G) = 0.65×0.98 = <tspan font-weight="bold">0.6370</tspan></text>
+    <text x="510" y="170" font-size="12" fill="#c53030">(A₁,B) = 0.65×0.02 = <tspan font-weight="bold">0.0130</tspan></text>
+    <text x="510" y="260" font-size="12" fill="#444">(A₂,G) = 0.35×0.95 = <tspan font-weight="bold">0.3325</tspan></text>
+    <text x="510" y="380" font-size="12" fill="#c53030">(A₂,B) = 0.35×0.05 = <tspan font-weight="bold">0.0175</tspan></text>
+  </svg>
+  </div>
+  <p style="font-size: 0.9em; color: #666;">🔴 红色分支 = 次品（Bad）路径。两条红色叶子相加 = P(B) = 0.0130 + 0.0175 = 0.0305。</p>
+
+  <h4>📋 联合概率汇总</h4>
   <table>
     <thead>
       <tr><th>路径</th><th>计算</th><th>联合概率</th></tr>
@@ -799,8 +842,10 @@
       <tr><td>P(A₁∩B)</td><td>0.65 × 0.02</td><td>0.0130</td></tr>
       <tr><td>P(A₂∩G)</td><td>0.35 × 0.95</td><td>0.3325</td></tr>
       <tr><td>P(A₂∩B)</td><td>0.35 × 0.05</td><td>0.0175</td></tr>
+      <tr class="total"><td>合计</td><td>—</td><td>1.0000</td></tr>
     </tbody>
   </table>
+  <p style="font-size: 0.9em; color: #666;">💡 四条叶子概率之和 = 1（树形图的自带验证）。</p>
 
   <h4>❓ 问题：一个次品弄坏了机器，它来自供应商 1 的概率是多少？</h4>
   <p>先求次品总概率（全概率）：</p>
