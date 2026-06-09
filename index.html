@@ -759,6 +759,122 @@
   </div>
 </div>
 
+<div class="box" contenteditable="false">
+  <h3>📚 补充讲义：Bayes' Theorem（来自 Bayes Theorem-notes.pdf）</h3>
+
+  <h4>🔄 贝叶斯思维流程</h4>
+  <div class="formula" style="text-align: center;">
+    先验概率 (Prior) &nbsp;→&nbsp; 新信息 (New Information) &nbsp;→&nbsp;
+    应用贝叶斯定理 &nbsp;→&nbsp; 后验概率 (Posterior)
+  </div>
+  <p>已有事件的先验概率估计，获得新信息后，用贝叶斯定理计算<strong>修正后的（后验）概率</strong>。</p>
+
+  <h4>📝 例题：两供应商问题（Two-Supplier Problem）</h4>
+  <p>某制造厂从两家供应商进货：</p>
+  <ul>
+    <li>A₁ = 零件来自供应商 1，A₂ = 零件来自供应商 2</li>
+    <li>进货比例：P(A₁) = 0.65，P(A₂) = 0.35</li>
+    <li>G = 零件合格，B = 零件次品</li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr><th>供应商</th><th>合格率 %（Good）</th><th>次品率 %（Bad）</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Supplier 1</td><td>98</td><td>2</td></tr>
+      <tr><td>Supplier 2</td><td>95</td><td>5</td></tr>
+    </tbody>
+  </table>
+  <p>即条件概率：P(G|A₁)=0.98, P(B|A₁)=0.02, P(G|A₂)=0.95, P(B|A₂)=0.05</p>
+
+  <h4>🌳 概率树 → 联合概率</h4>
+  <p>每个实验结果是两个事件的交集：P(Aᵢ∩B) = P(Aᵢ)·P(B|Aᵢ)</p>
+  <table>
+    <thead>
+      <tr><th>路径</th><th>计算</th><th>联合概率</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>P(A₁∩G)</td><td>0.65 × 0.98</td><td>0.6370</td></tr>
+      <tr><td>P(A₁∩B)</td><td>0.65 × 0.02</td><td>0.0130</td></tr>
+      <tr><td>P(A₂∩G)</td><td>0.35 × 0.95</td><td>0.3325</td></tr>
+      <tr><td>P(A₂∩B)</td><td>0.35 × 0.05</td><td>0.0175</td></tr>
+    </tbody>
+  </table>
+
+  <h4>❓ 问题：一个次品弄坏了机器，它来自供应商 1 的概率是多少？</h4>
+  <p>先求次品总概率（全概率）：</p>
+  <div class="formula">
+    P(B) = P(A₁∩B) + P(A₂∩B) = 0.0130 + 0.0175 = <strong>0.0305</strong>
+  </div>
+  <p>应用贝叶斯定理：</p>
+  <div class="formula">
+    P(A₁|B) = P(A₁)P(B|A₁) / [P(A₁)P(B|A₁) + P(A₂)P(B|A₂)]<br>
+    = (0.65×0.02) / [(0.65×0.02) + (0.35×0.05)]<br>
+    = 0.0130 / 0.0305 ≈ <strong>0.4262</strong>
+  </div>
+  <div class="formula">
+    P(A₂|B) = 0.0175 / 0.0305 ≈ <strong>0.5738</strong>
+  </div>
+  <div class="answer">
+    ✅ 虽然供应商 1 供货更多（65%），但因其次品率低，这个次品更可能来自
+    <strong>供应商 2（≈ 57.38%）</strong>。
+  </div>
+
+  <h4>📊 表格法（Tabular Approach）</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>(1) 事件 Aᵢ</th>
+        <th>(2) 先验 P(Aᵢ)</th>
+        <th>(3) 条件 P(B|Aᵢ)</th>
+        <th>(4) 联合 P(Aᵢ∩B)</th>
+        <th>(5) 后验 P(Aᵢ|B)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>A₁</td><td>0.65</td><td>0.02</td><td>0.0130</td><td>0.0130/0.0305 = 0.4262</td></tr>
+      <tr><td>A₂</td><td>0.35</td><td>0.05</td><td>0.0175</td><td>0.0175/0.0305 = 0.5738</td></tr>
+      <tr class="total"><td>合计</td><td>1.00</td><td>—</td><td>P(B) = 0.0305</td><td>1.0000</td></tr>
+    </tbody>
+  </table>
+
+  <h4>📐 贝叶斯定理（n 个事件的一般形式）</h4>
+  <div class="formula">
+    P(Aᵢ|B) = [ P(Aᵢ)P(B|Aᵢ) ] / [ P(A₁)P(B|A₁) + P(A₂)P(B|A₂) + … + P(Aₙ)P(B|Aₙ) ]
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 练习题 41：咨询公司投标</h3>
+  <p>一家咨询公司为一个大型咨询合同投标，管理层认为中标机会是 <strong>50-50</strong>。
+  随后招标方要求提供补充资料。经验表明：在<strong>成功中标</strong>的投标中有 75% 被要求补充资料，
+  在<strong>失败</strong>的投标中有 40% 被要求补充资料。</p>
+  <ul>
+    <li><strong>(a)</strong> 中标的先验概率（在被要求补充资料之前）？</li>
+    <li><strong>(b)</strong> 已知最终中标，被要求补充资料的条件概率？</li>
+    <li><strong>(c)</strong> 已知被要求补充资料，求中标的后验概率？</li>
+  </ul>
+
+  <details>
+    <summary><strong>📌 参考解答</strong></summary>
+    <p>设 S = 中标成功，U = 失败，R = 被要求补充资料</p>
+    <p><strong>(a)</strong> 先验概率 P(S) = <strong>0.50</strong>（"50-50"）</p>
+    <p><strong>(b)</strong> 条件概率 P(R|S) = <strong>0.75</strong>（题目给定）</p>
+    <p><strong>(c)</strong> 用贝叶斯定理（P(S)=P(U)=0.5, P(R|S)=0.75, P(R|U)=0.40）：</p>
+    <div class="formula">
+      P(S|R) = P(R|S)P(S) / [P(R|S)P(S) + P(R|U)P(U)]<br>
+      = (0.75×0.5) / [(0.75×0.5) + (0.40×0.5)]<br>
+      = 0.375 / (0.375 + 0.20)<br>
+      = 0.375 / 0.575 ≈ <strong>0.6522</strong>
+    </div>
+    <div class="answer">
+      ✅ 被要求补充资料后，中标概率从先验的 50% 上升到约 <strong>65.22%</strong>
+      —— 因为"要补充资料"在成功投标中更常见，这是一个有利信号。
+    </div>
+  </details>
+</div>
+
 <h2 contenteditable="false">案例研究：The Case of the Body in the Bag（袋中尸体案）</h2>
 
 <p contenteditable="false"><em>来源：BodyintheBag.pdf — Sullivan《Statistics》第 5 章案例研究；数据出自 FBI Uniform Crime Reports 1999。</em></p>
