@@ -716,6 +716,49 @@
   </div>
 </div>
 
+<div class="box" contenteditable="false">
+  <h3>📊 方法三：表格法（Tabular Method）</h3>
+  <p>解贝叶斯题最系统、最不易出错的方法——列一张 5 列表，逐列计算：</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>事件 Aᵢ</th>
+        <th>先验 P(Aᵢ)</th>
+        <th>条件 P(B|Aᵢ)</th>
+        <th>联合 P(Aᵢ∩B)</th>
+        <th>后验 P(Aᵢ|B)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>A₁ (Jane)</td><td>1/3</td><td>0.02</td><td>0.02/3</td><td>(0.02/3)/(0.13/3) = <strong>2/13</strong></td></tr>
+      <tr><td>A₂ (Tom)</td><td>1/3</td><td>0.04</td><td>0.04/3</td><td>(0.04/3)/(0.13/3) = <strong>4/13</strong></td></tr>
+      <tr><td>A₃ (Mary)</td><td>1/3</td><td>0.07</td><td>0.07/3</td><td>(0.07/3)/(0.13/3) = <strong>7/13</strong></td></tr>
+      <tr class="total"><td>合计</td><td>1</td><td>—</td><td>P(B) = 0.13/3</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <h4>🪜 各列怎么算</h4>
+  <table>
+    <thead>
+      <tr><th>列</th><th>来源</th><th>说明</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>① 先验 P(Aᵢ)</td><td>题目给定</td><td>各来源被选中的概率</td></tr>
+      <tr><td>② 条件 P(B|Aᵢ)</td><td>题目给定</td><td>各来源的次品率</td></tr>
+      <tr><td>③ 联合 P(Aᵢ∩B)</td><td>① × ②</td><td>乘法定理</td></tr>
+      <tr><td>④ 第③列求和</td><td>Σ = P(B)</td><td>全概率（= 0.13/3）</td></tr>
+      <tr><td>⑤ 后验 P(Aᵢ|B)</td><td>③ ÷ P(B)</td><td>贝叶斯定理</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    💡 表格法优点：第③列求和直接得到全概率 P(B)（贝叶斯分母）；
+    后验 = 第③列 ÷ 该列合计；最后一列加起来必须 = 1（自带验证）。
+    结果一致：<strong>Mary 7/13 &gt; Tom 4/13 &gt; Jane 2/13</strong>。
+  </div>
+</div>
+
 <h2 contenteditable="false">案例研究：The Case of the Body in the Bag（袋中尸体案）</h2>
 
 <p contenteditable="false"><em>来源：BodyintheBag.pdf — Sullivan《Statistics》第 5 章案例研究；数据出自 FBI Uniform Crime Reports 1999。</em></p>
