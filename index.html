@@ -1087,8 +1087,13 @@
     <div class="formula">P(F ∪ C) = P(F) + P(C) = 0.3 + 0.4 = <strong>0.7</strong></div>
     <p><strong>(ii)</strong> 三个事件互斥且覆盖所有可能：</p>
     <div class="formula">P(T) = 1 − P(F) − P(C) = 1 − 0.3 − 0.4 = <strong>0.3</strong></div>
-    <p><strong>(iii)</strong> 用加法法则（按题目数值代入）：</p>
-    <div class="formula">P(F ∪ W) = P(F) + P(W) − P(F ∩ W) = 0.3 + 0.2 − 0.5 = <strong>0</strong>（数据可能有误）</div>
+    <p><strong>(iii)</strong> 用加法法则。⚠️ 注意 P(Ford station wagon) = 0.5 不可能
+    （联合概率不能大于 P(Ford)=0.3），几乎可以确定是 <strong>0.05 的笔误</strong>。按 0.05 计算：</p>
+    <div class="formula">
+      P(F ∪ W) = P(F) + P(W) − P(F ∩ W)<br>
+      = 0.3 + 0.2 − 0.05 = <strong>0.45</strong>
+    </div>
+    <p style="font-size: 0.9em; color: #666;">（若硬按题面 0.5 代入会得到 0.3+0.2−0.5 = 0，显然不合理，故判定为笔误。）</p>
   </details>
 </div>
 
