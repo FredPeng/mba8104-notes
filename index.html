@@ -1327,6 +1327,75 @@ function lookupZ() {
 window.addEventListener('load', lookupZ);
 </script>
 
+<h2 contenteditable="false">正态分布 ↔ 标准正态分布的换算</h2>
+
+<div class="box" contenteditable="false">
+  <h3>🔄 两个方向的换算公式</h3>
+  <table>
+    <thead><tr><th>方向</th><th>公式</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr><td>正态 → 标准正态（标准化）</td><td><strong>Z = (X − μ) / σ</strong></td><td>已知原始分，求 Z 去查表</td></tr>
+      <tr><td>标准正态 → 正态（反标准化）</td><td><strong>X = μ + Zσ</strong></td><td>已知 Z（反查表得到），还原成原始分</td></tr>
+    </tbody>
+  </table>
+  <p>两公式是同一等式的移项：Z = (X−μ)/σ 两边乘 σ 再加 μ，即得 X = μ + Zσ。</p>
+
+  <h3>📊 X 轴与 Z 轴一一对应（μ=60, σ=12）</h3>
+  <div style="overflow-x:auto;"><svg viewBox="0 0 700 270" style="width:100%;max-width:700px;height:auto;background:#fcfcfc;border:1px solid #e2e8f0;border-radius:6px;" xmlns="http://www.w3.org/2000/svg">
+<path d="M 265.0 200 L 265.0 109.0 L 272.5 100.0 L 280.0 91.1 L 287.5 82.6 L 295.0 74.7 L 302.5 67.6 L 310.0 61.5 L 317.5 56.6 L 325.0 53.0 L 332.5 50.7 L 340.0 50.0 L 347.5 50.7 L 355.0 53.0 L 362.5 56.6 L 370.0 61.5 L 377.5 67.6 L 385.0 74.7 L 392.5 82.6 L 400.0 91.1 L 407.5 100.0 L 415.0 109.0 L 415.0 200 Z" fill="#378ADD" fill-opacity="0.18"/>
+<line x1="115.0" y1="198.3" x2="115.0" y2="200" stroke="#c4d3e3" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="190.0" y1="179.7" x2="190.0" y2="200" stroke="#c4d3e3" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="265.0" y1="109.0" x2="265.0" y2="200" stroke="#c4d3e3" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="340.0" y1="50.0" x2="340.0" y2="200" stroke="#c4d3e3" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="415.0" y1="109.0" x2="415.0" y2="200" stroke="#c4d3e3" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="490.0" y1="179.7" x2="490.0" y2="200" stroke="#c4d3e3" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="565.0" y1="198.3" x2="565.0" y2="200" stroke="#c4d3e3" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="80" y1="200" x2="600" y2="200" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 92.5 199.4 L 100.0 199.1 L 107.5 198.8 L 115.0 198.3 L 122.5 197.8 L 130.0 197.0 L 137.5 196.1 L 145.0 194.9 L 152.5 193.4 L 160.0 191.6 L 167.5 189.3 L 175.0 186.7 L 182.5 183.5 L 190.0 179.7 L 197.5 175.3 L 205.0 170.3 L 212.5 164.6 L 220.0 158.3 L 227.5 151.3 L 235.0 143.7 L 242.5 135.6 L 250.0 127.0 L 257.5 118.1 L 265.0 109.0 L 272.5 100.0 L 280.0 91.1 L 287.5 82.6 L 295.0 74.7 L 302.5 67.6 L 310.0 61.5 L 317.5 56.6 L 325.0 53.0 L 332.5 50.7 L 340.0 50.0 L 347.5 50.7 L 355.0 53.0 L 362.5 56.6 L 370.0 61.5 L 377.5 67.6 L 385.0 74.7 L 392.5 82.6 L 400.0 91.1 L 407.5 100.0 L 415.0 109.0 L 422.5 118.1 L 430.0 127.0 L 437.5 135.6 L 445.0 143.7 L 452.5 151.3 L 460.0 158.3 L 467.5 164.6 L 475.0 170.3 L 482.5 175.3 L 490.0 179.7 L 497.5 183.5 L 505.0 186.7 L 512.5 189.3 L 520.0 191.6 L 527.5 193.4 L 535.0 194.9 L 542.5 196.1 L 550.0 197.0 L 557.5 197.8 L 565.0 198.3 L 572.5 198.8 L 580.0 199.1 L 587.5 199.4" fill="none" stroke="#185FA5" stroke-width="2.4" stroke-linejoin="round"/>
+<line x1="115.0" y1="200" x2="115.0" y2="205" stroke="#5a6b7b" stroke-width="1.2"/>
+<line x1="190.0" y1="200" x2="190.0" y2="205" stroke="#5a6b7b" stroke-width="1.2"/>
+<line x1="265.0" y1="200" x2="265.0" y2="205" stroke="#5a6b7b" stroke-width="1.2"/>
+<line x1="340.0" y1="200" x2="340.0" y2="205" stroke="#5a6b7b" stroke-width="1.2"/>
+<line x1="415.0" y1="200" x2="415.0" y2="205" stroke="#5a6b7b" stroke-width="1.2"/>
+<line x1="490.0" y1="200" x2="490.0" y2="205" stroke="#5a6b7b" stroke-width="1.2"/>
+<line x1="565.0" y1="200" x2="565.0" y2="205" stroke="#5a6b7b" stroke-width="1.2"/>
+<text x="115.0" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#185FA5">24</text>
+<text x="190.0" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#185FA5">36</text>
+<text x="265.0" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#185FA5">48</text>
+<text x="340.0" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#185FA5">60</text>
+<text x="415.0" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#185FA5">72</text>
+<text x="490.0" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#185FA5">84</text>
+<text x="565.0" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#185FA5">96</text>
+<text x="115.0" y="245" text-anchor="middle" font-size="13" fill="#15803d">−3</text>
+<text x="190.0" y="245" text-anchor="middle" font-size="13" fill="#15803d">−2</text>
+<text x="265.0" y="245" text-anchor="middle" font-size="13" fill="#15803d">−1</text>
+<text x="340.0" y="245" text-anchor="middle" font-size="13" fill="#15803d">0</text>
+<text x="415.0" y="245" text-anchor="middle" font-size="13" fill="#15803d">1</text>
+<text x="490.0" y="245" text-anchor="middle" font-size="13" fill="#15803d">2</text>
+<text x="565.0" y="245" text-anchor="middle" font-size="13" fill="#15803d">3</text>
+<text x="608" y="222" text-anchor="start" font-size="12" fill="#185FA5">X（原始分）</text>
+<text x="608" y="245" text-anchor="start" font-size="12" fill="#15803d">Z（标准分）</text>
+<text x="340" y="38" text-anchor="middle" font-size="14" font-weight="bold" fill="#444">μ = 60，σ = 12</text>
+</svg></div>
+  <p style="font-size:0.9em;color:#666;">同一条曲线的两套刻度：原始分 60 ↔ Z 的 0，72 ↔ 1，84 ↔ 2……每个原始分都对应唯一的 Z。</p>
+
+  <h3>📖 换算的本质（两步坐标变换）</h3>
+  <div class="formula" style="text-align:center;">Z = (1/σ) × (X − μ) &nbsp;&nbsp;←&nbsp; ① 平移（减 μ，中心移到 0）&nbsp; ② 缩放（除 σ，单位变成"几个标准差"）</div>
+
+  <h3>✏️ 用分班测试数据演示</h3>
+  <p><strong>正向</strong>（求某分数的 Z）：X = 84 ⇒ Z = (84−60)/12 = <strong>+2</strong>（高于均值 2 个标准差）</p>
+  <p><strong>反向</strong>（已知 Z 求分数）：Z = 0.52 ⇒ X = 60 + 0.52×12 = <strong>66.24</strong></p>
+
+  <h3>🧭 解题时怎么选方向</h3>
+  <table>
+    <thead><tr><th>题目类型</th><th>已知 → 求</th><th>用哪个公式</th></tr></thead>
+    <tbody>
+      <tr><td>"分数高于/低于…的比例"</td><td>分数 → 概率</td><td>先 Z=(X−μ)/σ，再查表</td></tr>
+      <tr><td>"前/后 X% 的分数线"</td><td>概率 → 分数</td><td>先反查表得 Z，再 X=μ+Zσ</td></tr>
+    </tbody>
+  </table>
+</div>
+
 <h2 contenteditable="false">例题：Strathmore 数学分班测试（正态分布应用）</h2>
 
 <div class="box" contenteditable="false">
