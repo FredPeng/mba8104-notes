@@ -1551,9 +1551,9 @@ window.addEventListener('load', lookupZ);
   </table>
 </div>
 
-<h2 contenteditable="false">练习题：正态分布案例应用（待作答）</h2>
+<h2 contenteditable="false">练习题：正态分布案例应用</h2>
 
-<p contenteditable="false"><em>来源：The Normal Distribution.pdf — 课堂练习，⏳ 暂未作答</em></p>
+<p contenteditable="false"><em>来源：The Normal Distribution.pdf — 课堂练习与参考解法</em></p>
 
 <div class="box" contenteditable="false">
   <h3>📝 练习 1：人事测试（Personnel Tests）</h3>
@@ -1564,6 +1564,30 @@ window.addEventListener('load', lookupZ);
     <li><strong>(b)</strong> 测试机构报告某位应聘者的分数落在分布的<strong>第 98 百分位</strong>
     （即约 98% 的分数低于他、只有 2% 高于他）。求该应聘者的分数。</li>
   </ul>
+
+  <details>
+    <summary><strong>📌 参考解法</strong></summary>
+    <p>设测试分数 <strong>X ~ N(75, 7.5²)</strong>。</p>
+
+    <h4>(a) 超过 80 分的比例</h4>
+    <div class="formula">
+      Z = (80 − 75) / 7.5 = 0.6667 ≈ 0.67
+    </div>
+    <p>标准正态表给出 Φ(0.67) = 0.7486，因此右尾概率为：</p>
+    <div class="formula">
+      P(X &gt; 80) = P(Z &gt; 0.67) = 1 − 0.7486 = 0.2514
+    </div>
+    <div class="answer">✅ 去年约有 <strong>25.14%</strong> 的测试分数超过 80 分（用精确计算约为 25.25%）。</div>
+
+    <h4>(b) 第 98 百分位对应的分数</h4>
+    <p>第 98 百分位表示 P(X ≤ x) = 0.98。反查标准正态表，得到 <strong>Z ≈ 2.05</strong>。</p>
+    <div class="formula">
+      x = μ + Zσ = 75 + 2.05 × 7.5 = 90.375
+    </div>
+    <div class="answer">✅ 该应聘者的分数约为 <strong>90.4 分</strong>（若取整数，约 90 分）。</div>
+
+    <div class="note">💡 “超过某分数”是右尾概率，要用 1 − Φ(z)；“第 98 百分位”则是左侧累计概率 0.98。</div>
+  </details>
 </div>
 
 <div class="box" contenteditable="false">
@@ -1577,6 +1601,44 @@ window.addEventListener('load', lookupZ);
     <li><strong>(ii)</strong> 求评为 "competent（称职）" 的员工的<strong>最高分</strong>。</li>
     <li><strong>(iii)</strong> 求<strong>每个等级</strong>的最低分和最高分。</li>
   </ul>
+
+  <details>
+    <summary><strong>📌 参考解法</strong></summary>
+    <p>设绩效评分 <strong>X ~ N(50, 15²)</strong>。五个等级对应的累计百分位为
+    10%、30%、70% 和 90%。由标准正态表：</p>
+    <table>
+      <thead><tr><th>累计百分位</th><th>Z 值</th><th>理论切点 x = 50 + 15Z</th></tr></thead>
+      <tbody>
+        <tr><td>10%</td><td>−1.2816</td><td>30.78</td></tr>
+        <tr><td>30%</td><td>−0.5244</td><td>42.13</td></tr>
+        <tr><td>70%</td><td>0.5244</td><td>57.87</td></tr>
+        <tr><td>90%</td><td>1.2816</td><td>69.22</td></tr>
+      </tbody>
+    </table>
+
+    <h4>(i) Exemplary（优秀）的最低分</h4>
+    <p>优秀是最高的 10%，分界点是第 90 百分位：</p>
+    <div class="formula">x = 50 + 1.2816 × 15 = <strong>69.22</strong></div>
+    <div class="answer">✅ 理论切点为 69.22 分；采用整数评分时，最低优秀分为 <strong>70 分</strong>。</div>
+
+    <h4>(ii) Competent（称职）的最高分</h4>
+    <p>称职覆盖中间 40%，即第 30 百分位至第 70 百分位；上界为：</p>
+    <div class="formula">x = 50 + 0.5244 × 15 = <strong>57.87</strong></div>
+    <div class="answer">✅ 理论上界为 57.87 分；采用整数评分时，称职的最高分为 <strong>57 分</strong>。</div>
+
+    <h4>(iii) 每个等级的分数范围</h4>
+    <table>
+      <thead><tr><th>等级</th><th>目标比例</th><th>连续分布的理论区间</th><th>整数评分区间</th></tr></thead>
+      <tbody>
+        <tr><td>Unacceptable（不合格）</td><td>最低 10%</td><td>X &lt; 30.78</td><td>1–30</td></tr>
+        <tr><td>Marginal（勉强）</td><td>接下来 20%</td><td>30.78 ≤ X &lt; 42.13</td><td>31–42</td></tr>
+        <tr><td>Competent（称职）</td><td>中间 40%</td><td>42.13 ≤ X &lt; 57.87</td><td>43–57</td></tr>
+        <tr><td>Distinguished（杰出）</td><td>接下来 20%</td><td>57.87 ≤ X &lt; 69.22</td><td>58–69</td></tr>
+        <tr><td>Exemplary（优秀）</td><td>最高 10%</td><td>X ≥ 69.22</td><td>70–100</td></tr>
+      </tbody>
+    </table>
+    <div class="note">💡 正态分布是连续模型，单个切点本身的概率为 0；实际按整数打分时，需要把理论切点转换成不重叠的整数区间。</div>
+  </details>
 </div>
 
 <h2 contenteditable="false">四、复习题（Probability Revision Questions）</h2>
