@@ -1641,7 +1641,132 @@ window.addEventListener('load', lookupZ);
   </details>
 </div>
 
-<h2 contenteditable="false">四、复习题（Probability Revision Questions）</h2>
+<h2 contenteditable="false">四、置信区间估计（Confidence Interval Estimation）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>🎯 从点估计到区间估计</h3>
+  <p><strong>点估计（point estimate）</strong>用一个样本统计量估计总体参数，例如用样本均值
+  x̄ 估计总体均值 μ；但不同样本会产生不同结果，因此还需要说明估计的不确定性。</p>
+  <p><strong>置信区间（confidence interval, CI）</strong>给出一个合理的参数范围，其通用结构为：</p>
+  <div class="formula">
+    置信区间 = 点估计 ± 误差界限（Margin of Error）<br>
+    = 点估计 ± 临界值 × 标准误（Standard Error）
+  </div>
+  <ul>
+    <li><strong>Confidence level（置信水平）</strong>：构造区间的方法在长期重复抽样中的成功率，常用 90%、95%、99%。</li>
+    <li><strong>Standard error（标准误）</strong>：统计量在重复抽样中的标准差，反映抽样波动。</li>
+    <li><strong>Margin of error, E（误差界限）</strong>：区间中心到任一端点的距离。</li>
+  </ul>
+  <div class="note">
+    💡 95% 置信区间的正确解释：如果用同一种方法反复抽样并构造区间，约 95% 的区间会包含真实参数。
+    不能说“这个已经算出的区间有 95% 概率包含固定的 μ”。
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📊 常用置信水平与 Z 临界值</h3>
+  <p>双侧区间把 α = 1 − confidence level 平分到左右两尾，每尾为 α/2。</p>
+  <table>
+    <thead><tr><th>置信水平</th><th>α</th><th>每尾 α/2</th><th>Z<sub>α/2</sub></th></tr></thead>
+    <tbody>
+      <tr><td>90%</td><td>0.10</td><td>0.05</td><td>1.645</td></tr>
+      <tr><td>95%</td><td>0.05</td><td>0.025</td><td>1.960</td></tr>
+      <tr><td>99%</td><td>0.01</td><td>0.005</td><td>2.576</td></tr>
+    </tbody>
+  </table>
+  <p>置信水平越高，临界值越大，区间越宽；样本量越大，标准误越小，区间越窄。</p>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>1️⃣ 总体均值 μ：总体标准差 σ 已知</h3>
+  <p>总体近似正态，或样本量足够大且随机、独立时，使用 Z 区间：</p>
+  <div class="formula">
+    x̄ ± Z<sub>α/2</sub> × σ/√n
+  </div>
+  <p><strong>商业例题：</strong>某配送流程的总体标准差已知为 12 分钟。随机抽取 64 个订单，
+  平均配送时间为 52 分钟。求总体平均配送时间的 95% 置信区间。</p>
+  <div class="formula">
+    SE = σ/√n = 12/√64 = 1.5<br>
+    E = 1.96 × 1.5 = 2.94<br>
+    CI = 52 ± 2.94 = <strong>[49.06, 54.94]</strong>
+  </div>
+  <div class="answer">✅ 我们有 95% 的置信度认为总体平均配送时间位于 49.06 至 54.94 分钟之间。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>2️⃣ 总体均值 μ：总体标准差 σ 未知</h3>
+  <p>用样本标准差 s 代替 σ，并使用 <strong>t 分布</strong>；自由度 df = n − 1：</p>
+  <div class="formula">
+    x̄ ± t<sub>α/2, n−1</sub> × s/√n
+  </div>
+  <p>t 分布比标准正态分布尾部更厚，用来补偿用 s 估计 σ 带来的额外不确定性；n 越大，t 越接近 Z。</p>
+  <p><strong>例题：</strong>抽取 16 名员工，平均培训成绩 x̄ = 75，样本标准差 s = 8。
+  假设总体近似正态，求 μ 的 95% 置信区间。df = 15 时，t<sub>0.025,15</sub> = 2.131。</p>
+  <div class="formula">
+    SE = 8/√16 = 2<br>
+    E = 2.131 × 2 = 4.262<br>
+    CI = 75 ± 4.262 = <strong>[70.74, 79.26]</strong>
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>3️⃣ 总体比例 p 的置信区间</h3>
+  <p>若样本中有 x 个“成功”，样本比例 p̂ = x/n。正态近似条件通常要求
+  np̂ ≥ 10 且 n(1 − p̂) ≥ 10。</p>
+  <div class="formula">
+    p̂ ± Z<sub>α/2</sub> × √[p̂(1 − p̂)/n]
+  </div>
+  <p><strong>市场调查例题：</strong>随机调查 200 名顾客，其中 120 人愿意推荐该品牌。
+  求总体推荐比例的 95% 置信区间。</p>
+  <div class="formula">
+    p̂ = 120/200 = 0.60<br>
+    SE = √[0.60(0.40)/200] = 0.03464<br>
+    E = 1.96 × 0.03464 = 0.0679<br>
+    CI = 0.60 ± 0.0679 = <strong>[0.5321, 0.6679]</strong>
+  </div>
+  <div class="answer">✅ 总体中愿意推荐该品牌的顾客比例估计为 <strong>53.21%–66.79%</strong>。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📐 给定误差界限时的样本量</h3>
+  <p>规划研究时，可先指定置信水平和可接受的最大误差 E，再求最小样本量。结果必须<strong>向上取整</strong>。</p>
+  <table>
+    <thead><tr><th>估计目标</th><th>样本量公式</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>总体均值 μ</td><td>n = (Z<sub>α/2</sub>σ/E)²</td><td>σ 可来自历史数据或预调查</td></tr>
+      <tr><td>总体比例 p</td><td>n = Z²<sub>α/2</sub>p*(1−p*)/E²</td><td>未知 p 时取 p* = 0.5，得到最保守样本量</td></tr>
+    </tbody>
+  </table>
+  <p><strong>例：</strong>95% 置信水平下估计顾客比例，要求误差不超过 5%，且事先不知道 p：</p>
+  <div class="formula">
+    n = 1.96² × 0.5 × 0.5 / 0.05² = 384.16 → <strong>至少 385 人</strong>
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🧭 选公式与答题步骤</h3>
+  <table>
+    <thead><tr><th>参数</th><th>条件</th><th>使用方法</th></tr></thead>
+    <tbody>
+      <tr><td>总体均值 μ</td><td>σ 已知</td><td>Z 区间</td></tr>
+      <tr><td>总体均值 μ</td><td>σ 未知，用样本标准差 s</td><td>t 区间，df = n − 1</td></tr>
+      <tr><td>总体比例 p</td><td>成功/失败数足够大</td><td>比例的 Z 区间</td></tr>
+    </tbody>
+  </table>
+  <ol>
+    <li>识别要估计的总体参数：μ 还是 p。</li>
+    <li>检查随机性、独立性、正态性或大样本条件。</li>
+    <li>确定置信水平，并选 Z 或 t 临界值。</li>
+    <li>计算点估计、标准误和误差界限。</li>
+    <li>写出区间，并结合题目单位解释。</li>
+  </ol>
+  <div class="note">
+    ⚠️ 常见错误：把标准差和标准误混淆；σ 未知时仍用 Z；忘记 t 的自由度；
+    把 95% CI 解释成“95% 的数据落在区间内”；样本量计算后没有向上取整。
+  </div>
+</div>
+
+<h2 contenteditable="false">五、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
 
@@ -1788,7 +1913,7 @@ window.addEventListener('load', lookupZ);
   </div>
 </div>
 
-<h2 contenteditable="false">五、核心知识点</h2>
+<h2 contenteditable="false">六、核心知识点</h2>
 
 <div class="box" contenteditable="false">
   <h3>期望值 Expected Value</h3>
@@ -1807,7 +1932,7 @@ window.addEventListener('load', lookupZ);
   </ul>
 </div>
 
-<h2 contenteditable="false">六、个人笔记区（可编辑）</h2>
+<h2 contenteditable="false">七、个人笔记区（可编辑）</h2>
 
 <div class="box" contenteditable="true" style="min-height: 100px;">
   <em>点击"进入编辑模式"后，可在此处添加你自己的笔记、疑问或补充内容……</em>
