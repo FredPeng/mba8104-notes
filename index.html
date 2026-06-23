@@ -1766,7 +1766,90 @@ window.addEventListener('load', lookupZ);
   </div>
 </div>
 
-<h2 contenteditable="false">五、样本量确定（Sample Size Determination）</h2>
+<h2 contenteditable="false">五、误差界限（Margin of Error）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>🎯 定义与直观理解</h3>
+  <p><strong>Margin of Error（误差界限，记作 E 或 ME）</strong>是置信区间的“半宽”，
+  表示样本估计值与总体真实参数之间允许的最大抽样误差范围。</p>
+  <div class="formula">
+    置信区间 = 点估计 ± E<br>
+    E = 临界值 × 标准误（Standard Error）
+  </div>
+  <p>例如，顾客平均消费额估计为 KES 8,000，误差界限为 KES 500，则区间为：</p>
+  <div class="formula">8,000 ± 500 = <strong>[7,500, 8,500]</strong></div>
+  <div class="note">💡 E 描述的是<strong>抽样误差</strong>，不能补偿抽样偏差、测量错误、无应答偏差或错误的数据收集方法。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📐 常用公式</h3>
+  <table>
+    <thead><tr><th>估计对象</th><th>条件</th><th>误差界限 E</th></tr></thead>
+    <tbody>
+      <tr><td>总体均值 μ</td><td>σ 已知</td><td>Z<sub>α/2</sub> × σ/√n</td></tr>
+      <tr><td>总体均值 μ</td><td>σ 未知</td><td>t<sub>α/2,n−1</sub> × s/√n</td></tr>
+      <tr><td>总体比例 p</td><td>正态近似适用</td><td>Z<sub>α/2</sub> × √[p̂(1−p̂)/n]</td></tr>
+    </tbody>
+  </table>
+  <p>若从大小为 N 的有限总体中不放回抽样，且抽样比例较大，可把标准误乘以有限总体修正：</p>
+  <div class="formula">FPC = √[(N − n)/(N − 1)]</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例题 1：总体均值的误差界限</h3>
+  <p>某产品交付时间的总体标准差已知为 15 小时。随机抽取 n = 100 个订单，
+  在 95% 置信水平下求误差界限。</p>
+  <div class="formula">
+    E = 1.96 × 15/√100<br>
+    = 1.96 × 1.5 = <strong>2.94 小时</strong>
+  </div>
+  <div class="answer">✅ 样本均值对总体平均交付时间的估计精度为 <strong>±2.94 小时</strong>。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例题 2：总体比例的误差界限</h3>
+  <p>调查 400 名顾客，其中 62% 表示满意。在 95% 置信水平下：</p>
+  <div class="formula">
+    E = 1.96 × √[0.62(0.38)/400]<br>
+    = 1.96 × 0.02427 = 0.04757
+  </div>
+  <div class="answer">✅ 误差界限约为 <strong>±4.76 个百分点</strong>；95% 置信区间约为 57.24%–66.76%。</div>
+  <div class="note">“百分点”与“百分比变化”不同：62% ± 4.76 个百分点直接得到 57.24% 和 66.76%。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🔄 哪些因素会改变误差界限？</h3>
+  <table>
+    <thead><tr><th>变化</th><th>对 E 的影响</th><th>原因</th></tr></thead>
+    <tbody>
+      <tr><td>置信水平提高</td><td>E 增大</td><td>临界值 Z 或 t 增大</td></tr>
+      <tr><td>样本量 n 增加</td><td>E 减小</td><td>标准误按 1/√n 缩小</td></tr>
+      <tr><td>数据变异 σ 或 s 增加</td><td>E 增大</td><td>样本均值波动更大</td></tr>
+      <tr><td>比例更接近 0.5</td><td>E 增大</td><td>p(1−p) 在 p = 0.5 时最大</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>样本量扩大到原来的 <strong>4 倍</strong>，E 才会约减半。</li>
+    <li>在其他条件相同时，99% 区间比 95% 区间更宽，95% 又比 90% 更宽。</li>
+    <li>总体规模通常不会直接改变 E；只有抽样比例较大时，有限总体修正才明显。</li>
+  </ul>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🧭 从目标误差反推样本量</h3>
+  <p>研究设计常先规定可接受的 E，再反解样本量：</p>
+  <div class="formula">
+    均值：n = (Z<sub>α/2</sub>σ/E)²<br>
+    比例：n = Z²<sub>α/2</sub>p*(1−p*)/E²
+  </div>
+  <p>因此 E 越小，所需样本量增长得非常快；所有计算结果必须向上取整。</p>
+  <div class="note">
+    ⚠️ 常见错误：把 E 当成标准误；忘记 E 是区间总宽度的一半；比例题把 5% 写成 5 而不是 0.05；
+    把“±4%”误读为整个区间宽度 4%（实际总宽度为 8%）。
+  </div>
+</div>
+
+<h2 contenteditable="false">六、样本量确定（Sample Size Determination）</h2>
 
 <div class="box" contenteditable="false">
   <h3>🎯 为什么要事先确定样本量？</h3>
@@ -1883,7 +1966,7 @@ window.addEventListener('load', lookupZ);
   </div>
 </div>
 
-<h2 contenteditable="false">六、复习题（Probability Revision Questions）</h2>
+<h2 contenteditable="false">七、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
 
@@ -2030,7 +2113,7 @@ window.addEventListener('load', lookupZ);
   </div>
 </div>
 
-<h2 contenteditable="false">七、核心知识点</h2>
+<h2 contenteditable="false">八、核心知识点</h2>
 
 <div class="box" contenteditable="false">
   <h3>期望值 Expected Value</h3>
@@ -2049,7 +2132,7 @@ window.addEventListener('load', lookupZ);
   </ul>
 </div>
 
-<h2 contenteditable="false">八、个人笔记区（可编辑）</h2>
+<h2 contenteditable="false">九、个人笔记区（可编辑）</h2>
 
 <div class="box" contenteditable="true" style="min-height: 100px;">
   <em>点击"进入编辑模式"后，可在此处添加你自己的笔记、疑问或补充内容……</em>
@@ -2059,7 +2142,7 @@ window.addEventListener('load', lookupZ);
 
 <script>
 let editMode = false;
-const NOTES_VERSION = '2026-06-23-sample-size-v1';
+const NOTES_VERSION = '2026-06-23-margin-error-v1';
 
 function toggleEdit() {
   editMode = !editMode;
