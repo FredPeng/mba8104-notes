@@ -1708,9 +1708,45 @@ window.addEventListener('load', lookupZ);
     <li>求总体平均年收入的 <strong>95% 和 99% 置信区间</strong>，并解释结果。</li>
     <li>假设你是总经理，在估计总体均值时，哪个区间最适合使用？为什么？</li>
   </ol>
-  <div class="note">
-    ⏳ 暂未作答。投影片标题写“σ Known”，正文则写总体标准差“is estimated to be $4,500”；此处保留课堂原题信息。
-  </div>
+  <details>
+    <summary><strong>📌 参考解法</strong></summary>
+    <p>投影片标题指定 σ known，因此使用总体均值的 Z 区间：</p>
+    <div class="formula">
+      x̄ ± Z<sub>α/2</sub> × σ/√n
+    </div>
+
+    <h4>Step 1：计算标准误</h4>
+    <div class="formula">
+      SE = σ/√n = 4,500/√36 = 4,500/6 = <strong>$750</strong>
+    </div>
+
+    <h4>(i-a) 95% 置信区间</h4>
+    <div class="formula">
+      Z<sub>0.025</sub> = 1.96<br>
+      E = 1.96 × 750 = <strong>$1,470</strong><br>
+      CI = 31,100 ± 1,470 = <strong>[$29,630, $32,570]</strong>
+    </div>
+    <p><strong>解释：</strong>采用这种抽样和构造区间的方法反复进行，约 95% 的区间会包含目标商圈居民的真实平均年收入。</p>
+
+    <h4>(i-b) 99% 置信区间</h4>
+    <div class="formula">
+      Z<sub>0.005</sub> = 2.576<br>
+      E = 2.576 × 750 = <strong>$1,932</strong><br>
+      CI = 31,100 ± 1,932 = <strong>[$29,168, $33,032]</strong>
+    </div>
+    <p><strong>解释：</strong>我们有 99% 的置信度认为目标商圈居民的真实平均年收入位于 $29,168 至 $33,032 之间。</p>
+
+    <h4>(ii) 管理者应选哪个区间？</h4>
+    <p>99% 区间的置信水平更高，但更宽；95% 区间更窄、估计更精确，但置信水平稍低。</p>
+    <div class="answer">
+      ✅ 一般商业选址可采用 <strong>95% 置信区间</strong>，因为它在可靠性与精度之间较为平衡。
+      若错误选址的成本极高、管理层更重视降低遗漏真实均值的风险，则可采用 99% 区间，并关注其保守下限。
+    </div>
+    <div class="note">
+      💡 260 家门店不是本题的总体规模，因为样本研究对象是目标商圈居民。若课堂 Z 表把 99% 临界值取为 2.58，
+      会得到近似区间 [$29,165, $33,035]，与使用 2.576 的结果仅有舍入差异。
+    </div>
+  </details>
 </div>
 
 <div class="box" contenteditable="false">
@@ -2162,7 +2198,7 @@ window.addEventListener('load', lookupZ);
 
 <script>
 let editMode = false;
-const NOTES_VERSION = '2026-06-23-wines-spirits-question-v1';
+const NOTES_VERSION = '2026-06-23-wines-spirits-solution-v1';
 
 function toggleEdit() {
   editMode = !editMode;
