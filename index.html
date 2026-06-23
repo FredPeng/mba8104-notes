@@ -1766,7 +1766,124 @@ window.addEventListener('load', lookupZ);
   </div>
 </div>
 
-<h2 contenteditable="false">五、复习题（Probability Revision Questions）</h2>
+<h2 contenteditable="false">五、样本量确定（Sample Size Determination）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>🎯 为什么要事先确定样本量？</h3>
+  <p>样本太小，估计不精确、结论不稳定；样本过大，则浪费时间和成本。
+  样本量确定的目标是在<strong>统计精度</strong>与<strong>调查成本</strong>之间取得平衡。</p>
+  <p>用于置信区间估计时，样本量主要由以下因素决定：</p>
+  <table>
+    <thead><tr><th>因素</th><th>变化</th><th>对所需样本量的影响</th></tr></thead>
+    <tbody>
+      <tr><td>置信水平</td><td>提高（如 95% → 99%）</td><td>临界值变大，n 增加</td></tr>
+      <tr><td>允许误差 E</td><td>减小</td><td>n 按 1/E² 快速增加</td></tr>
+      <tr><td>总体变异程度</td><td>σ 或 p(1−p) 增大</td><td>n 增加</td></tr>
+      <tr><td>总体规模 N</td><td>总体较小</td><td>可用有限总体修正降低 n</td></tr>
+      <tr><td>预计应答率</td><td>降低</td><td>需要联系更多对象</td></tr>
+    </tbody>
+  </table>
+  <div class="note">💡 误差减半通常意味着样本量约增至 4 倍，因为公式中 E 被平方。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>1️⃣ 估计总体均值 μ 所需的样本量</h3>
+  <div class="formula">
+    n₀ = (Z<sub>α/2</sub>σ / E)²
+  </div>
+  <ul>
+    <li><strong>σ</strong>：总体标准差，可用历史研究或预调查（pilot study）的 s 估计。</li>
+    <li><strong>E</strong>：可接受的最大误差，单位与原变量相同。</li>
+    <li>计算结果无论小数多小，都必须<strong>向上取整</strong>。</li>
+  </ul>
+  <p><strong>例题：</strong>估计顾客平均每月消费额，历史标准差约为 KES 18,000。
+  要求 95% 置信水平，误差不超过 KES 3,000。求最小样本量。</p>
+  <div class="formula">
+    n₀ = (1.96 × 18,000 / 3,000)²<br>
+    = 138.2976 → <strong>n = 139</strong>
+  </div>
+  <div class="answer">✅ 至少需要随机抽取 <strong>139 名顾客</strong>。</div>
+  <div class="note">若 σ 未知，可先做小规模预调查，用样本标准差 s 代替；严格的小样本设计可迭代使用 t 临界值。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>2️⃣ 估计总体比例 p 所需的样本量</h3>
+  <div class="formula">
+    n₀ = Z²<sub>α/2</sub> × p*(1 − p*) / E²
+  </div>
+  <p><strong>p*</strong> 是规划阶段对总体比例的预估：</p>
+  <ul>
+    <li>有历史数据或预调查时，使用相应的 p*。</li>
+    <li>完全未知时，使用 <strong>p* = 0.5</strong>；此时 p*(1−p*) 最大，得到最保守的样本量。</li>
+  </ul>
+  <p><strong>例题 A（有先验估计）：</strong>预计约 30% 的顾客会购买新产品。
+  在 95% 置信水平下，希望误差不超过 4%。</p>
+  <div class="formula">
+    n₀ = 1.96² × 0.30 × 0.70 / 0.04²<br>
+    = 504.21 → <strong>n = 505</strong>
+  </div>
+  <p><strong>例题 B（p 未知）：</strong>若仍要求 95% 置信水平和 4% 误差，但没有先验估计：</p>
+  <div class="formula">
+    n₀ = 1.96² × 0.50 × 0.50 / 0.04²<br>
+    = 600.25 → <strong>n = 601</strong>
+  </div>
+  <div class="answer">✅ p 未知时需要更大的保守样本量：<strong>601 人</strong>。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>3️⃣ 有限总体修正（Finite Population Correction）</h3>
+  <p>前面的 n₀ 假定总体很大。若从规模为 N 的有限总体中<strong>不放回抽样</strong>，
+  且初始样本量超过总体的约 5%，可修正为：</p>
+  <div class="formula">
+    n = n₀ / [1 + (n₀ − 1)/N]
+    &nbsp;=&nbsp; Nn₀ / (N + n₀ − 1)
+  </div>
+  <p><strong>例题：</strong>公司共有 N = 1,200 名员工。按大总体公式算得 n₀ = 385：</p>
+  <div class="formula">
+    n = 385 / [1 + (385 − 1)/1,200]<br>
+    = 291.67 → <strong>292 人</strong>
+  </div>
+  <div class="answer">✅ 使用有限总体修正后，最小有效样本量为 <strong>292 人</strong>。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>4️⃣ 无应答与复杂抽样调整</h3>
+  <h4>无应答调整（Non-response Adjustment）</h4>
+  <p>若预计应答率为 r，需要联系的人数为：</p>
+  <div class="formula">
+    n<sub>contact</sub> = n<sub>required</sub> / r
+  </div>
+  <p>若需要 292 份有效答卷，预计应答率为 80%：</p>
+  <div class="formula">n<sub>contact</sub> = 292 / 0.80 = <strong>365 人</strong></div>
+
+  <h4>设计效应（Design Effect, DEFF）</h4>
+  <p>整群抽样、分层抽样等复杂设计的精度可能不同于简单随机抽样。已知设计效应时：</p>
+  <div class="formula">
+    n<sub>design</sub> = n<sub>SRS</sub> × DEFF
+  </div>
+  <p>若简单随机抽样要求 385 人，而整群设计的 DEFF = 1.5，则需
+  385 × 1.5 = 577.5，向上取整为 <strong>578 人</strong>；之后再按预计应答率调整。</p>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🧭 完整计算顺序</h3>
+  <ol>
+    <li>明确估计目标：总体均值 μ 还是总体比例 p。</li>
+    <li>选择置信水平，并确定 Z<sub>α/2</sub>。</li>
+    <li>设定可接受误差 E。</li>
+    <li>取得 σ 或 p* 的规划值；未知比例时用 0.5。</li>
+    <li>计算大总体初始样本量 n₀，并向上取整。</li>
+    <li>总体较小时应用有限总体修正。</li>
+    <li>如采用复杂抽样，乘以设计效应 DEFF。</li>
+    <li>最后按预计应答率放大需要联系的人数，并再次向上取整。</li>
+  </ol>
+  <div class="note">
+    ⚠️ 本章公式针对<strong>置信区间估计</strong>。若研究目标是检验差异或比较两组，样本量还取决于
+    显著性水平、统计功效（power）和最小可检测效应，需使用功效分析。
+  </div>
+</div>
+
+<h2 contenteditable="false">六、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
 
@@ -1913,7 +2030,7 @@ window.addEventListener('load', lookupZ);
   </div>
 </div>
 
-<h2 contenteditable="false">六、核心知识点</h2>
+<h2 contenteditable="false">七、核心知识点</h2>
 
 <div class="box" contenteditable="false">
   <h3>期望值 Expected Value</h3>
@@ -1932,7 +2049,7 @@ window.addEventListener('load', lookupZ);
   </ul>
 </div>
 
-<h2 contenteditable="false">七、个人笔记区（可编辑）</h2>
+<h2 contenteditable="false">八、个人笔记区（可编辑）</h2>
 
 <div class="box" contenteditable="true" style="min-height: 100px;">
   <em>点击"进入编辑模式"后，可在此处添加你自己的笔记、疑问或补充内容……</em>
@@ -1942,6 +2059,7 @@ window.addEventListener('load', lookupZ);
 
 <script>
 let editMode = false;
+const NOTES_VERSION = '2026-06-23-sample-size-v1';
 
 function toggleEdit() {
   editMode = !editMode;
@@ -1957,21 +2075,30 @@ function toggleEdit() {
 function saveNotes() {
   const content = document.getElementById('content').innerHTML;
   localStorage.setItem('mba8104_notes', content);
+  localStorage.setItem('mba8104_notes_version', NOTES_VERSION);
   buildTOC();
   showStatus('✅ 已保存到浏览器本地存储 (' + new Date().toLocaleTimeString() + ')');
 }
 
 function loadNotes() {
   const saved = localStorage.getItem('mba8104_notes');
-  if (saved) {
+  const savedVersion = localStorage.getItem('mba8104_notes_version');
+  if (saved && savedVersion === NOTES_VERSION) {
     document.getElementById('content').innerHTML = saved;
     showStatus('📂 已加载上次保存的笔记');
+  } else if (saved) {
+    // 保留旧版用户编辑，同时优先展示服务器上的最新课程内容。
+    localStorage.setItem('mba8104_notes_backup', saved);
+    localStorage.removeItem('mba8104_notes');
+    localStorage.removeItem('mba8104_notes_version');
+    showStatus('🆕 已加载新版课程笔记；旧的本地编辑已备份');
   }
 }
 
 function resetNotes() {
   if (confirm('确定要重置为初始内容吗？保存的修改将丢失。')) {
     localStorage.removeItem('mba8104_notes');
+    localStorage.removeItem('mba8104_notes_version');
     location.reload();
   }
 }
