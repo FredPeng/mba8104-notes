@@ -1831,6 +1831,59 @@ window.addEventListener('load', lookupZ);
 </div>
 
 <div class="box" contenteditable="false">
+  <h3>📈 Student's t Distribution（Continued）</h3>
+
+  <h4>为什么需要 t 分布？</h4>
+  <p>当总体标准差 σ 未知时，只能用样本标准差 s 估计它。不同样本的 s 也会波动，
+  因而比 σ 已知时多一层不确定性。Student's t 分布通过较厚的尾部反映这种额外不确定性。</p>
+  <div class="formula">
+    T = (x̄ − μ) / (s/√n)
+  </div>
+
+  <h4>自由度（Degrees of Freedom）</h4>
+  <div class="formula">df = n − 1</div>
+  <p>计算 s 时先用样本数据估计了 x̄。在 n 个离均差中，一旦前 n−1 个确定，最后一个必须满足
+  Σ(Xᵢ−x̄)=0，因此只有 n−1 个可以自由变化。</p>
+
+  <h4>t 分布的主要特征</h4>
+  <ul>
+    <li>关于 0 对称，形状与标准正态分布相似。</li>
+    <li>尾部比标准正态分布更厚，因此相同置信水平下 t 临界值通常更大。</li>
+    <li>每个自由度对应一条不同的 t 曲线。</li>
+    <li>df 越大，s 对 σ 的估计越稳定，t 分布越接近标准正态分布。</li>
+    <li>当 df → ∞ 时，t 分布趋近 Z 分布。</li>
+  </ul>
+
+  <h4>常用双侧 t 临界值</h4>
+  <table>
+    <thead><tr><th>df</th><th>90% CI</th><th>95% CI</th><th>99% CI</th></tr></thead>
+    <tbody>
+      <tr><td>5</td><td>2.015</td><td>2.571</td><td>4.032</td></tr>
+      <tr><td>10</td><td>1.812</td><td>2.228</td><td>3.169</td></tr>
+      <tr><td>15</td><td>1.753</td><td>2.131</td><td>2.947</td></tr>
+      <tr><td>20</td><td>1.725</td><td>2.086</td><td>2.845</td></tr>
+      <tr><td>30</td><td>1.697</td><td>2.042</td><td>2.750</td></tr>
+      <tr><td>∞（Z）</td><td>1.645</td><td>1.960</td><td>2.576</td></tr>
+    </tbody>
+  </table>
+  <p>表中列出的都是<strong>双侧置信区间</strong>临界值。例如 n=16，则 df=15；95% CI 查得 t=2.131。</p>
+
+  <h4>t 还是 Z？</h4>
+  <table>
+    <thead><tr><th>情况</th><th>使用分布</th></tr></thead>
+    <tbody>
+      <tr><td>估计总体均值，σ 已知</td><td>Z 分布</td></tr>
+      <tr><td>估计总体均值，σ 未知，用 s 代替</td><td>t 分布，df=n−1</td></tr>
+      <tr><td>估计总体比例 p</td><td>大样本下通常使用 Z 分布</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    ⚠️ 小样本使用 t 区间时，应检查总体近似正态且没有严重离群值；样本必须随机，观测值应相互独立。
+    现代统计实践中，即使 n 较大，只要 σ 未知，均值区间通常仍使用 t。
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
   <h3>3️⃣ 总体比例 p 的置信区间</h3>
   <p>若样本中有 x 个“成功”，样本比例 p̂ = x/n。正态近似条件通常要求
   np̂ ≥ 10 且 n(1 − p̂) ≥ 10。</p>
@@ -2263,7 +2316,7 @@ window.addEventListener('load', lookupZ);
 
 <script>
 let editMode = false;
-const NOTES_VERSION = '2026-06-23-ci-derivation-v1';
+const NOTES_VERSION = '2026-06-23-t-distribution-continued-v1';
 
 function toggleEdit() {
   editMode = !editMode;
