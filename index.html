@@ -1695,41 +1695,21 @@ window.addEventListener('load', lookupZ);
 
 <div class="box" contenteditable="false">
   <h3>🏪 课堂例题：Wines and Spirits Ltd.</h3>
-  <p>公司正在评估新门店选址，希望估计目标商圈居民的平均年收入。随机抽取
-  <strong>n = 36</strong> 人，样本平均年收入 <strong>x̄ = $31,100</strong>，
-  总体标准差按投影片标题视为已知：<strong>σ = $4,500</strong>。</p>
-
-  <h4>Step 1：计算标准误</h4>
-  <div class="formula">
-    SE = σ/√n = 4,500/√36 = 4,500/6 = <strong>$750</strong>
-  </div>
-
-  <h4>(i-a) 95% 置信区间</h4>
-  <p>95% 置信水平对应 Z<sub>0.025</sub> = 1.96：</p>
-  <div class="formula">
-    E = 1.96 × 750 = <strong>$1,470</strong><br>
-    CI = 31,100 ± 1,470 = <strong>[$29,630, $32,570]</strong>
-  </div>
-  <div class="answer">✅ 95% CI：目标商圈居民的总体平均年收入估计在 <strong>$29,630–$32,570</strong> 之间。</div>
-
-  <h4>(i-b) 99% 置信区间</h4>
-  <p>99% 置信水平对应 Z<sub>0.005</sub> = 2.576：</p>
-  <div class="formula">
-    E = 2.576 × 750 = <strong>$1,932</strong><br>
-    CI = 31,100 ± 1,932 = <strong>[$29,168, $33,032]</strong>
-  </div>
-  <div class="answer">✅ 99% CI：目标商圈居民的总体平均年收入估计在 <strong>$29,168–$33,032</strong> 之间。</div>
-
-  <h4>(ii) 作为总经理，应选哪个区间？</h4>
-  <p><strong>没有脱离决策情境的绝对“最佳”区间。</strong>99% 区间包含真实均值的长期成功率更高，
-  但区间更宽、精度较低；95% 区间更窄、更便于选址决策，但承担稍高的遗漏风险。</p>
-  <div class="answer">
-    🎯 一般商业规划可选择 <strong>95% CI</strong>，因为它在可信度与精度之间更平衡；
-    若开店投资巨大、错误选址代价很高，则应偏向 <strong>99% CI</strong>，并以区间下限做保守评估。
-  </div>
+  <p><em>Interval Estimate of Population Mean: σ Known</em></p>
+  <p>Wines and Spirits Ltd. 在肯尼亚共有 <strong>260 家零售门店</strong>。公司正在评估一个新门店的潜在选址，
+  其中一项依据是新址目标商圈内居民的平均年收入。</p>
+  <p>随机抽取一个样本：</p>
+  <ul>
+    <li>样本量：<strong>n = 36</strong></li>
+    <li>样本平均年收入：<strong>x̄ = $31,100</strong></li>
+    <li>总体标准差：<strong>σ = $4,500</strong></li>
+  </ul>
+  <ol>
+    <li>求总体平均年收入的 <strong>95% 和 99% 置信区间</strong>，并解释结果。</li>
+    <li>假设你是总经理，在估计总体均值时，哪个区间最适合使用？为什么？</li>
+  </ol>
   <div class="note">
-    💡 公司有 260 家门店与本题计算无关，因为抽样单位是目标商圈的居民，而不是这 260 家门店。
-    投影片正文写“σ is estimated”，但标题明确写 σ known；因此此处按课程要求使用 Z 区间。
+    ⏳ 暂未作答。投影片标题写“σ Known”，正文则写总体标准差“is estimated to be $4,500”；此处保留课堂原题信息。
   </div>
 </div>
 
@@ -2182,7 +2162,7 @@ window.addEventListener('load', lookupZ);
 
 <script>
 let editMode = false;
-const NOTES_VERSION = '2026-06-23-wines-spirits-ci-v1';
+const NOTES_VERSION = '2026-06-23-wines-spirits-question-v1';
 
 function toggleEdit() {
   editMode = !editMode;
