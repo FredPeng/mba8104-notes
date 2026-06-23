@@ -1678,6 +1678,71 @@ window.addEventListener('load', lookupZ);
 </div>
 
 <div class="box" contenteditable="false">
+  <h3>🧮 置信区间公式的推导</h3>
+
+  <h4>Step 1：样本均值的抽样分布</h4>
+  <p>设 X₁, X₂, …, Xₙ 是来自总体的独立同分布随机样本，满足
+  E(Xᵢ) = μ、Var(Xᵢ) = σ²。样本均值为：</p>
+  <div class="formula">x̄ = (X₁ + X₂ + ··· + Xₙ) / n</div>
+  <p>利用期望与方差的性质：</p>
+  <div class="formula">
+    E(x̄) = [E(X₁) + ··· + E(Xₙ)] / n = nμ/n = μ<br><br>
+    Var(x̄) = [Var(X₁) + ··· + Var(Xₙ)] / n²<br>
+    = nσ²/n² = σ²/n<br><br>
+    SD(x̄) = SE(x̄) = <strong>σ/√n</strong>
+  </div>
+  <p>若总体正态，或 n 足够大使中心极限定理适用，则：</p>
+  <div class="formula">x̄ ~ N(μ, σ²/n)</div>
+
+  <h4>Step 2：标准化</h4>
+  <p>把样本均值标准化为标准正态变量：</p>
+  <div class="formula">
+    Z = (x̄ − μ) / (σ/√n) ~ N(0,1)
+  </div>
+  <p>中间面积为 1 − α 时，左右两尾各为 α/2，因此：</p>
+  <div class="formula">
+    P[−Z<sub>α/2</sub> ≤ (x̄ − μ)/(σ/√n) ≤ Z<sub>α/2</sub>] = 1 − α
+  </div>
+
+  <h4>Step 3：把不等式改写为关于 μ 的区间</h4>
+  <p>令 SE = σ/√n。将不等式各部分乘以 SE，再移项：</p>
+  <div class="formula">
+    P[−Z<sub>α/2</sub>SE ≤ x̄ − μ ≤ Z<sub>α/2</sub>SE] = 1 − α<br><br>
+    P[x̄ − Z<sub>α/2</sub>SE ≤ μ ≤ x̄ + Z<sub>α/2</sub>SE] = 1 − α
+  </div>
+  <p>于是得到总体均值在 σ 已知时的置信区间：</p>
+  <div class="answer">
+    x̄ − Z<sub>α/2</sub> × σ/√n ≤ μ ≤ x̄ + Z<sub>α/2</sub> × σ/√n<br>
+    即：<strong>x̄ ± Z<sub>α/2</sub> × σ/√n</strong>
+  </div>
+
+  <h4>σ 未知时：为什么改用 t 分布？</h4>
+  <p>用样本标准差 s 估计未知的 σ 会增加不确定性。若总体正态，则统计量：</p>
+  <div class="formula">
+    T = (x̄ − μ)/(s/√n) ~ t<sub>n−1</sub>
+  </div>
+  <p>沿用相同的不等式推导，可得：</p>
+  <div class="answer">
+    <strong>x̄ ± t<sub>α/2,n−1</sub> × s/√n</strong>
+  </div>
+  <p>t 分布尾部较厚，因此小样本时 t 临界值大于 Z 临界值；n 增大后，t 分布逐渐接近标准正态分布。</p>
+
+  <h4>总体比例 p 的近似推导</h4>
+  <p>样本比例 p̂ 的期望为 p，方差为 p(1−p)/n。大样本下：</p>
+  <div class="formula">
+    [p̂ − p] / √[p(1−p)/n] ≈ N(0,1)
+  </div>
+  <p>由于 p 未知，用 p̂ 估计标准误，得到常用的比例置信区间：</p>
+  <div class="answer">
+    <strong>p̂ ± Z<sub>α/2</sub> × √[p̂(1−p̂)/n]</strong>
+  </div>
+  <div class="note">
+    💡 推导中的概率 1 − α 描述的是<strong>随机区间构造方法</strong>的长期覆盖率。
+    抽样完成后，μ 是固定参数，区间要么包含它、要么不包含它。
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
   <h3>1️⃣ 总体均值 μ：总体标准差 σ 已知</h3>
   <p>总体近似正态，或样本量足够大且随机、独立时，使用 Z 区间：</p>
   <div class="formula">
@@ -2198,7 +2263,7 @@ window.addEventListener('load', lookupZ);
 
 <script>
 let editMode = false;
-const NOTES_VERSION = '2026-06-23-wines-spirits-solution-v1';
+const NOTES_VERSION = '2026-06-23-ci-derivation-v1';
 
 function toggleEdit() {
   editMode = !editMode;
