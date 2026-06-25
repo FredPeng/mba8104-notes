@@ -2287,6 +2287,154 @@ window.addEventListener('load', lookupZ);
   </div>
 </div>
 
+<h2 contenteditable="false">CAT 复习（今日内容）</h2>
+
+<p contenteditable="false"><em>本节汇总今天课堂的内容：描述统计概念 + 综合例题 + 置信区间引子。</em></p>
+
+<div class="box" contenteditable="false">
+  <h3>📊 A. 集中趋势：Mean / Median / Mode</h3>
+  <table>
+    <thead><tr><th>度量</th><th>定义</th><th>公式</th><th>特点</th></tr></thead>
+    <tbody>
+      <tr><td><strong>均值 Mean</strong></td><td>所有值之和 ÷ 个数</td><td>x̄ = Σx / n（分组：Σfx / Σf）</td><td>用上全部数据，但易被极端值拉偏</td></tr>
+      <tr><td><strong>中位数 Median</strong></td><td>排序后正中间的值</td><td>奇数：第 (n+1)/2 个；偶数：中间两数平均</td><td>不受极端值影响</td></tr>
+      <tr><td><strong>众数 Mode</strong></td><td>出现次数最多的值</td><td>频数最高者（分组用众数组）</td><td>唯一适用于分类数据</td></tr>
+    </tbody>
+  </table>
+  <p><strong>例：数据 2, 3, 3, 4, 8</strong> → Mean = 20/5 = <strong>4</strong>，Median = <strong>3</strong>，Mode = <strong>3</strong>（极端值 8 把均值拉高了）。</p>
+
+  <h4>🎯 三者关系与偏态</h4>
+  <table>
+    <thead><tr><th>分布形状</th><th>三者关系</th></tr></thead>
+    <tbody>
+      <tr><td>对称（正态）</td><td>Mean = Median = Mode</td></tr>
+      <tr><td>右偏（正偏，长尾在右）</td><td>Mode &lt; Median &lt; Mean</td></tr>
+      <tr><td>左偏（负偏，长尾在左）</td><td>Mean &lt; Median &lt; Mode</td></tr>
+    </tbody>
+  </table>
+  <div class="note">💡 口诀：均值总被"尾巴"拉过去。数据有偏或有离群值时，中位数是更可靠的"典型值"。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📊 B. 离散程度：方差 Variance 与标准差</h3>
+  <p><strong>定义</strong>：方差衡量数据偏离均值的"平均平方距离"。越大越分散。</p>
+  <table>
+    <thead><tr><th>类型</th><th>公式</th><th>除以</th></tr></thead>
+    <tbody>
+      <tr><td>总体方差 σ²</td><td>Σ(x − μ)² / N</td><td>N</td></tr>
+      <tr><td>样本方差 s²</td><td>Σ(x − x̄)² / (n − 1)</td><td>n − 1（贝塞尔校正，无偏估计）</td></tr>
+    </tbody>
+  </table>
+  <p>简化式：σ² = Σx²/N − x̄²；标准差 σ = √方差（与原数据同单位，更直观）。</p>
+  <p><strong>例：2, 3, 3, 4, 8（均值 4）</strong> → Σ(x−x̄)² = 4+1+1+0+16 = 22 → 总体方差 = 22/5 = <strong>4.4</strong>，样本方差 = 22/4 = <strong>5.5</strong>。</p>
+  <div class="note">💡 为什么要平方？直接加偏差 Σ(x−x̄) 永远 = 0（正负抵消）；平方后都变正、不抵消，且放大大偏差。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C1. 综合例题：列联表概率 + 离散随机变量</h3>
+  <p><strong>(b)</strong> 250 名顾客按地区 × 产品分类：</p>
+  <table>
+    <thead><tr><th>Region</th><th>Basic</th><th>Premium</th><th>合计</th></tr></thead>
+    <tbody>
+      <tr><td>Urban</td><td>60</td><td>90</td><td>150</td></tr>
+      <tr><td>Rural</td><td>70</td><td>30</td><td>100</td></tr>
+      <tr class="total"><td>合计</td><td>130</td><td>120</td><td>250</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>(i) P(Premium) = 120/250 = <strong>0.48</strong></p>
+    <p>(ii) P(Urban ∩ Premium) = 90/250 = <strong>0.36</strong></p>
+    <p>(iii) P(Urban ∪ Basic) = 150/250 + 130/250 − 60/250 = 220/250 = <strong>0.88</strong></p>
+    <p>(iv) 独立性：P(U)×P(Prem) = 0.6 × 0.48 = 0.288 ≠ P(U∩Prem) = 0.36 → <strong>不独立</strong></p>
+  </details>
+
+  <p><strong>(c)</strong> 每日投诉 X：P(0)=0.20, P(1)=0.30, P(2)=k, P(3)=0.15, P(4)=0.10。求 k、E(X)、Var(X)、σ。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>k：0.20+0.30+k+0.15+0.10 = 1 → <strong>k = 0.25</strong></p>
+    <p>E(X) = 0+0.30+0.50+0.45+0.40 = <strong>1.65</strong></p>
+    <p>E(X²) = 0+0.30+1.00+1.35+1.60 = 4.25 → Var(X) = 4.25 − 1.65² = <strong>1.5275</strong></p>
+    <p>σ = √1.5275 ≈ <strong>1.236</strong></p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C2. 综合例题：贝叶斯（工厂次品检测）</h3>
+  <p>工厂产出 6% 为次品。检测器对次品正确标记率 92%，对良品误标率 4%。
+  (a) 被标记的产品真为次品的概率？(b) 是否应一次标记就报废？</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>P(D)=0.06, P(G)=0.94, P(F|D)=0.92, P(F|G)=0.04</p>
+    <p><strong>(a)</strong> P(D|F) = (0.92×0.06) / (0.92×0.06 + 0.04×0.94)
+    = 0.0552 / 0.0928 ≈ <strong>0.595（59.5%）</strong></p>
+    <p><strong>(b)</strong> 被标记的产品中约 40.5% 其实是良品 → <strong>不应一次标记就报废</strong>（基础率谬误：次品罕见，假阳性多）。建议二次复检后再决定。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C3. 综合例题：茎叶图（20 个薪资）</h3>
+  <p>数据（Kshs '000）：64, 89, 63, 61, 78, 87, 74, 72, 54, 88, 62, 81, 78, 73, 63, 56, 83, 86, 83, 93</p>
+  <pre style="background:#f7fafc;padding:12px;border-radius:4px;font-family:monospace;">茎 | 叶
+ 5 | 4 6
+ 6 | 1 2 3 3 4
+ 7 | 2 3 4 8 8
+ 8 | 1 3 3 6 7 8 9
+ 9 | 3
+Key: 5 | 4 = 54</pre>
+  <details>
+    <summary><strong>📌 形状与建议</strong></summary>
+    <p>峰值在 80s（7 人）→ <strong>左偏（负偏）</strong>；Median = 76，Mean = 74.4（Mean &lt; Median 印证左偏）。</p>
+    <p>多数员工薪资集中在高端（70k–90k）；关注低薪小群体（50s–60s）的公平性与流失风险；93k 不算极端离群值。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C4. 综合例题：频数分布（40 个银行服务时长）</h3>
+  <p>Min = 1.25，Max = 79.38，Range = 78.13，9 组 → 组距 = ⌈78.13/9⌉ = <strong>9</strong>。</p>
+  <table>
+    <thead><tr><th>组（分钟）</th><th>频数 f</th></tr></thead>
+    <tbody>
+      <tr><td>1 – under 10</td><td>9</td></tr>
+      <tr><td>10 – under 19</td><td>9</td></tr>
+      <tr><td>19 – under 28</td><td>4</td></tr>
+      <tr><td>28 – under 37</td><td>10（众数组）</td></tr>
+      <tr><td>37 – under 46</td><td>4</td></tr>
+      <tr><td>46 – under 55</td><td>3</td></tr>
+      <tr><td>55 – under 64</td><td>0</td></tr>
+      <tr><td>64 – under 73</td><td>0</td></tr>
+      <tr><td>73 – under 82</td><td>1</td></tr>
+      <tr class="total"><td>合计</td><td>40</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary><strong>📌 评论</strong></summary>
+    <p>右偏（正偏）：80% 的服务在 37 分钟内完成；众数组 28–37 分钟。</p>
+    <p>79.38 分钟是离群值（前两组 55–73 为空，孤立在最后）；建议对超长个案复盘效率。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📐 D. 置信区间估计（Confidence Interval）— 基本概念</h3>
+  <p><strong>点估计 vs 区间估计：</strong></p>
+  <ul>
+    <li><strong>点估计</strong>：用单一统计量（如 x̄）估计总体参数（如 μ）</li>
+    <li><strong>区间估计</strong>：给出一个区间 + "有多大把握"包含真实参数</li>
+  </ul>
+  <p><strong>置信区间一般形式：</strong></p>
+  <div class="formula" style="text-align:center;">点估计 ± 误差边际 = x̄ ± Z<sub>α/2</sub> · (σ/√n)</div>
+  <table>
+    <thead><tr><th>术语</th><th>含义</th></tr></thead>
+    <tbody>
+      <tr><td>置信水平 (1−α)</td><td>如 90%、95%、99%</td></tr>
+      <tr><td>误差边际 Margin of Error</td><td>Z<sub>α/2</sub> × 标准误</td></tr>
+      <tr><td>标准误 Standard Error</td><td>σ/√n</td></tr>
+    </tbody>
+  </table>
+  <div class="note">📎 这里只是速览；完整的置信区间公式、误差界限、样本量确定与例题见上面的「四、置信区间估计」「五、误差界限」「六、样本量确定」章节。</div>
+</div>
+
+
 <h2 contenteditable="false">八、核心知识点</h2>
 
 <div class="box" contenteditable="false">
