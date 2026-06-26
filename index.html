@@ -2644,6 +2644,26 @@ Key: 5 | 4 = 54</pre>
   </details>
 </div>
 
+<div class="box" contenteditable="false">
+  <h3>📝 C10. 例题：变异系数（两种坏账催收方法）</h3>
+  <table>
+    <thead><tr><th>方法</th><th>Count</th><th>Mean</th><th>StDev</th></tr></thead>
+    <tbody>
+      <tr><td>Approach A</td><td>100</td><td>52.30</td><td>9.23</td></tr>
+      <tr><td>Approach B</td><td>170</td><td>69.47</td><td>11.78</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> CV = (StDev ÷ Mean) × 100%</p>
+    <p>CV(A) = 9.23 ÷ 52.30 × 100% = <strong>17.65%</strong></p>
+    <p>CV(B) = 11.78 ÷ 69.47 × 100% = <strong>16.96%</strong></p>
+    <p><strong>(ii)</strong> CV 越小越稳定。CV(B) 16.96% &lt; CV(A) 17.65%，且 B 平均催回额更高（69.47 vs 52.30）
+    → <strong>Approach B 更高效</strong>（收得多 + 更稳定）。</p>
+    <p>注意：直接比 StDev 会误导（B 的 11.78 &gt; A 的 9.23）；因均值不同，须用 CV 做相对比较。</p>
+  </details>
+</div>
+
 <h2 contenteditable="false">八、核心知识点</h2>
 
 <div class="box" contenteditable="false">
