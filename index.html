@@ -2463,6 +2463,187 @@ Key: 5 | 4 = 54</pre>
 </div>
 
 
+<div class="box" contenteditable="false">
+  <h3>📊 E. 更多度量：变异系数、偏度、四分位数</h3>
+
+  <h4>变异系数 CV（Coefficient of Variation）</h4>
+  <p>衡量"相对离散度"——标准差占均值的百分比，<strong>无单位</strong>，可跨不同数据集比较。</p>
+  <div class="formula">CV = (σ / μ) × 100%</div>
+  <p>CV 小 → 数据集中、稳定；CV 大 → 波动大。例：超市销售额 σ=0.9934, μ=7.69 → CV ≈ 12.9%（中等偏低）。</p>
+
+  <h4>偏度 Skewness（衡量不对称）</h4>
+  <div class="formula">
+    Pearson 第二偏度 = 3 × (均值 − 中位数) ÷ 标准差
+  </div>
+  <table>
+    <thead><tr><th>SK 符号</th><th>形状</th><th>三者关系</th></tr></thead>
+    <tbody>
+      <tr><td>SK &gt; 0</td><td>右偏（正偏）</td><td>Mode &lt; Median &lt; Mean</td></tr>
+      <tr><td>SK = 0</td><td>对称</td><td>Mean = Median = Mode</td></tr>
+      <tr><td>SK &lt; 0</td><td>左偏（负偏）</td><td>Mean &lt; Median &lt; Mode</td></tr>
+    </tbody>
+  </table>
+
+  <h4>四分位数与 IQR（Interquartile Range）</h4>
+  <ul>
+    <li>Q1 = 第 25 百分位，Q2 = 中位数，Q3 = 第 75 百分位</li>
+    <li><strong>IQR = Q3 − Q1</strong> = 中间 50% 数据的跨度（抗极端值）</li>
+    <li><strong>离群值规则（1.5 × IQR）</strong>：小于 Q1 − 1.5×IQR 或大于 Q3 + 1.5×IQR 的点 = 离群值</li>
+  </ul>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📊 F. 图形：直方图 与 箱线图</h3>
+
+  <h4>直方图 Histogram（用银行服务时长数据）</h4>
+  <p>相邻矩形条展示<strong>连续数值</strong>的分组频数（条紧挨、无缝隙，区别于条形图）。</p>
+  <div style="overflow-x:auto;"><svg width="100%" viewBox="0 0 680 360" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>银行服务时长直方图</title><desc>40 个服务时长按 9 个等距组绘制的直方图，呈右偏分布。</desc>
+<line x1="70" y1="300.0" x2="592" y2="300.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="62" y="304.0" text-anchor="end" font-size="11" fill="#777">0</text>
+<line x1="70" y1="250.0" x2="592" y2="250.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="62" y="254.0" text-anchor="end" font-size="11" fill="#777">2</text>
+<line x1="70" y1="200.0" x2="592" y2="200.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="62" y="204.0" text-anchor="end" font-size="11" fill="#777">4</text>
+<line x1="70" y1="150.0" x2="592" y2="150.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="62" y="154.0" text-anchor="end" font-size="11" fill="#777">6</text>
+<line x1="70" y1="100.0" x2="592" y2="100.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="62" y="104.0" text-anchor="end" font-size="11" fill="#777">8</text>
+<line x1="70" y1="50.0" x2="592" y2="50.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="62" y="54.0" text-anchor="end" font-size="11" fill="#777">10</text>
+<rect x="70.0" y="75.0" width="58" height="225.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="99.0" y="70.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">9</text>
+<text x="99.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">1–10</text>
+<rect x="128.0" y="75.0" width="58" height="225.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="157.0" y="70.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">9</text>
+<text x="157.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">10–19</text>
+<rect x="186.0" y="200.0" width="58" height="100.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="215.0" y="195.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">4</text>
+<text x="215.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">19–28</text>
+<rect x="244.0" y="50.0" width="58" height="250.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="273.0" y="45.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">10</text>
+<text x="273.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">28–37</text>
+<rect x="302.0" y="200.0" width="58" height="100.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="331.0" y="195.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">4</text>
+<text x="331.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">37–46</text>
+<rect x="360.0" y="225.0" width="58" height="75.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="389.0" y="220.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">3</text>
+<text x="389.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">46–55</text>
+<text x="447.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">55–64</text>
+<text x="505.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">64–73</text>
+<rect x="534.0" y="275.0" width="58" height="25.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="563.0" y="270.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">1</text>
+<text x="563.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">73–82</text>
+<line x1="70" y1="300" x2="592" y2="300" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="70" y1="50" x2="70" y2="300" stroke="#5a6b7b" stroke-width="1.4"/>
+<text x="331.0" y="338.0" text-anchor="middle" font-size="12" fill="#444">服务时长（分钟）</text>
+<text x="22" y="175.0" text-anchor="middle" font-size="12" fill="#444" transform="rotate(-90 22 175.0)">频数 f</text>
+</svg></div>
+  <p style="font-size:0.9em;color:#666;">众数组 28–37（频数 10）；右偏；73–82 的孤立小条 = 离群值。</p>
+
+  <h4>箱线图 Box Plot（五数概括 + 离群值）</h4>
+  <p>展示 最小值 / Q1 / 中位数 / Q3 / 最大值，箱体高度 = IQR，星号 = 离群值。</p>
+  <div style="overflow-x:auto;"><svg viewBox="0 0 460 380" style="width:100%;max-width:460px;height:auto;background:#fcfcfc;border:1px solid #e2e8f0;border-radius:6px;" xmlns="http://www.w3.org/2000/svg">
+<text x="230" y="26" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c5282">A、B 两公司股价箱线图</text>
+<line x1="70" y1="302.5" x2="410" y2="302.5" stroke="#eaeaea" stroke-width="1"/>
+<text x="60" y="306.5" text-anchor="end" font-size="11" fill="#777">-50</text>
+<line x1="70" y1="240.0" x2="410" y2="240.0" stroke="#eaeaea" stroke-width="1"/>
+<text x="60" y="244.0" text-anchor="end" font-size="11" fill="#777">0</text>
+<line x1="70" y1="177.5" x2="410" y2="177.5" stroke="#eaeaea" stroke-width="1"/>
+<text x="60" y="181.5" text-anchor="end" font-size="11" fill="#777">50</text>
+<line x1="70" y1="115.0" x2="410" y2="115.0" stroke="#eaeaea" stroke-width="1"/>
+<text x="60" y="119.0" text-anchor="end" font-size="11" fill="#777">100</text>
+<line x1="70" y1="52.5" x2="410" y2="52.5" stroke="#eaeaea" stroke-width="1"/>
+<text x="60" y="56.5" text-anchor="end" font-size="11" fill="#777">150</text>
+<text x="22" y="200" text-anchor="middle" font-size="12" fill="#444" transform="rotate(-90 22 200)">股价（单位）</text>
+<line x1="160" y1="187.5" x2="160" y2="277.5" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="146" y1="187.5" x2="174" y2="187.5" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="146" y1="277.5" x2="174" y2="277.5" stroke="#185FA5" stroke-width="1.5"/>
+<rect x="128.0" y="202.5" width="64" height="31.2" fill="#378ADD" fill-opacity="0.30" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="128.0" y1="221.2" x2="192.0" y2="221.2" stroke="#185FA5" stroke-width="2.2"/>
+<text x="160" y="150.2" text-anchor="middle" font-size="13" fill="#c0392b">✳</text>
+<text x="160" y="131.5" text-anchor="middle" font-size="13" fill="#c0392b">✳</text>
+<text x="160" y="56.5" text-anchor="middle" font-size="13" fill="#c0392b">✳</text>
+<text x="160" y="294.0" text-anchor="middle" font-size="13" fill="#c0392b">✳</text>
+<text x="160" y="312.8" text-anchor="middle" font-size="13" fill="#c0392b">✳</text>
+<text x="160" y="325.2" text-anchor="middle" font-size="13" fill="#c0392b">✳</text>
+<line x1="330" y1="115.0" x2="330" y2="221.2" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="316" y1="115.0" x2="344" y2="115.0" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="316" y1="221.2" x2="344" y2="221.2" stroke="#185FA5" stroke-width="1.5"/>
+<rect x="298.0" y="125.0" width="64" height="52.5" fill="#378ADD" fill-opacity="0.30" stroke="#185FA5" stroke-width="1.5"/>
+<line x1="298.0" y1="150.0" x2="362.0" y2="150.0" stroke="#185FA5" stroke-width="2.2"/>
+<text x="160" y="362" text-anchor="middle" font-size="13" font-weight="bold" fill="#444">公司 A</text>
+<text x="330" y="362" text-anchor="middle" font-size="13" font-weight="bold" fill="#444">公司 B</text>
+</svg></div>
+  <p style="font-size:0.9em;color:#666;">公司 A：价格低、箱体小，但两端大量离群值（极不稳定）；公司 B：价格高、无离群值（稳定）→ 投资选 B。</p>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C5. 例题：列联表（培训 × 绩效，200 人）</h3>
+  <table>
+    <thead><tr><th></th><th>High</th><th>Low</th><th>合计</th></tr></thead>
+    <tbody>
+      <tr><td>Trained</td><td>80</td><td>40</td><td>120</td></tr>
+      <tr><td>Untrained</td><td>30</td><td>50</td><td>80</td></tr>
+      <tr class="total"><td>合计</td><td>110</td><td>90</td><td>200</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>(i) P(High) = 110/200 = <strong>0.55</strong></p>
+    <p>(ii) P(Trained ∩ High) = 80/200 = <strong>0.40</strong></p>
+    <p>(iii) P(Trained | High) = 80/110 = <strong>0.727</strong></p>
+    <p>(iv) 独立性：P(Trained)×P(High) = 0.60×0.55 = 0.33 ≠ 0.40 → <strong>不独立</strong></p>
+    <p>HR 解读：受训者高绩效率 66.7%（80/120） vs 未受训 37.5%（30/80）→ 培训与绩效正相关，建议加大培训（注意相关≠因果）。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C6. 例题：贝叶斯（运动员药检）</h3>
+  <p>10% 运动员用药；检测对用药者正确率 90%，对未用药者正确率 90%。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>设 D=用药, P(D)=0.10, P(T|D)=0.90, P(T|D')=0.10</p>
+    <p><strong>(a)</strong> P(D|T) = (0.9×0.1) ÷ (0.9×0.1 + 0.1×0.9) = 0.09 ÷ 0.18 = <strong>0.50</strong></p>
+    <p><strong>(b)</strong> P(D'|T') = (0.9×0.9) ÷ (0.9×0.9 + 0.1×0.1) = 0.81 ÷ 0.82 = <strong>0.9878</strong></p>
+    <p>可行性：阳性只有 50% 准（误报与真阳性各 90 人）→ 不能凭单次阳性定罪，须复检；阴性 98.78% 可信。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C7. 例题：正态分布（包装净重，μ=500, σ=20）</h3>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(a)</strong> P(480&lt;W&lt;530)：Z₁=(480−500)/20=−1.00，Z₂=(530−500)/20=1.50</p>
+    <p>= P(Z≤1.50) − P(Z≤−1.00) = 0.93319 − 0.15866 = <strong>0.7745</strong></p>
+    <p><strong>(b)</strong> 最轻 10% 剔除 → P(W&lt;k)=0.10 → Z≈−1.28</p>
+    <p>k = 500 + (−1.28)(20) = 500 − 25.6 = <strong>474.4 g</strong></p>
+    <p>QC 解读：净重低于约 474.4 g 的（最轻 10%）被剔除；降低 σ（提升一致性）比提高均值更治本。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C8. 例题：箱线图解读（A/B 公司）</h3>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>(i) A 的离群值（*）：高端 ≈ 75, 90, 150；低端 ≈ −40, −55, −65</p>
+    <p>(ii) A：中位数 ≈ 15，箱体小但两端大量离群值 → 价格低、波动剧烈；B：中位数 ≈ 72，箱体 50–92，无离群值 → 价格高、稳定</p>
+    <p>(iii) 推荐 <strong>公司 B</strong>：价格更高（回报大）+ 无离群值（风险低、稳定）</p>
+    <p>（图见上方 F 段箱线图）</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C9. 例题：离散随机变量（考前来电数）</h3>
+  <p>P(0)=0.10, P(1)=0.15, P(2)=0.19, P(3)=K, P(4)=0.19, P(5)=0.11。求 K、E(X)、Var(X)。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>K = 1 − 0.74 = <strong>0.26</strong></p>
+    <p>E(X) = 0+0.15+0.38+0.78+0.76+0.55 = <strong>2.62</strong></p>
+    <p>E(X²) = 0+0.15+0.76+2.34+3.04+2.75 = 9.04 → Var(X) = 9.04 − 2.62² = <strong>2.1756</strong>（σ ≈ 1.475）</p>
+  </details>
+</div>
+
 <h2 contenteditable="false">八、核心知识点</h2>
 
 <div class="box" contenteditable="false">
