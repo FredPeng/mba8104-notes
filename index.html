@@ -2198,6 +2198,74 @@ window.addEventListener('load', lookupZ);
   </div>
 </div>
 
+<h2 contenteditable="false">课件例题与练习（Interval Estimation 课件）</h2>
+
+<p contenteditable="false"><em>来源：interval estimation for mean and var(2).ppt。概念部分已在上面四/五/六章节，这里收录课件中的例题与作业题。</em></p>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例题：Apartment Rents（σ 未知，用 t 分布）</h3>
+  <p>学生记者调查校外租房成本。校园半英里内抽样 16 套单间公寓，样本均值 $650/月，样本标准差 $55。
+  求月租总体均值的 95% 置信区间。</p>
+  <p><strong>解：</strong>n=16（小样本），σ 未知 → 用 t 分布</p>
+  <ul>
+    <li>df = n − 1 = 15；95% → α/2 = 0.025 → t(0.025, 15) = <strong>2.131</strong></li>
+    <li>标准误 SE = s ÷ √n = 55 ÷ 4 = 13.75</li>
+    <li>误差边际 E = 2.131 × 13.75 = 29.30</li>
+    <li>CI = 650 ± 29.30 = <strong>($620.70, $679.30)</strong></li>
+  </ul>
+  <div class="answer">✅ 有 95% 把握：校园半英里内单间公寓的平均月租在 $620.70 ~ $679.30 之间。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📐 样本量确定 — 公式</h3>
+  <p>给定置信水平和最大可接受误差 E，求最小样本量（结果向上取整）：</p>
+  <div class="formula">n = ( z(α/2) × σ ÷ E )²</div>
+
+  <h4>样本量例 1：电费</h4>
+  <p>消费者团体估计 7 月单户家庭月电费均值，σ 估计为 $20，要求 99% 置信、精度 ±$5。</p>
+  <div class="formula">n = (2.58 × 20 ÷ 5)² = (10.32)² = 106.50 → <strong>107</strong></div>
+  <p><strong>变体</strong>：改为 90% 置信（z=1.645）、σ=45、±5 → n = (1.645×45÷5)² = 219.19 → <strong>220</strong>（置信水平和 σ 都变了，样本量随之改变）。</p>
+
+  <h4>样本量例 2：Merrill Lynch 医疗支出</h4>
+  <p>HR 调查员工平均医疗支出，要求 95% 置信、误差 ±$50，试点研究 σ ≈ $400。</p>
+  <div class="formula">n = (1.96 × 400 ÷ 50)² = (15.68)² = 245.86 → <strong>246</strong></div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 作业题（Syndicate / Home work）</h3>
+
+  <h4>Q1：J & J 公司 2 升瓶装（σ 已知 → 用 Z）</h4>
+  <p>质量经理。2 升瓶的 σ = 0.05 升，随机抽 100 瓶，样本均值 = 1.99 升。求真实均值的 90% 置信区间。</p>
+  <details>
+    <summary><strong>📌 参考解答</strong></summary>
+    <p>σ 已知 → 用 Z。90% → z = 1.645</p>
+    <p>SE = 0.05 ÷ √100 = 0.005；E = 1.645 × 0.005 = 0.0082</p>
+    <p>CI = 1.99 ± 0.0082 = <strong>(1.982, 1.998) 升</strong></p>
+  </details>
+
+  <h4>Q2：商学院每周工作时长（n=49）</h4>
+  <p>抽样 49 名商科学生，均值 24 小时，标准差 4 小时。(i) 点估计？(ii) 95% 置信区间并解释。</p>
+  <details>
+    <summary><strong>📌 参考解答</strong></summary>
+    <p>(i) 点估计 = 样本均值 = <strong>24 小时</strong></p>
+    <p>(ii) n=49 ≥ 30，可用 Z（z=1.96）；SE = 4 ÷ √49 = 4 ÷ 7 = 0.5714</p>
+    <p>E = 1.96 × 0.5714 = 1.12 → CI = 24 ± 1.12 = <strong>(22.88, 25.12) 小时</strong></p>
+    <p>解释：有 95% 把握，学生平均每周工作时长在 22.88 ~ 25.12 小时之间。</p>
+  </details>
+
+  <h4>应用：杂志订户年龄（n=36，含数据）</h4>
+  <p>随机抽 36 名杂志订户，估计全体订户平均年龄的 90% 与 95% 置信区间。</p>
+  <details>
+    <summary><strong>📌 参考解答</strong></summary>
+    <p>由 36 个年龄算得：样本均值 x̄ = 37.5，样本标准差 s = 6.19，n=36 ≥ 30 → 用 Z</p>
+    <p>SE = 6.19 ÷ √36 = 1.032</p>
+    <p><strong>90%</strong>（z=1.645）：E = 1.70 → CI = (35.80, 39.20)</p>
+    <p><strong>95%</strong>（z=1.96）：E = 2.02 → CI = (35.48, 39.52)</p>
+    <p>注：置信水平越高，区间越宽。</p>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">七、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
