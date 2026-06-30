@@ -2266,6 +2266,89 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<h2 contenteditable="false">假设检验（Tests of Hypotheses）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>📌 定义</h3>
+  <p><strong>假设（Hypothesis）</strong>：关于<strong>总体参数</strong>（如 μ、p、σ²）的一个假定 / 推测 / 声明
+  （assumption / supposition / claim）。用样本数据来检验这个声明是否可信。</p>
+
+  <h3>两种假设</h3>
+  <table>
+    <thead><tr><th></th><th>原假设 H₀</th><th>备择假设 H₁</th></tr></thead>
+    <tbody>
+      <tr><td>含义</td><td>默认成立、无差异（被检验的声明）</td><td>有差异，研究者想证明的</td></tr>
+      <tr><td>符号</td><td>= , ≤ , ≥（等号在 H₀ 一边）</td><td>≠ , &gt; , &lt;</td></tr>
+      <tr><td>角色</td><td>力求维持，除非证据充分</td><td>证据充分时才接受</td></tr>
+    </tbody>
+  </table>
+  <p>配对：双尾 H₀: μ=μ₀ vs H₁: μ≠μ₀；右尾 H₁: μ&gt;μ₀；左尾 H₁: μ&lt;μ₀。
+  <strong>口诀：等号永远在 H₀ 一边；想证明的放 H₁。</strong></p>
+
+  <h3>两类错误</h3>
+  <table>
+    <thead><tr><th>决策 ＼ 真实</th><th>H₀ 为真</th><th>H₀ 为假</th></tr></thead>
+    <tbody>
+      <tr><td>拒绝 H₀</td><td>第一类错误（α）</td><td>正确 ✓</td></tr>
+      <tr><td>不拒绝 H₀</td><td>正确 ✓</td><td>第二类错误（β）</td></tr>
+    </tbody>
+  </table>
+  <p>α = 显著性水平（弃真概率，= 拒绝 H₀ 的概率，常取 0.05）；β = 取伪概率。</p>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🪜 假设检验 5 步法</h3>
+  <ol>
+    <li><strong>Step 1</strong>：写出原假设 H₀ 和备择假设 H₁</li>
+    <li><strong>Step 2</strong>：确定样本量 n，并指定显著性水平 α（= 拒绝 H₀ 的概率）</li>
+    <li><strong>Step 3</strong>：计算检验统计量</li>
+    <li><strong>Step 4</strong>：写出决策规则（比较统计量与临界值，或 p 值与 α）</li>
+    <li><strong>Step 5</strong>：下决策 + 用业务语言写结论</li>
+  </ol>
+
+  <h4>检验统计量（均值）</h4>
+  <p>σ 已知 或 大样本（n≥30）→ 用 Z：</p>
+  <div class="formula">Z_calc = (x̄ − μ₀) ⁄ ( σ / √n )　（√n = √(n)）</div>
+  <p>σ 未知 且 小样本（n&lt;30）→ 用 t，自由度 df = n − 1：</p>
+  <div class="formula">t_calc = (x̄ − μ₀) ⁄ ( s / √n )</div>
+  <p>其中 μ₀ = H₀ 声称的总体均值，σ/√n（或 s/√n）= 标准误。</p>
+
+  <h4>决策规则（拒绝 H₀ 的条件）</h4>
+  <table>
+    <thead><tr><th>检验</th><th>H₁</th><th>拒绝 H₀ 条件（α=0.05）</th></tr></thead>
+    <tbody>
+      <tr><td>双尾</td><td>μ ≠ μ₀</td><td>|Z_calc| &gt; 1.96</td></tr>
+      <tr><td>右尾</td><td>μ &gt; μ₀</td><td>Z_calc &gt; 1.645</td></tr>
+      <tr><td>左尾</td><td>μ &lt; μ₀</td><td>Z_calc &lt; −1.645</td></tr>
+    </tbody>
+  </table>
+  <p>等价 p 值法：p &lt; α → 拒绝 H₀；p ≥ α → 不拒绝 H₀。</p>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例题：软饮料重量检验</h3>
+  <p>质量保证经理声称所有产品都达到 1.2 kg 标准。随机抽 100 件成品，样本均值 1.12 kg，
+  标准差 0.15 kg。在 α = 0.05 下，是否有足够证据认为经理的声称成立？</p>
+  <p><strong>已知</strong>：μ₀ = 1.2，n = 100，x̄ = 1.12，s = 0.15，α = 0.05</p>
+
+  <p><strong>Step 1</strong>：H₀: μ = 1.2　 H₁: μ ≠ 1.2（双尾）</p>
+  <p><strong>Step 2</strong>：n = 100（大样本 → 用 Z），α = 0.05</p>
+  <p><strong>Step 3</strong>：检验统计量</p>
+  <div class="formula">
+    Z_calc = (1.12 − 1.2) ⁄ ( 0.15 / √100 )<br>
+    = (−0.08) ⁄ (0.15 / 10)<br>
+    = (−0.08) ⁄ 0.015 = <strong>−5.33</strong>
+  </div>
+  <p><strong>Step 4</strong>：双尾 α=0.05 → 临界值 ±1.96；若 |Z_calc| &gt; 1.96 则拒绝 H₀</p>
+  <p><strong>Step 5</strong>：|Z_calc| = 5.33 &gt; 1.96 → <strong>拒绝 H₀</strong></p>
+  <div class="answer">
+    ✅ 在 5% 显著性水平下，有足够证据表明平均重量显著不等于 1.2 kg。
+    因此经理的声称<strong>不成立</strong>——产品未达 1.2 kg 标准（样本均值 1.12 &lt; 1.2，实际偏轻）。
+  </div>
+  <p style="font-size:0.9em;color:#666;">Z = −5.33 远在左侧拒绝域：若 μ 真为 1.2，抽到均值 1.12 的样本几乎不可能 → 声称站不住脚。</p>
+</div>
+
+
 <h2 contenteditable="false">七、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
