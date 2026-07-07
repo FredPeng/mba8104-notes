@@ -2417,12 +2417,20 @@ window.addEventListener('load', lookupZ);
   <h4>例 1：Statesville 学院就业率（右尾）</h4>
   <p>声称超过 94% 毕业生半年内就业。抽 500 人，475 人就业。α=0.01，证据是否支持声称？</p>
   <details>
-    <summary><strong>📌 解答</strong></summary>
-    <p>H₀: p ≤ 0.94；H₁: p &gt; 0.94（声称）</p>
-    <p>条件：np=500×0.94=470 ≥5，nq=500×0.06=30 ≥5 ✓</p>
-    <p>p̂ = 475/500 = 0.95</p>
-    <p>z = (0.95−0.94) ÷ √(0.94×0.06/500) = 0.01 ÷ 0.01062 = <strong>0.94</strong></p>
-    <p>右尾 α=0.01 → 临界值 2.33。0.94 &lt; 2.33 → <strong>不拒绝 H₀</strong>。1% 水平下证据不足以支持学院的声称。</p>
+    <summary><strong>📌 解答（老师 5 步 + π 记号）</strong></summary>
+    <p><strong>Step 1</strong>：H₀: π ≤ 0.94　　H₁: π &gt; 0.94（声称，右尾）</p>
+    <p><strong>Step 2</strong>：n = 500，p̂ = 475 ÷ 500 = 0.95；
+    检验条件 np = 500 × (475/500) = 475 &gt; 5 ✓（nq = 500×0.06 = 30 &gt; 5 ✓）</p>
+    <p><strong>Step 3</strong>：检验统计量</p>
+    <div class="formula">
+      Z_cal = (p̂ − π₀) ⁄ √( π₀(1−π₀)/n )<br>
+      = (0.95 − 0.94) ⁄ √( 0.94×(1−0.94)/500 )<br>
+      = 0.01 ⁄ √( 0.0564/500 )<br>
+      = 0.01 ⁄ 0.01062 = <strong>0.94</strong>
+    </div>
+    <p><strong>Step 4</strong>：右尾 α=0.01 → 临界值 2.33；若 Z_cal &gt; 2.33 则拒绝 H₀</p>
+    <p><strong>Step 5</strong>：0.94 &lt; 2.33 → <strong>不拒绝 H₀</strong></p>
+    <div class="answer">✅ 在 1% 显著性水平下，证据不足以支持学院"就业率超过 94%"的声称。</div>
   </details>
 
   <h4>例 2：吸烟比例（双尾）</h4>
