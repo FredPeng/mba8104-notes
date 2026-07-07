@@ -2444,6 +2444,30 @@ window.addEventListener('load', lookupZ);
     <p>z = (0.05−0.125) ÷ √(0.125×0.875/100) = −0.075 ÷ 0.03307 = <strong>−2.27</strong></p>
     <p>−2.27 &lt; −1.96 → <strong>拒绝 H₀</strong>。5% 水平下有足够证据拒绝"1/8 人口吸烟"的声称。</p>
   </details>
+
+  <h4>例 3：财务分析师盈利预测（双尾，考试题 5 分）</h4>
+  <p>投资公司总经理要求分析一组财务分析师的每股盈利预测。随机抽取 600 份预测，
+  其中 382 份<strong>高于</strong>实际盈利。在 α = 0.05 下，检验"预测高于/低于实际盈利的比例"
+  是否<strong>显著不同于 50%</strong>。</p>
+  <details>
+    <summary><strong>📌 解答（5 步）</strong></summary>
+    <p><strong>Step 1</strong>：H₀: π = 0.50　　H₁: π ≠ 0.50（双尾）</p>
+    <p><strong>Step 2</strong>：p̂ = 382 ÷ 600 = 0.6367；
+    条件 nπ₀ = 600×0.5 = 300 ≥ 5，n(1−π₀) = 300 ≥ 5 ✓；α = 0.05</p>
+    <p><strong>Step 3</strong>：检验统计量</p>
+    <div class="formula">
+      Z_cal = (p̂ − π₀) ⁄ √( π₀(1−π₀)/n )<br>
+      = (0.6367 − 0.50) ⁄ √( 0.50×0.50/600 )<br>
+      = 0.1367 ⁄ 0.02041 = <strong>6.70</strong>
+    </div>
+    <p><strong>Step 4 决策规则</strong>：双尾 α = 0.05 → 临界值 ±1.96；|Z_cal| &gt; 1.96 时拒绝 H₀</p>
+    <p><strong>Step 5 决策</strong>：6.70 &gt; 1.96 → <strong>拒绝 H₀</strong></p>
+    <div class="answer">
+      ✅ 在 5% 显著性水平下，有非常强的证据表明该比例显著不同于 50%——
+      约 63.7% 的预测偏高，说明分析师系统性地<strong>高估</strong>了公司盈利。
+    </div>
+    <p style="font-size:0.9em;color:#666;">Z = 6.70 远超 1.96（甚至远超 99% 的 2.576）：若真实比例为 50%，600 份中出现 382 份偏高几乎不可能。</p>
+  </details>
 </div>
 
 <div class="box" contenteditable="false">
