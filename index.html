@@ -2426,10 +2426,11 @@ window.addEventListener('load', lookupZ);
       Z_cal = (p̂ − π₀) ⁄ √( π₀(1−π₀)/n )<br>
       = (0.95 − 0.94) ⁄ √( 0.94×(1−0.94)/500 )<br>
       = 0.01 ⁄ √( 0.0564/500 )<br>
-      = 0.01 ⁄ 0.01062 = <strong>0.94</strong>
+      = 0.01 ⁄ 0.01062 ≈ <strong>0.9416</strong>（≈ 0.94）
     </div>
-    <p><strong>Step 4</strong>：右尾 α=0.01 → 临界值 2.33；若 Z_cal &gt; 2.33 则拒绝 H₀</p>
-    <p><strong>Step 5</strong>：0.94 &lt; 2.33 → <strong>不拒绝 H₀</strong></p>
+    <p><strong>Step 4 决策规则</strong>：右尾 α=0.01 → 临界值 2.33（左侧 0.99 接受域、右侧 0.01 拒绝域）；
+    <strong>决策规则：Z_cal &gt; 2.33 时拒绝 H₀</strong></p>
+    <p><strong>Step 5 决策</strong>：0.9416 &lt; 2.33 → <strong>不拒绝 H₀</strong></p>
     <div class="answer">✅ 在 1% 显著性水平下，证据不足以支持学院"就业率超过 94%"的声称。</div>
   </details>
 
