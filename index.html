@@ -2349,6 +2349,130 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<div class="box" contenteditable="false">
+  <h3>📊 P 值法（P-value Approach）</h3>
+  <p><strong>P 值</strong>：假设 H₀ 为真时，观察到"与样本一样极端或更极端"结果的概率。P 值越小，越倾向拒绝 H₀。</p>
+  <p><strong>决策规则</strong>：</p>
+  <ul>
+    <li>若 <strong>P ≤ α</strong> → 拒绝 H₀</li>
+    <li>若 <strong>P &gt; α</strong> → 不拒绝 H₀</li>
+  </ul>
+  <p><strong>按检验方向求 P 值</strong>（先算标准化统计量 z，再查左侧面积）：</p>
+  <table>
+    <thead><tr><th>检验</th><th>P 值 = </th></tr></thead>
+    <tbody>
+      <tr><td>左尾</td><td>z 左侧面积</td></tr>
+      <tr><td>右尾</td><td>z 右侧面积 = 1 − 左侧面积</td></tr>
+      <tr><td>双尾</td><td>2 × (统计量所在一侧的尾部面积)</td></tr>
+    </tbody>
+  </table>
+  <p><strong>例</strong>：P = 0.0256。α=0.05 → 0.0256 &lt; 0.05 → 拒绝 H₀；α=0.01 → 0.0256 &gt; 0.01 → 不拒绝 H₀。</p>
+  <div class="note">💡 两种等价方法：① P 值法（P vs α）；② 拒绝域法（统计量 vs 临界值）。两者结论一致。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 均值检验例题（大样本 Z 与小样本 t）</h3>
+
+  <h4>大样本 Z 检验</h4>
+  <p><strong>例 A（电池，右尾）</strong>：声称平均寿命 &gt; 1000 次。n=100，x̄=1002，s=14，α=0.01。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>H₀: μ ≤ 1000；H₁: μ &gt; 1000（声称）</p>
+    <p>Z = (1002−1000) ÷ (14/√100) = 2 ÷ 1.4 = <strong>1.43</strong>；右尾 P = 1−0.9236 = 0.0764</p>
+    <p>P=0.0764 &gt; α=0.01 → <strong>不拒绝 H₀</strong>。5%… 1% 水平下证据不足以支持"寿命超过 1000 次"的声称。</p>
+  </details>
+
+  <p><strong>例 B（电话时长，双尾）</strong>：声称平均通话 = 8 分钟。n=58，x̄=7.8，s=0.5，α=0.05。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>H₀: μ = 8（声称）；H₁: μ ≠ 8；临界值 ±1.96</p>
+    <p>Z = (7.8−8) ÷ (0.5/√58) = −0.2 ÷ 0.0657 = <strong>−3.05</strong></p>
+    <p>−3.05 &lt; −1.96 → 落入拒绝域 → <strong>拒绝 H₀</strong>。有足够证据拒绝"平均 8 分钟"的声称。</p>
+  </details>
+
+  <h4>小样本 t 检验（n&lt;30，σ 未知，df=n−1）</h4>
+  <p><strong>例 C（电话时长，n=18）</strong>：同上但 n=18。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>df=17，双尾 α=0.05 → 临界值 ±2.110</p>
+    <p>t = (7.8−8) ÷ (0.5/√18) = −0.2 ÷ 0.1179 = <strong>−1.70</strong></p>
+    <p>−1.70 未超过 −2.110 → <strong>不拒绝 H₀</strong>。（注意：同样数据，小样本 t 的临界值更大，结论可能与大样本不同！）</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🎯 比例检验（z-Test for a Population Proportion）</h3>
+  <p>检验总体比例 p 时用。<strong>适用条件：np ≥ 5 且 nq ≥ 5</strong>（q = 1−p）。</p>
+  <div class="formula" style="text-align:center;">
+    z = (p̂ − p₀) ⁄ √( p₀·q₀ / n )
+  </div>
+  <p>其中 p̂ = x/n（样本比例），p₀ = H₀ 声称的比例，√(p₀q₀/n) = 比例标准误。</p>
+
+  <h4>例 1：Statesville 学院就业率（右尾）</h4>
+  <p>声称超过 94% 毕业生半年内就业。抽 500 人，475 人就业。α=0.01，证据是否支持声称？</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>H₀: p ≤ 0.94；H₁: p &gt; 0.94（声称）</p>
+    <p>条件：np=500×0.94=470 ≥5，nq=500×0.06=30 ≥5 ✓</p>
+    <p>p̂ = 475/500 = 0.95</p>
+    <p>z = (0.95−0.94) ÷ √(0.94×0.06/500) = 0.01 ÷ 0.01062 = <strong>0.94</strong></p>
+    <p>右尾 α=0.01 → 临界值 2.33。0.94 &lt; 2.33 → <strong>不拒绝 H₀</strong>。1% 水平下证据不足以支持学院的声称。</p>
+  </details>
+
+  <h4>例 2：吸烟比例（双尾）</h4>
+  <p>声称 1/8（0.125）成年人吸烟。抽 100 人，5 人吸烟。α=0.05，检验声称。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>H₀: p = 0.125（声称）；H₁: p ≠ 0.125；临界值 ±1.96</p>
+    <p>条件：np=100×0.125=12.5 ≥5，nq=100×0.875=87.5 ≥5 ✓</p>
+    <p>p̂ = 5/100 = 0.05</p>
+    <p>z = (0.05−0.125) ÷ √(0.125×0.875/100) = −0.075 ÷ 0.03307 = <strong>−2.27</strong></p>
+    <p>−2.27 &lt; −1.96 → <strong>拒绝 H₀</strong>。5% 水平下有足够证据拒绝"1/8 人口吸烟"的声称。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📐 方差 / 标准差检验（Chi-Square χ² Test）</h3>
+  <p>检验总体方差 σ² 或标准差 σ（要求总体近似正态）。检验统计量服从卡方分布，df = n−1：</p>
+  <div class="formula" style="text-align:center;">
+    χ² = (n − 1)·s² ⁄ σ₀²
+  </div>
+  <p>其中 s² = 样本方差，σ₀² = H₀ 声称的方差。卡方分布<strong>不对称</strong>（右偏），左右临界值不同，查卡方表。</p>
+
+  <h4>例 1：标准差（左尾）</h4>
+  <p>教授声称统计考试成绩标准差 &lt; 30。抽 10 份，s=28.8。α=0.01。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>H₀: σ ≥ 30；H₁: σ &lt; 30（声称）；左尾，df=9，α=0.01 → 临界值 χ²₀=2.088</p>
+    <p>χ² = (10−1)(28.8²) ÷ 30² = 9×829.44 ÷ 900 = <strong>8.29</strong></p>
+    <p>左尾拒绝条件是 χ² &lt; 2.088；但 8.29 &gt; 2.088 → <strong>不拒绝 H₀</strong>。证据不足以支持"标准差小于 30"。</p>
+  </details>
+
+  <h4>例 2：方差（双尾）</h4>
+  <p>气球公司声称漂浮时间方差 = 5。抽 23 个，s²=4.5。α=0.05，能否拒绝声称？</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>H₀: σ²=5（声称）；H₁: σ²≠5；双尾，df=22 → 临界值 χ²_L=10.982，χ²_R=36.781</p>
+    <p>χ² = (23−1)(4.5) ÷ 5 = 99 ÷ 5 = <strong>19.8</strong></p>
+    <p>19.8 落在 10.982 与 36.781 之间（非拒绝域）→ <strong>不拒绝 H₀</strong>。证据不足以拒绝"方差=5"的声称。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🧭 假设检验方法总览（选哪个统计量）</h3>
+  <table>
+    <thead><tr><th>检验参数</th><th>条件</th><th>统计量</th></tr></thead>
+    <tbody>
+      <tr><td>均值 μ</td><td>σ 已知 或 n≥30</td><td>Z = (x̄−μ₀)/(σ/√n)</td></tr>
+      <tr><td>均值 μ</td><td>σ 未知 且 n&lt;30</td><td>t = (x̄−μ₀)/(s/√n)，df=n−1</td></tr>
+      <tr><td>比例 p</td><td>np≥5 且 nq≥5</td><td>z = (p̂−p₀)/√(p₀q₀/n)</td></tr>
+      <tr><td>方差 σ² / 标准差 σ</td><td>总体近似正态</td><td>χ² = (n−1)s²/σ₀²，df=n−1</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.9em;color:#666;">来源：HYPOTHESIS REF NOTES.pdf（Larson &amp; Farber《Elementary Statistics》第 7 章）。</p>
+</div>
+
+
 <h2 contenteditable="false">七、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
