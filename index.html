@@ -2498,6 +2498,53 @@ window.addEventListener('load', lookupZ);
 </div>
 
 <div class="box" contenteditable="false">
+  <h3>📝 考试题 Q4：Kibaki 支持率 + 灌装线（12 分）</h3>
+
+  <h4>(a) Kibaki 选举支持率（比例双尾，6 分）</h4>
+  <p>2002 年 12 月肯尼亚大选，NARC 的 Mwai Kibaki 以 63% 得票当选。选前一个月的民调
+  随机抽取 3000 名潜在选民，其中 68.2% 支持 Kibaki。问：最后一个月支持率是否发生了变化？</p>
+  <details>
+    <summary><strong>📌 解答（5 步）</strong></summary>
+    <p><strong>(i) Step 1</strong>：H₀: π = 0.63　　H₁: π ≠ 0.63（双尾——"变化"可升可降）</p>
+    <p><strong>(ii) Step 2 + 决策规则</strong>：n = 3000，p̂ = 0.682；
+    条件 nπ₀ = 1890 ≥ 5，n(1−π₀) = 1110 ≥ 5 ✓；α = 0.05，双尾 → 临界值 ±1.96；
+    <strong>决策规则：|Z_cal| &gt; 1.96 时拒绝 H₀</strong></p>
+    <p><strong>(iii) Step 3–5</strong>：</p>
+    <div class="formula">
+      Z_cal = (0.682 − 0.63) ⁄ √( 0.63×0.37/3000 )<br>
+      = 0.052 ⁄ 0.008815 = <strong>5.90</strong>
+    </div>
+    <p>5.90 &gt; 1.96 → <strong>拒绝 H₀</strong></p>
+    <div class="answer">
+      ✅ 5% 显著性水平下，有强证据表明 Kibaki 支持率在最后一个月<strong>发生了变化</strong>——
+      民调 68.2% 显著高于最终得票 63%（支持率下滑约 5 个百分点，或民调偏高）。
+    </div>
+  </details>
+
+  <h4>(b) 灌装线均值检验（临界值法，6 分）</h4>
+  <p>生产线灌装均值应为 3 kg/桶，过量或不足都需停线调整。称量 36 桶的 Minitab 汇总：
+  n = 36，Mean = 2.9200，SE Mean = 0.0283，StDev = 0.1700，Min = 2.5400，Max = 3.2100。
+  用临界值法（α = 0.05）判断是否应停线。</p>
+  <details>
+    <summary><strong>📌 解答（5 步）</strong></summary>
+    <p><strong>(i) Step 1</strong>：H₀: μ = 3　　H₁: μ ≠ 3（双尾——过量和不足都是问题）</p>
+    <p><strong>Step 2</strong>：n = 36 ≥ 30 → 用 Z；α = 0.05</p>
+    <p><strong>Step 3</strong>：</p>
+    <div class="formula">
+      Z_cal = (x̄ − μ₀) ⁄ ( s/√n ) = (2.92 − 3) ⁄ ( 0.17/√36 )<br>
+      = (−0.08) ⁄ 0.02833 = <strong>−2.82</strong>
+    </div>
+    <p><strong>Step 4</strong>：双尾临界值 ±1.96；决策规则：|Z_cal| &gt; 1.96 时拒绝 H₀</p>
+    <p><strong>Step 5</strong>：|−2.82| = 2.82 &gt; 1.96 → <strong>拒绝 H₀</strong></p>
+    <div class="answer">
+      ✅ 5% 显著性水平下，平均灌装量显著偏离 3 kg（实际偏轻 2.92 kg）。
+      <strong>应停止生产线</strong>、重新调整灌装机构。
+    </div>
+    <p style="font-size:0.9em;color:#666;">注：题给 SE Mean = 0.0283 正是 s/√n = 0.17/6，可直接使用。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
   <h3>🧭 假设检验方法总览（选哪个统计量）</h3>
   <table>
     <thead><tr><th>检验参数</th><th>条件</th><th>统计量</th></tr></thead>
