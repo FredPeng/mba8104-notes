@@ -2946,6 +2946,23 @@ window.addEventListener('load', lookupZ);
       <tr><td>eᵢ</td><td>第 i 个误差项</td><td>直线解释不了的随机偏差</td></tr>
     </tbody>
   </table>
+
+  <h3>🎯 为什么需要"最佳拟合线"</h3>
+  <p>凭肉眼画的拟合线是<strong>主观的</strong>（不同人会画出不同的线），
+  因此需要一套方法论求出唯一的<strong>最佳拟合线（best line of fit）</strong>——这就是最小二乘法的动机。</p>
+
+  <h3>📋 误差项的假设（Assumptions of the Error Term）</h3>
+  <table>
+    <thead><tr><th>#</th><th>假设</th><th>数学表达</th></tr></thead>
+    <tbody>
+      <tr><td>(1)</td><td>误差项的期望为零</td><td>E(eᵢ) = 0</td></tr>
+      <tr><td>(2)</td><td>误差项的方差为常数（同方差性）</td><td>Var(eᵢ) = σ²（不随 x 变化）</td></tr>
+      <tr><td>(3)</td><td>误差项服从正态分布</td><td>eᵢ ~ N(0, σ²)</td></tr>
+    </tbody>
+  </table>
+  <div class="note">⚠️ 记号提醒：课堂笔记写的是 eᵢ ~ N(0,1)，标准表述应为 <strong>N(0, σ²)</strong>
+  （均值 0、方差为常数 σ²）；只有标准化 eᵢ/σ 之后才是 N(0,1)。</div>
+
   <h3>📐 最小二乘估计（Least Squares Estimates）</h3>
   <p>用样本数据估计 β₀、β₁（帽子 ^ 表示估计值），得到拟合直线 Ŷ = β̂₀ + β̂₁X：</p>
   <div class="formula" style="text-align:center;">
