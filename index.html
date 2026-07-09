@@ -2769,6 +2769,116 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<h2 contenteditable="false">关联性检验：卡方独立性检验（Tests for Relationships — χ² Test）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>📐 框架</h3>
+  <p>检验<strong>两个分类变量</strong>之间是否存在关联（relationship / correlation）——
+  即之前列联表"独立性"判断的正式统计检验版。这类检验通称<strong>卡方检验（Chi-squared, χ² tests）</strong>。</p>
+
+  <h4>假设</h4>
+  <ul>
+    <li>H₀：两变量<strong>独立</strong>（各组分布相同 / 无关联）</li>
+    <li>H₁：两变量<strong>不独立</strong>（有关联）</li>
+  </ul>
+
+  <h4>检验统计量</h4>
+  <div class="formula" style="text-align:center;">
+    χ² = Σ [ (O − E)² ⁄ E ]
+  </div>
+  <table>
+    <thead><tr><th>符号</th><th>含义</th><th>怎么算</th></tr></thead>
+    <tbody>
+      <tr><td>O</td><td>观察频数（observed）</td><td>表中的实际数据</td></tr>
+      <tr><td>E</td><td>期望频数（expected）</td><td><strong>E = 行合计 × 列合计 ÷ 总数</strong></td></tr>
+      <tr><td>df</td><td>自由度</td><td><strong>(行数 − 1) × (列数 − 1)</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h4>步骤</h4>
+  <ol>
+    <li>写 H₀（独立）与 H₁（不独立）</li>
+    <li>定 α，算 df = (r−1)(c−1)，查卡方表得临界值</li>
+    <li>算每格的期望频数 E</li>
+    <li>算 χ²_cal = Σ(O−E)²/E</li>
+    <li>决策：χ²_cal &gt; 临界值 → 拒绝 H₀（有关联）</li>
+  </ol>
+  <div class="note">💡 卡方独立性检验永远是<strong>右尾</strong>：χ² 越大表示 O 与 E 差得越远、越不像"独立"。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例 1：各职业诚信度评价（4×3 表，α = 0.01）</h3>
+  <p>研究机构请受访者对各职业的诚信与道德水平评级：</p>
+  <table>
+    <thead><tr><th>Professions</th><th>High</th><th>Average</th><th>Low</th><th>行合计</th></tr></thead>
+    <tbody>
+      <tr><td>Medical Doctors</td><td>23</td><td>35</td><td>10</td><td>68</td></tr>
+      <tr><td>Lawyers</td><td>24</td><td>43</td><td>27</td><td>94</td></tr>
+      <tr><td>Business Executives</td><td>18</td><td>55</td><td>20</td><td>93</td></tr>
+      <tr><td>Politicians</td><td>14</td><td>43</td><td>38</td><td>95</td></tr>
+      <tr class="total"><td>列合计</td><td>79</td><td>176</td><td>95</td><td>350</td></tr>
+    </tbody>
+  </table>
+  <p>在 0.01 显著性水平下，检验各职业的评价是否相似（rated similarly）。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1</strong>：H₀：评级与职业独立（各职业评价相似）；H₁：不独立（评价因职业而异）</p>
+    <p><strong>Step 2</strong>：df = (4−1)(3−1) = 6；α = 0.01 → 临界值 χ²(0.01, 6) = <strong>16.812</strong></p>
+    <p><strong>Step 3</strong>：期望频数 E = 行合计 × 列合计 ÷ 350（例如 Doctors-High：68×79÷350 = 15.35）：</p>
+    <table>
+      <thead><tr><th>E</th><th>High</th><th>Average</th><th>Low</th></tr></thead>
+      <tbody>
+        <tr><td>Doctors</td><td>15.35</td><td>34.19</td><td>18.46</td></tr>
+        <tr><td>Lawyers</td><td>21.22</td><td>47.27</td><td>25.51</td></tr>
+        <tr><td>Executives</td><td>20.99</td><td>46.77</td><td>25.24</td></tr>
+        <tr><td>Politicians</td><td>21.44</td><td>47.77</td><td>25.79</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Step 4</strong>：逐格 (O−E)²/E 相加：</p>
+    <div class="formula">
+      χ²_cal = 3.814 + 0.019 + 3.875 + 0.365 + 0.385 + 0.087<br>
+      + 0.426 + 1.450 + 1.089 + 2.583 + 0.477 + 5.786 = <strong>20.36</strong>
+    </div>
+    <p><strong>Step 5</strong>：20.36 &gt; 16.812 → <strong>拒绝 H₀</strong></p>
+    <div class="answer">✅ 在 1% 显著性水平下，各职业的诚信评价<strong>并不相似</strong>——评级与职业有关联。
+    （最大贡献来自 Politicians-Low：实际 38 远高于期望 25.8，即政客被评"低诚信"的远多于独立假设的预期。）</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例 2：五个品牌茶叶的质量（2×5 表）</h3>
+  <p>五个品牌各检查 24 罐，合格与不合格数如下：</p>
+  <table>
+    <thead><tr><th>Quality</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>行合计</th></tr></thead>
+    <tbody>
+      <tr><td>Acceptable</td><td>3</td><td>10</td><td>5</td><td>3</td><td>9</td><td>30</td></tr>
+      <tr><td>Unacceptable</td><td>21</td><td>14</td><td>19</td><td>21</td><td>15</td><td>90</td></tr>
+      <tr class="total"><td>列合计</td><td>24</td><td>24</td><td>24</td><td>24</td><td>24</td><td>120</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1</strong>：H₀：质量与品牌独立；H₁：不独立</p>
+    <p><strong>Step 2</strong>：df = (2−1)(5−1) = 4</p>
+    <p><strong>Step 3</strong>：期望频数（每列合计都是 24，特别简单）：
+    Acceptable 行 E = 30×24÷120 = <strong>6</strong>；Unacceptable 行 E = 90×24÷120 = <strong>18</strong>（每个品牌相同）</p>
+    <p><strong>Step 4</strong>：</p>
+    <div class="formula">
+      χ²_cal = (3−6)²/6 + (10−6)²/6 + (5−6)²/6 + (3−6)²/6 + (9−6)²/6<br>
+      + (21−18)²/18 + (14−18)²/18 + (19−18)²/18 + (21−18)²/18 + (15−18)²/18<br>
+      = 7.333 + 2.444 = <strong>9.78</strong>
+    </div>
+    <p><strong>Step 5</strong>（课件未标明 α，两种都给出）：</p>
+    <ul>
+      <li>α = 0.05：临界值 χ²(0.05, 4) = 9.488 → 9.78 &gt; 9.488 → <strong>拒绝 H₀</strong>（质量与品牌有关）</li>
+      <li>α = 0.01：临界值 χ²(0.01, 4) = 13.277 → 9.78 &lt; 13.277 → <strong>不拒绝 H₀</strong></li>
+    </ul>
+    <div class="answer">✅ 5% 水平下可认为各品牌质量有差异（B、E 合格数明显高于期望 6，A、D 明显低）；
+    但在 1% 的更严格标准下证据不足。又一次说明<strong>结论依赖 α 的选择</strong>。</div>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">七、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
