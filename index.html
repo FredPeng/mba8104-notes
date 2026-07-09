@@ -2946,7 +2946,53 @@ window.addEventListener('load', lookupZ);
       <tr><td>eᵢ</td><td>第 i 个误差项</td><td>直线解释不了的随机偏差</td></tr>
     </tbody>
   </table>
-  <div class="note">⏳ 课堂进行中：Illustration（图示）与例题待补充。</div>
+  <h3>📐 最小二乘估计（Least Squares Estimates）</h3>
+  <p>用样本数据估计 β₀、β₁（帽子 ^ 表示估计值），得到拟合直线 Ŷ = β̂₀ + β̂₁X：</p>
+  <div class="formula" style="text-align:center;">
+    β̂₁ = [ n·Σxy − Σx·Σy ] ⁄ [ n·Σx² − (Σx)² ]
+  </div>
+  <div class="formula" style="text-align:center;">
+    β̂₀ = ȳ − β̂₁·x̄
+  </div>
+  <p>原理：选一条使 Σeᵢ²（残差平方和）最小的直线——"最小二乘"。</p>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 Illustration：家庭人数与支出（课堂例题）</h3>
+  <p>下表为家庭人数 X 与支出 Y 的数据。求 Y 对 X 的回归方程。</p>
+  <table>
+    <thead><tr><th>家庭人数 X</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>
+    <tbody>
+      <tr><td><strong>支出 Y</strong></td><td>15</td><td>16</td><td>12</td><td>20</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1：汇总量</strong>（n = 4）</p>
+    <table>
+      <thead><tr><th>x</th><th>y</th><th>xy</th><th>x²</th></tr></thead>
+      <tbody>
+        <tr><td>3</td><td>15</td><td>45</td><td>9</td></tr>
+        <tr><td>4</td><td>16</td><td>64</td><td>16</td></tr>
+        <tr><td>5</td><td>12</td><td>60</td><td>25</td></tr>
+        <tr><td>6</td><td>20</td><td>120</td><td>36</td></tr>
+        <tr class="total"><td>Σx = 18</td><td>Σy = 63</td><td>Σxy = 289</td><td>Σx² = 86</td></tr>
+      </tbody>
+    </table>
+    <p>x̄ = 18÷4 = 4.5，ȳ = 63÷4 = 15.75</p>
+    <p><strong>Step 2：斜率</strong></p>
+    <div class="formula">
+      β̂₁ = (4×289 − 18×63) ⁄ (4×86 − 18²)<br>
+      = (1156 − 1134) ⁄ (344 − 324) = 22 ⁄ 20 = <strong>1.1</strong>
+    </div>
+    <p><strong>Step 3：截距</strong></p>
+    <div class="formula">
+      β̂₀ = 15.75 − 1.1 × 4.5 = 15.75 − 4.95 = <strong>10.8</strong>
+    </div>
+    <div class="answer">✅ 回归方程：<strong>Ŷ = 10.8 + 1.1X</strong><br>
+    解读：家庭每多 1 人，支出平均增加 1.1（单位同 Y）；截距 10.8 为基准水平。</div>
+  </details>
+  <div class="note">⏳ 老师同时在画散点图（横轴 X 人数、纵轴支出）——散点图用于先直观确认"大致呈线性"再拟合。</div>
 </div>
 
 
