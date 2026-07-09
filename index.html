@@ -2498,6 +2498,62 @@ window.addEventListener('load', lookupZ);
 </div>
 
 <div class="box" contenteditable="false">
+  <h3>📝 课堂例题（笔记本）：Metro EMS / Glow 牙膏 / 不道德评分</h3>
+
+  <h4>例：Metro EMS 响应时间（右尾）</h4>
+  <p>随机抽取 40 起医疗急救，样本平均响应时间 13.25 分钟，总体标准差约 3.2 分钟，α = 0.05。
+  服务目标是"响应时间至多 12 分钟"——目标是否达成？</p>
+  <div class="note">
+    💭 <strong>为什么不能直接下结论？</strong>不同样本会给出不同的均值；描述统计只能描述样本，
+    要对总体下结论必须做<strong>统计推断（statistical inference）</strong>。
+  </div>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1</strong>：H₀: μ ≤ 12　　H₁: μ &gt; 12（右尾）</p>
+    <p><strong>Step 2</strong>：n = 40，α = 0.05</p>
+    <p><strong>Step 3</strong>：Z_cal = (13.25 − 12) ⁄ (3.2/√40) = 1.25 ⁄ 0.5060 = <strong>2.47</strong></p>
+    <p><strong>Step 4</strong>：右尾临界值 1.645；决策规则：Z_cal &gt; 1.645 时拒绝 H₀</p>
+    <p><strong>Step 5</strong>：2.47 &gt; 1.645 → <strong>拒绝 H₀</strong></p>
+    <p><strong>P 值法验证</strong>：P(Z ≥ 2.47) = 1 − 0.99324 = 0.00676 ≈ 0.007 &lt; 0.05 → 同样拒绝 ✓（两种方法结论一致）</p>
+    <div class="answer">✅ 有充分证据表明平均响应时间超过 12 分钟——<strong>服务目标未达成</strong>。</div>
+  </details>
+
+  <h4>例：Glow 牙膏灌装（双尾，α = 0.03）</h4>
+  <p>标称平均重量 6 oz。抽 30 支，样本均值 6.1 oz，总体标准差 0.2 oz，显著性水平 0.03。
+  H₀: μ = 6（继续灌装）vs H₁: μ ≠ 6（停机校正）。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 3</strong>：Z_cal = (6.1 − 6.0) ⁄ (0.2/√30) = 0.1 ⁄ 0.0365 = <strong>2.74</strong></p>
+    <p><strong>Step 4</strong>：双尾 α = 0.03 → 每侧 0.015 → 临界值 <strong>±2.17</strong>；
+    决策规则：Z_cal &gt; 2.17 或 Z_cal &lt; −2.17 时拒绝 H₀</p>
+    <p><strong>Step 5</strong>：2.74 &gt; 2.17 → <strong>拒绝 H₀</strong></p>
+    <p><strong>P 值法</strong>：双尾 P = 2 × (1 − Φ(2.74)) = 2 × 0.00307 = <strong>0.00614</strong> &lt; 0.03 → 拒绝 ✓</p>
+    <div class="note">⚠️ 注意：双尾检验的 P 值要把单尾面积<strong>乘 2</strong>（0.00307 是单尾面积，双尾 P = 0.00614）。本题结论不受影响。</div>
+    <div class="answer">✅ 平均灌装量显著偏离 6 oz，应<strong>停机校正</strong>。</div>
+  </details>
+
+  <h4>课本练习（Page 4.10 / 7.38）：不道德评分（右尾）</h4>
+  <p>n = 86，评分范围 −1.5 到 2.5，x̄ = 2.42，s = 2.84，α = 0.01。检验"平均不道德评分是否大于 2"。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1</strong>：H₀: μ ≤ 2　　H₁: μ &gt; 2（右尾）</p>
+    <p><strong>Step 3</strong>：Z_cal = (2.42 − 2.00) ⁄ (2.84/√86) = 0.42 ⁄ 0.3063 = <strong>1.37</strong></p>
+    <p><strong>Step 4</strong>：右尾 α = 0.01 → 临界值 2.33；Z_cal &gt; 2.33 时拒绝 H₀</p>
+    <p><strong>Step 5</strong>：1.37 &lt; 2.33 → <strong>不拒绝 H₀</strong></p>
+    <div class="answer">✅ 在 1% 显著性水平下，<strong>证据不足以断定</strong>平均不道德评分大于 2。</div>
+    <div class="note">⚠️ 表述提醒："不拒绝 H₀" = 证据不足，<strong>不等于</strong>"证明了 μ ≤ 2"。
+    结论写"没有足够证据支持 μ &gt; 2"比"μ 大于 2 不成立"更严谨。</div>
+  </details>
+
+  <div class="note">
+    📌 <strong>课堂旁注（值得记住）</strong>：
+    ① 原假设 H₀ 必须"有界/含等号"（≥、≤ 或 =），否则它就是备择假设；
+    ② 大数定律 → 样本量越大，样本均值越接近总体均值；
+    ③ 下决策有两种等价方法：<strong>临界值法</strong>（比 Z 值）与 <strong>P 值法</strong>（比概率）。
+  </div>
+</div>
+
+<div class="box" contenteditable="false">
   <h3>📝 考试题 Q4：Kibaki 支持率 + 灌装线（12 分）</h3>
 
   <h4>(a) Kibaki 选举支持率（比例双尾，6 分）</h4>
