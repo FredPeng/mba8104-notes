@@ -2615,6 +2615,160 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<h2 contenteditable="false">两总体均值之差的检验（Test for Difference Between Two Population Means）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>📐 框架与公式</h3>
+  <p>两组数据的汇总统计：</p>
+  <table>
+    <thead><tr><th>Population</th><th>I</th><th>II</th></tr></thead>
+    <tbody>
+      <tr><td>样本均值</td><td>x̄₁</td><td>x̄₂</td></tr>
+      <tr><td>标准差</td><td>σ₁</td><td>σ₂</td></tr>
+      <tr><td>样本量</td><td>n₁</td><td>n₂</td></tr>
+    </tbody>
+  </table>
+
+  <h4>三种假设配对</h4>
+  <table>
+    <thead><tr><th>检验</th><th>H₀</th><th>H₁</th></tr></thead>
+    <tbody>
+      <tr><td>双尾</td><td>μ₁ = μ₂</td><td>μ₁ ≠ μ₂</td></tr>
+      <tr><td>左尾</td><td>μ₁ ≥ μ₂</td><td>μ₁ &lt; μ₂</td></tr>
+      <tr><td>右尾</td><td>μ₁ ≤ μ₂</td><td>μ₁ &gt; μ₂</td></tr>
+    </tbody>
+  </table>
+
+  <h4>检验统计量的推导</h4>
+  <p>单均值检验的标准误是 σ/√n = √(σ²/n)。两均值之差 (x̄₁ − x̄₂) 的标准误是<strong>两个方差项相加再开方</strong>：</p>
+  <div class="formula" style="text-align:center;">
+    SE(x̄₁ − x̄₂) = √( σ₁²/n₁ + σ₂²/n₂ )
+  </div>
+  <p>一般形式：</p>
+  <div class="formula" style="text-align:center;">
+    Z_cal = [ (x̄₁ − x̄₂) − (μ₁ − μ₂) ] ⁄ √( σ₁²/n₁ + σ₂²/n₂ )
+  </div>
+  <p>但在 H₀ 下 μ₁ = μ₂（差为 0），所以实际使用：</p>
+  <div class="formula" style="text-align:center;">
+    <strong>Z_cal = (x̄₁ − x̄₂) ⁄ √( σ₁²/n₁ + σ₂²/n₂ )</strong>
+  </div>
+
+  <h4>小样本版本（t 检验）</h4>
+  <div class="formula" style="text-align:center;">
+    t_cal = (x̄₁ − x̄₂) ⁄ √( s₁²/n₁ + s₂²/n₂ )，自由度 df = (n₁−1) + (n₂−1) = <strong>n₁ + n₂ − 2</strong>
+  </div>
+
+  <div class="note">💭 提醒（老师强调）：<strong>不能只看描述统计就下结论</strong>（两个样本均值不同不代表总体均值不同），必须做假设检验。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例 1：日班 vs 晚班学生数学成绩（大样本 Z，左尾）</h3>
+  <table>
+    <thead><tr><th>统计量</th><th>Day (D)</th><th>Evening (E)</th></tr></thead>
+    <tbody>
+      <tr><td>样本量</td><td>60</td><td>45</td></tr>
+      <tr><td>样本均值</td><td>65</td><td>70</td></tr>
+      <tr><td>标准差 σ</td><td>12%</td><td>14%</td></tr>
+    </tbody>
+  </table>
+  <p>α = 0.05：是否有充分证据表明日班学生的平均成绩<strong>低于</strong>晚班学生？</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1</strong>：H₀: μ_D ≥ μ_E　　H₁: μ_D &lt; μ_E（左尾）</p>
+    <p><strong>Step 2</strong>：n_D = 60，n_E = 45，α = 0.05</p>
+    <p><strong>Step 3</strong>：</p>
+    <div class="formula">
+      Z_cal = (65 − 70) ⁄ √( 12²/60 + 14²/45 )<br>
+      = −5 ⁄ √( 2.4 + 4.356 )<br>
+      = −5 ⁄ 2.5991 = <strong>−1.923</strong>
+    </div>
+    <p><strong>Step 4</strong>：左尾临界值 −1.645；决策规则：Z_cal &lt; −1.645 时拒绝 H₀</p>
+    <p><strong>Step 5</strong>：−1.923 &lt; −1.645 → <strong>拒绝 H₀</strong></p>
+    <div class="answer">✅ 有充分证据表明日班学生的平均成绩确实低于晚班学生。</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例 2：免税债券 vs 应税债券（小样本 t，双尾）</h3>
+  <p>30% 税级投资者，各抽 n = 10：免税债券收益率均值 7.8%、s = 1.1%；应税债券均值 7.3%、s = 1.0%。
+  α = 0.05，检验两类债券的平均收益率是否有差异。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1</strong>：H₀: μ_A = μ_B　　H₁: μ_A ≠ μ_B（双尾）</p>
+    <p><strong>Step 2</strong>：n_A = n_B = 10（小样本 → t），α = 0.05；df = 10 + 10 − 2 = 18 → 临界值 t(18, 双尾0.05) = <strong>±2.101</strong></p>
+    <p><strong>Step 3</strong>：</p>
+    <div class="formula">
+      t_cal = (7.8 − 7.3) ⁄ √( 1.1²/10 + 1.0²/10 )<br>
+      = 0.5 ⁄ √( 0.121 + 0.100 ) = 0.5 ⁄ √0.221<br>
+      = 0.5 ⁄ 0.4701 = <strong>1.06</strong>
+    </div>
+    <p><strong>Step 4</strong>：决策规则：t_cal &lt; −2.101 或 t_cal &gt; 2.101 时拒绝 H₀</p>
+    <p><strong>Step 5</strong>：1.06 在 ±2.101 之间 → <strong>不拒绝 H₀</strong></p>
+    <div class="answer">✅ 没有足够证据表明免税与应税债券的<strong>平均收益率</strong>有差异。</div>
+    <div class="note">⚠️ 笔记本勘误：中间一步写成了 √(1.1/10 + 1.0/10) = √0.21——分子应为<strong>标准差的平方</strong>：
+    1.1²/10 + 1.0²/10 = 0.221（最终答案 1.06 是按正确的 0.221 算的，结论不受影响）。
+    另外结论应表述为"平均收益率无差异"，而非"税收无差异"。</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例 3（Question 7.43, Page 411）：买方 vs 卖方分析师预测误差</h3>
+  <table>
+    <thead><tr><th></th><th>Buy side (B)</th><th>Sell side (S)</th></tr></thead>
+    <tbody>
+      <tr><td>均值（预测误差）</td><td>0.85</td><td>−0.05</td></tr>
+      <tr><td>标准差</td><td>1.93</td><td>0.85</td></tr>
+      <tr><td>样本量</td><td>3,526</td><td>58,562</td></tr>
+    </tbody>
+  </table>
+  <p>α = 0.01。(a) 检验买方分析师的真实平均预测误差是否为<strong>正</strong>；(b) 检验卖方的是否为<strong>负</strong>。
+  （注意：这两问分别是对<strong>单个均值</strong>做检验，不是两均值之差。）</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(a) 买方</strong>：H₀: μ ≤ 0　H₁: μ &gt; 0（右尾）</p>
+    <div class="formula">
+      Z_cal = (0.85 − 0) ⁄ (1.93/√3526) = 0.85 ⁄ 0.0325 = <strong>26.15</strong>
+    </div>
+    <p>右尾 α = 0.01 → 临界值 2.33；26.15 &gt; 2.33（P(Z&gt;26.15) ≈ 0 &lt; α）→ <strong>拒绝 H₀</strong></p>
+    <div class="answer">✅ 买方分析师的平均预测误差显著为正——他们<strong>系统性高估</strong>了盈利。</div>
+    <p><strong>(b) 卖方</strong>：H₀: μ ≥ 0　H₁: μ &lt; 0（左尾）；x̄ = −0.05，s = 0.85，n = 58,562</p>
+    <div class="formula">
+      Z_cal = (−0.05 − 0) ⁄ (0.85/√58562) = −0.05 ⁄ 0.003512 = <strong>−14.24</strong>
+    </div>
+    <p>左尾临界值 −2.33；−14.24 &lt; −2.33（P(Z&lt;−14.24) ≈ 0 &lt; α）→ <strong>拒绝 H₀</strong></p>
+    <div class="answer">✅ 卖方分析师的平均预测误差显著为负——他们<strong>系统性低估</strong>了盈利。</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例 4（Pg 470, 8.18）：会计专业学生的自恋程度（两均值之差 + P 值法）</h3>
+  <table>
+    <thead><tr><th></th><th>n</th><th>x̄</th><th>s</th></tr></thead>
+    <tbody>
+      <tr><td>会计专业 (1)</td><td>290</td><td>14.13</td><td>6.81</td></tr>
+      <tr><td>心理学导论专业 (2)</td><td>74</td><td>16.02</td><td>7.73</td></tr>
+    </tbody>
+  </table>
+  <p>α = 0.01，检验会计专业学生的平均自恋评分是否<strong>低于</strong>心理学专业学生。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1</strong>：H₀: μ₁ ≥ μ₂　　H₁: μ₁ &lt; μ₂（左尾）</p>
+    <p><strong>Step 3</strong>：</p>
+    <div class="formula">
+      Z_cal = (14.13 − 16.02) ⁄ √( 6.81²/290 + 7.73²/74 )<br>
+      = −1.89 ⁄ √( 0.15992 + 0.80747 )<br>
+      = −1.89 ⁄ √0.9674 = −1.89 ⁄ 0.98356 = <strong>−1.921</strong>
+    </div>
+    <p><strong>P 值法</strong>：P(Z &lt; −1.921) = <strong>0.0274</strong></p>
+    <p><strong>Step 4/5</strong>：P = 0.0274 &gt; α = 0.01 → <strong>不拒绝 H₀</strong>
+    （临界值法同理：−1.921 未低于 −2.33）</p>
+    <div class="answer">✅ 在 1% 显著性水平下，证据不足以断定会计专业学生的平均自恋评分低于心理学专业学生。</div>
+    <div class="note">💡 注意：若 α = 0.05 则 0.0274 &lt; 0.05 会拒绝——<strong>结论依赖于 α 的选择</strong>。
+    另外假设应写在总体参数 μ 上（μ₁ &lt; μ₂），不是样本均值 x̄。</div>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">七、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
