@@ -3179,6 +3179,114 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<h2 contenteditable="false">附：个人作业·玉米产量案例（Maize Yield Case Study）</h2>
+
+<div class="box" contenteditable="false">
+  <h3>📋 题目背景</h3>
+  <p>农业部评估主产县小农户是否超过全国平均玉米产量 <strong>2,350 kg/亩</strong>。
+  研究者从 Trans Nzoia、Uasin Gishu、Bungoma、Kakamega、Nakuru 五县随机抽取 <strong>100 个农场</strong>
+  （试点干预：补贴化肥 + 良种）。数据文件：Kenyan_Maize_Yield_Case_Study_Data.xlsx。</p>
+  <table>
+    <thead><tr><th>量 Given</th><th>值 Value</th></tr></thead>
+    <tbody>
+      <tr><td>n</td><td>100</td></tr>
+      <tr><td>样本均值 x̄</td><td>2,398.20 kg/亩</td></tr>
+      <tr><td>样本标准差 s</td><td>190.71 kg/亩</td></tr>
+      <tr><td>基准 μ₀（全国平均）</td><td>2,350 kg/亩</td></tr>
+      <tr><td>产量 &gt; 2350 的农场数 x</td><td>62（p̂ = 0.62）</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Part A：描述统计与正态性（3 分）</h3>
+  <details>
+    <summary><strong>📌 Solution</strong></summary>
+    <p><strong>Minitab</strong>: File → Open the Excel file; Stat → Basic Statistics → Display Descriptive Statistics
+    (variable: Maize_Yield_kg_per_acre); Graph → Histogram → Simple.</p>
+    <p><strong>Results</strong>: x̄ = <strong>2,398.20</strong>, s = <strong>190.71</strong>
+    (min 1,869.9, max 2,809, median 2,393.35).</p>
+    <p><strong>Shape</strong>: the histogram is <strong>unimodal and roughly symmetric (bell-shaped)</strong>,
+    peaking around 2,250–2,550 with no extreme outliers; mean ≈ median (2,398.2 vs 2,393.4).
+    → <strong>approximately normal</strong>. With n = 100, the <strong>Central Limit Theorem</strong> also ensures the
+    sampling distribution of x̄ is approximately normal, validating Parts B–D.</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Part B：均值的 95% 置信区间（3 分）</h3>
+  <details>
+    <summary><strong>📌 Solution（公式 → 代入 → 计算 → 解释）</strong></summary>
+    <p><strong>Formula</strong> (mean, σ unknown but n ≥ 30 → use s with Z): CI = x̄ ± z(α/2) × ( s ÷ √n )</p>
+    <p><strong>Components</strong>: x̄ = 2,398.20; s = 190.71; √n = 10; 95% → α/2 = 0.025 → z = 1.96</p>
+    <div class="formula">
+      SE = 190.71 ÷ 10 = 19.07<br>
+      E = 1.96 × 19.07 = 37.38<br>
+      CI = 2,398.20 ± 37.38 = <strong>(2,360.82 , 2,435.58) kg per acre</strong>
+    </div>
+    <div class="answer">✅ We are 95% confident that the true mean yield of intervention farms lies between
+    2,360.8 and 2,435.6 kg per acre. Even the <strong>lower limit exceeds the national average of 2,350</strong> —
+    an early hint that intervention farms outperform it.</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Part C：均值的单尾假设检验（5 分，α = 0.05）</h3>
+  <details>
+    <summary><strong>📌 Solution（5 步）</strong></summary>
+    <p><strong>Step 1</strong>: H₀: μ ≤ 2,350　vs　H₁: μ &gt; 2,350 (right-tailed; the claim "exceeds" goes to H₁)</p>
+    <p><strong>Step 2</strong>: n = 100 ≥ 30 → Z test (s replaces σ); α = 0.05</p>
+    <p><strong>Step 3</strong>:</p>
+    <div class="formula">
+      Z_cal = (x̄ − μ₀) ⁄ (s/√n) = (2,398.20 − 2,350) ⁄ 19.07 = 48.20 ⁄ 19.07 = <strong>2.53</strong>
+    </div>
+    <p><strong>Step 4</strong>: critical value z(0.05) = 1.645; <strong>Reject H₀ whenever Z_cal &gt; 1.645</strong>
+    (p-value approach: p = P(Z ≥ 2.53) = 0.0057 &lt; 0.05)</p>
+    <p><strong>Step 5</strong>: 2.53 &gt; 1.645 → <strong>Reject H₀</strong></p>
+    <div class="answer">✅ At the 5% level, there is sufficient evidence that the mean maize yield of
+    intervention farms <strong>exceeds the national average of 2,350 kg per acre</strong>.</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Part D：比例的假设检验（5 分，α = 0.05）</h3>
+  <details>
+    <summary><strong>📌 Solution（5 步）</strong></summary>
+    <p><strong>Sample proportion</strong>: p̂ = 62 ÷ 100 = 0.62</p>
+    <p><strong>Step 1</strong>: H₀: π ≤ 0.50　vs　H₁: π &gt; 0.50 (right-tailed — "majority outperform")</p>
+    <p><strong>Step 2</strong>: conditions nπ₀ = 50 ≥ 5, n(1−π₀) = 50 ≥ 5 ✓ → Z test; α = 0.05</p>
+    <p><strong>Step 3</strong>:</p>
+    <div class="formula">
+      Z_cal = (p̂ − π₀) ⁄ √( π₀(1−π₀)/n ) = (0.62 − 0.50) ⁄ √(0.25/100)<br>
+      = 0.12 ⁄ 0.05 = <strong>2.40</strong>
+    </div>
+    <p><strong>Step 4</strong>: critical value 1.645; <strong>Reject H₀ whenever Z_cal &gt; 1.645</strong>
+    (p = P(Z ≥ 2.40) = 0.0082 &lt; 0.05)</p>
+    <p><strong>Step 5</strong>: 2.40 &gt; 1.645 → <strong>Reject H₀</strong></p>
+    <div class="answer">✅ At the 5% level, there is sufficient evidence that <strong>the majority (more than 50%)
+    of the small farms outperform the national average</strong>.</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Part E：管理层解读（4 分）</h3>
+  <details>
+    <summary><strong>📌 Solution</strong></summary>
+    <p><strong>Effectiveness</strong>: three consistent pieces of evidence — (i) mean 2,398.2 significantly above 2,350
+    (Z = 2.53, p ≈ 0.006); (ii) the whole 95% CI (2,360.8, 2,435.6) lies above 2,350; (iii) 62% of farms individually
+    exceeded the average, significantly more than half (Z = 2.40, p ≈ 0.008) → the intervention <strong>appears effective</strong>.</p>
+    <p><strong>Limitations</strong>: (1) all five counties are in Kenya's high-potential maize belt →
+    <strong>selection/geographic bias</strong>, results not generalizable nationwide; (2) <strong>no control group / baseline</strong> →
+    higher yields cannot be causally attributed to the intervention (weather, soil, skill are confounders);
+    (3) single season, high farm-to-farm variability (s ≈ 191 kg).</p>
+    <p><strong>Recommendation</strong>: sample beyond the maize belt and use a control group or before–after paired
+    data before scaling up.</p>
+  </details>
+  <div class="note">🧭 本案例一题串起四章：描述统计（A）→ 置信区间（B）→ 均值检验（C）→ 比例检验（D）→ 商业解读（E），
+  是极好的期末复习模板。</div>
+</div>
+
+
 <h2 contenteditable="false">十五、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
