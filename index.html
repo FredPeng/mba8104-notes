@@ -3083,6 +3083,71 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<div class="box" contenteditable="false">
+  <h3>📊 R²（决定系数）与相关系数 r</h3>
+
+  <h4>R² — Coefficient of Determination（决定系数）</h4>
+  <p><strong>R² = Y 的总变异中能被回归模型（X）解释的比例</strong>，0 ≤ R² ≤ 1。</p>
+  <div class="formula" style="text-align:center;">
+    SST = SSR + SSE（总变异 = 模型解释 + 误差）；R² = SSR ⁄ SST = 1 − SSE ⁄ SST
+  </div>
+  <p><strong>标准解读句式</strong>：R² = 0.85 → "Y 的变异中有 85% 可由 X 解释，其余 15% 归于误差/模型外因素。"
+  R² 越接近 1，拟合越好。Minitab 输出中显示为 R-sq。</p>
+
+  <h4>r — Correlation Coefficient（皮尔逊相关系数）</h4>
+  <p>用 −1 到 +1 之间的数衡量线性关系的<strong>方向</strong>（正负号）与<strong>强弱</strong>（绝对值）：</p>
+  <div class="formula" style="text-align:center;">
+    r = [ n·Σxy − Σx·Σy ] ⁄ √( [n·Σx² − (Σx)²] × [n·Σy² − (Σy)²] )
+  </div>
+  <table>
+    <thead><tr><th>|r|</th><th>强弱</th></tr></thead>
+    <tbody>
+      <tr><td>0.8 ~ 1.0</td><td>强</td></tr>
+      <tr><td>0.5 ~ 0.8</td><td>中等</td></tr>
+      <tr><td>0.2 ~ 0.5</td><td>弱</td></tr>
+      <tr><td>0 ~ 0.2</td><td>极弱 / 几乎无</td></tr>
+    </tbody>
+  </table>
+
+  <h4>三兄弟的关系</h4>
+  <table>
+    <thead><tr><th>量</th><th>告诉你什么</th><th>关系</th></tr></thead>
+    <tbody>
+      <tr><td>β̂₁ 斜率</td><td>X 变 1 单位，Y 平均变多少（有单位）</td><td>符号与 r 相同</td></tr>
+      <tr><td>r 相关系数</td><td>线性关系的方向 + 强弱（无单位）</td><td>r = ±√R²（简单回归）</td></tr>
+      <tr><td>R² 决定系数</td><td>X 解释了 Y 变异的百分比</td><td>R² = r²</td></tr>
+    </tbody>
+  </table>
+
+  <h4>✏️ 用两科成绩例题算 r</h4>
+  <p>Σx=21, Σy=20, Σxy=86, Σx²=91, Σy² = 49+36+4+0+25 = 114：</p>
+  <div class="formula">
+    r = (5×86 − 21×20) ⁄ √( [5×91−21²] × [5×114−20²] )<br>
+    = 10 ⁄ √(14 × 170) = 10 ⁄ 48.79 ≈ <strong>0.205</strong>（弱正相关）
+  </div>
+  <div class="note">💡 R² = r² ≈ 0.042——B 科只解释 A 科变异的约 4.2%。
+  说明<strong>会算方程 ≠ 模型好用</strong>：虽有 Ŷ = 1 + 0.714X，但解释力很弱，预测参考价值有限。</div>
+
+  <div class="note">⚠️ 易错点：① r 只测<strong>线性</strong>关系（r≈0 可能仍有 U 形关系）；
+  ② 相关 ≠ 因果；③ r 对离群值敏感。R² 高也不证明因果。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>🧭 回归输出解读"七连问"答题模板（Minitab Output）</h3>
+  <ol>
+    <li><strong>写回归模型</strong>：从 Coefficients 表读数 → Ŷ = β̂₀ + β̂₁X（注明变量含义）</li>
+    <li><strong>解释系数</strong>：β̂₀ = X为0时Y的预测值（若X=0无意义则称基准值）；β̂₁ = X 每增 1 单位，Y 平均变 β̂₁ 单位</li>
+    <li><strong>数据组数</strong>：n = DF(Total) + 1（或 = DF(Error) + 2，简单回归 Error df = n−2）</li>
+    <li><strong>解释 R²</strong>："Y 的变异中有 __% 由 X 解释，其余归于误差/其他因素"</li>
+    <li><strong>写假设</strong>：H₀: β₁ = 0（无线性关系）vs H₁: β₁ ≠ 0（有线性关系）</li>
+    <li><strong>求 r 并解释</strong>：r = ±√R²，符号跟 β̂₁；按 |r| 大小说强弱、按符号说方向</li>
+    <li><strong>解释检验结论</strong>：找 X 行（或 ANOVA F）的 p 值 → p &lt; α 拒绝 H₀ →
+    "有充分证据表明 X 与 Y 存在显著线性关系，模型有效"；p ≥ α → "证据不足，模型不显著，不宜用于预测"。
+    加分：与 R² 印证——显著但 R² 低 = 有关系但解释力弱。</li>
+  </ol>
+</div>
+
+
 <h2 contenteditable="false">十五、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
