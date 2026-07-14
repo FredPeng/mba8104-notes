@@ -2970,17 +2970,24 @@ window.addEventListener('load', lookupZ);
     <li><strong>误差 E = Actual − Estimated</strong>（实际值 − 直线上的估计值）——每个点到直线的竖直距离</li>
   </ul>
 
-  <h3>📐 正规方程推导（Normal Equations，板书推导思路）</h3>
-  <p>对回归线 Y on X：Yᵢ = β₀ + β₁Xᵢ + eᵢ，且 Σeᵢ = 0。求两个常数 β₀、β₁ 的步骤：</p>
-  <p><strong>Step I：对回归方程逐项求和</strong>（Σeᵢ = 0 消去误差项）：</p>
+  <h3>📐 求回归方程的 4 步流程（板书：Steps in Obtaining Regression Equation）</h3>
+  <p><strong>Step 1：写出回归方程</strong>，如 Y = β₀ + β₁X</p>
+  <p><strong>Step 2：求正规方程（Normal Equations）</strong></p>
+  <ul>
+    <li>(a) 第一条：对回归方程<strong>在所有数据对上求和</strong>（Σeᵢ = 0 消去误差项）：</li>
+  </ul>
   <div class="formula" style="text-align:center;">
-    ΣY = n·β₀ + β₁·ΣX　　……（正规方程 1）
+    ΣY = n·β₀ + β₁·ΣX　　……(i)
   </div>
-  <p><strong>Step II：两边同乘 X 再求和</strong>：</p>
+  <ul>
+    <li>(b) 后续的：<strong>两边乘以自变量 X 再求和</strong>：</li>
+  </ul>
   <div class="formula" style="text-align:center;">
-    ΣXY = β₀·ΣX + β₁·ΣX²　　……（正规方程 2）
+    ΣXY = β₀·ΣX + β₁·ΣX²　　……(ii)
   </div>
-  <p>两式联立解出 β̂₀、β̂₁ —— 其解正是下面的最小二乘公式。</p>
+  <p><strong>Step 3：代入数据，联立解出 β₀ 与 β₁</strong>（simultaneously）</p>
+  <p><strong>Step 4：写出所求回归模型</strong> Ŷ = β̂₀ + β̂₁X</p>
+  <p>联立解的通解正是下面的最小二乘公式。</p>
 
   <h3>📐 最小二乘估计（Least Squares Estimates）</h3>
   <p>用样本数据估计 β₀、β₁（帽子 ^ 表示估计值），得到拟合直线 Ŷ = β̂₀ + β̂₁X：</p>
@@ -3028,7 +3035,51 @@ window.addEventListener('load', lookupZ);
     <div class="answer">✅ 回归方程：<strong>Ŷ = 10.8 + 1.1X</strong><br>
     解读：家庭每多 1 人，支出平均增加 1.1（单位同 Y）；截距 10.8 为基准水平。</div>
   </details>
-  <div class="note">⏳ 老师同时在画散点图（横轴 X 人数、纵轴支出）——散点图用于先直观确认"大致呈线性"再拟合。</div>
+  <div class="note">💡 散点图（横轴 X 人数、纵轴支出）用于先直观确认"大致呈线性"再拟合；
+  板书还画了 L₁、L₂ 两条候选线——不同人画的线不同（主观），所以需要正规方程求唯一最优线。</div>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 例题：两科成绩（A on B，用正规方程联立求解）</h3>
+  <p>下表是 5 名学生在两个科目的成绩：</p>
+  <table>
+    <thead><tr><th>Student</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Subject A</strong></td><td>7</td><td>6</td><td>2</td><td>0</td><td>5</td></tr>
+      <tr><td><strong>Subject B</strong></td><td>5</td><td>3</td><td>4</td><td>4</td><td>5</td></tr>
+    </tbody>
+  </table>
+  <p>(a) 求 A 科成绩对 B 科成绩的回归方程；(b) 若某学生 B 科得 8 分，预测其 A 科成绩。</p>
+  <details>
+    <summary><strong>📌 解答（4 步流程）</strong></summary>
+    <p><strong>Step 1</strong>：设 Y = A 科成绩，X = B 科成绩；模型 Y = β₀ + β₁X</p>
+    <p><strong>Step 2</strong>：汇总量（n = 5）：</p>
+    <table>
+      <thead><tr><th>x (B)</th><th>y (A)</th><th>xy</th><th>x²</th></tr></thead>
+      <tbody>
+        <tr><td>5</td><td>7</td><td>35</td><td>25</td></tr>
+        <tr><td>3</td><td>6</td><td>18</td><td>9</td></tr>
+        <tr><td>4</td><td>2</td><td>8</td><td>16</td></tr>
+        <tr><td>4</td><td>0</td><td>0</td><td>16</td></tr>
+        <tr><td>5</td><td>5</td><td>25</td><td>25</td></tr>
+        <tr class="total"><td>Σx = 21</td><td>Σy = 20</td><td>Σxy = 86</td><td>Σx² = 91</td></tr>
+      </tbody>
+    </table>
+    <p>代入正规方程：</p>
+    <div class="formula">
+      (i)　20 = 5β₀ + 21β₁<br>
+      (ii)　86 = 21β₀ + 91β₁
+    </div>
+    <p><strong>Step 3：联立求解</strong>——(i)×21 得 420 = 105β₀ + 441β₁；(ii)×5 得 430 = 105β₀ + 455β₁；
+    两式相减：10 = 14β₁</p>
+    <div class="formula">
+      β̂₁ = 10 ⁄ 14 = 5/7 ≈ <strong>0.714</strong><br>
+      代回 (i)：5β₀ = 20 − 21×(5/7) = 20 − 15 = 5 → β̂₀ = <strong>1</strong>
+    </div>
+    <p><strong>Step 4：回归模型</strong></p>
+    <div class="answer">✅ (a) <strong>Ŷ = 1 + 0.714X</strong>（即 Ŷ = 1 + (5/7)X）</div>
+    <p><strong>(b) 预测</strong>：X = 8 → Ŷ = 1 + 0.714×8 = 1 + 5.71 = <strong>6.71 分</strong></p>
+  </details>
 </div>
 
 
