@@ -3698,8 +3698,15 @@ function buildTOC() {
   });
 }
 
-// 自动加载已保存的笔记，然后生成目录
-window.addEventListener('load', () => { loadNotes(); buildTOC(); });
+// 自动加载已保存的笔记，然后生成目录（互不阻塞：任一步出错不影响另一步）
+window.addEventListener('load', () => {
+  try { loadNotes(); } catch (e) { console.warn('loadNotes failed:', e); }
+  try { buildTOC(); } catch (e) { console.warn('buildTOC failed:', e); }
+});
+// 兜底：DOM 就绪时也先构建一次目录
+document.addEventListener('DOMContentLoaded', () => {
+  try { buildTOC(); } catch (e) {}
+});
 
 // 自动保存（每30秒）
 setInterval(() => {
