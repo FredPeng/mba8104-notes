@@ -3287,6 +3287,125 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<h2 contenteditable="false">附：Make-up CAT 试卷与解答（2026-07-17）</h2>
+
+<p contenteditable="false"><em>来源：Adobe Scan 18 Jul 2026.pdf（3 页）。2 小时，共 4 题：必答 Q1 + 任选两题。
+覆盖：比例检验、两均值 t 检验、概率、贝叶斯、多元回归解读、期望方差、卡方独立性。</em></p>
+
+<div class="box" contenteditable="false">
+  <h3>Q1 (a) 股票偏好比例是否下降（4 分，α=0.02）</h3>
+  <p>10 年前 65% 投资者偏好股票。现抽 900 人，300 人偏好房地产（→ 600 人偏好股票）。
+  能否认为偏好股票的比例已下降？</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>p̂ = 600/900 = 0.6667</p>
+    <p><strong>Step 1</strong>：H₀: π ≥ 0.65　H₁: π &lt; 0.65（左尾）</p>
+    <p><strong>Step 2</strong>：α = 0.02 → 左尾临界值 −2.054</p>
+    <p><strong>Step 3</strong>：Z = (0.6667 − 0.65) ⁄ √(0.65×0.35/900) = 0.0167 ⁄ 0.0159 = <strong>+1.05</strong></p>
+    <p><strong>Step 4/5</strong>：+1.05 未落入左侧拒绝域（&lt; −2.054 才拒绝）→ <strong>不拒绝 H₀</strong></p>
+    <div class="answer">✅ 无证据表明偏好股票的比例下降（样本 66.7% 甚至略高于 65%）。</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q1 (b) 工序 A vs B 寿命（两均值 t，等方差，α=0.01）</h3>
+  <p>A：n=40, x̄=52.30, s=9.23；B：n=37, x̄=69.47, s=11.78。总体正态、方差相等但未知。
+  经理相信 B 平均寿命更长。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> H₀: μ_B ≤ μ_A　vs　H₁: μ_B &gt; μ_A（右尾）</p>
+    <p><strong>(ii)</strong> 第一类错误：B 并不更耐用却断定其更耐用（弃真）；
+    第二类错误：B 确实更耐用却未能得出该结论（取伪）。</p>
+    <p><strong>(iii)</strong> 合并方差 s_p² = (39×9.23² + 36×11.78²) ⁄ 75 = 110.91 → s_p = 10.53</p>
+    <div class="formula">
+      SE = 10.53 × √(1/40 + 1/37) = 2.402<br>
+      t = (69.47 − 52.30) ⁄ 2.402 = <strong>7.15</strong>；df = 75，临界值 t(0.01,75) ≈ 2.377
+    </div>
+    <p>7.15 &gt; 2.377 → <strong>拒绝 H₀</strong></p>
+    <div class="answer">✅ 1% 水平下经理的信念成立：B 工序产品平均寿命显著更长。
+    （用课堂简化式 √(s_A²/n_A+s_B²/n_B) 得 t=7.08，结论相同。）</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q2 (a) 产品分级概率（G 80% / B 15% / D 5%，独立抽两件）</h3>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> P(至少一件 B) = 1 − 0.85² = <strong>0.2775</strong></p>
+    <p><strong>(ii)</strong> P(两件都非 G) = 0.20² = <strong>0.04</strong></p>
+    <p><strong>(iii)</strong> P(两件 G | 至少一件 G) = 0.8² ⁄ (1 − 0.04) = 0.64 ⁄ 0.96 = <strong>2/3 ≈ 0.667</strong></p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q2 (b) 螺栓贝叶斯（5 分）</h3>
+  <p>M₁ 产 75%（次品率 5%），M₂ 产 25%（次品率 8%）。抽到次品，求来自 M₁ 的概率。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <div class="formula">
+      P(M₁|D) = (0.75×0.05) ⁄ (0.75×0.05 + 0.25×0.08)<br>
+      = 0.0375 ⁄ 0.0575 = <strong>0.6522</strong>
+    </div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q3 多元回归输出解读（10 分）</h3>
+  <p>y = 服务时长；X₁ = 微机台数；X₂ = 经验月数。输出：Constant 2.405；X₁ 1.4261（T=10.14, P=0.000）；
+  X₂ −0.3663（T=−2.78, P=0.027）；R-Sq=94.0%，R-Sq(adj)=92.3%；ANOVA：Reg DF=2, F=54.81, P=0.000；Total DF=9。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> Ŷ = 2.405 + 1.4261X₁ − 0.3663X₂</p>
+    <p><strong>(ii)</strong> β̂₀=2.405：两自变量均为 0 时的基准时长；
+    β̂₁=1.4261：经验不变，每多一台微机时长平均 +1.43；
+    β̂₂=−0.3663：台数不变，经验每多一月时长平均 −0.37。</p>
+    <p><strong>(iii)</strong> R²=94%：服务时长变异的 94% 由两个自变量共同解释，仅 6% 归于误差——拟合很好。</p>
+    <p><strong>(iv)</strong> n = DF(Total)+1 = 9+1 = <strong>10</strong></p>
+    <p><strong>(v)</strong> 整体 F 检验：H₀: β₁=β₂=0 vs H₁: 至少一个 ≠0；F=54.81, p=0.000 &lt; 0.01 →
+    <strong>拒绝 H₀</strong>，模型整体显著（拟合优度好）。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q4 (a) 新产品利润的期望与标准差（4 分）</h3>
+  <p>X（百万$）：6.5（0.30）、2.2（0.50）、−1.5（0.20）。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <div class="formula">
+      E(X) = 1.95 + 1.10 − 0.30 = <strong>2.75</strong><br>
+      E(X²) = 12.675 + 2.42 + 0.45 = 15.545<br>
+      Var(X) = 15.545 − 2.75² = <strong>7.9825</strong>；σ = <strong>2.83 百万$</strong>
+    </div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q4 (b) 职级 × 在职年限（卡方独立性，α=0.01，6 分）</h3>
+  <table>
+    <thead><tr><th>Grade</th><th>0–2</th><th>2–5</th><th>&gt;5</th><th>合计</th></tr></thead>
+    <tbody>
+      <tr><td>Managerial</td><td>4</td><td>11</td><td>6</td><td>21</td></tr>
+      <tr><td>Skilled</td><td>32</td><td>28</td><td>21</td><td>81</td></tr>
+      <tr><td>Unskilled</td><td>25</td><td>23</td><td>50</td><td>98</td></tr>
+      <tr class="total"><td>合计</td><td>61</td><td>62</td><td>77</td><td>200</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>Step 1</strong>：H₀：职级与在职年限独立；H₁：不独立</p>
+    <p><strong>Step 2</strong>：df = (3−1)(3−1) = 4；α=0.01 → 临界值 13.277</p>
+    <p><strong>Step 3</strong>：E = 行×列÷200：M 行 6.405/6.510/8.085；S 行 24.705/25.110/31.185；U 行 29.890/30.380/37.730</p>
+    <p><strong>Step 4</strong>：</p>
+    <div class="formula">
+      χ² = 0.903+3.097+0.538 + 2.154+0.333+3.326 + 0.800+1.793+3.990 = <strong>16.93</strong>
+    </div>
+    <p><strong>Step 5</strong>：16.93 &gt; 13.277 → <strong>拒绝 H₀</strong></p>
+    <div class="answer">✅ 1% 水平下，职级与在职年限<strong>存在显著关系</strong>
+    （最大贡献格：Unskilled &gt;5 年实际 50 vs 期望 37.7）。</div>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">十五、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
