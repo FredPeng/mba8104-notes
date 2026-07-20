@@ -3406,6 +3406,87 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<div class="box" contenteditable="false">
+  <h3>🇬🇧 Make-up CAT — English Solutions（英文版完整解答）</h3>
+
+  <details>
+    <summary><strong>Q1(a) Proportion test (4 Marks, α = 0.02)</strong></summary>
+    <p>300 of 900 preferred real estate → 600 preferred stocks → p̂ = 600/900 = 0.6667.</p>
+    <p><strong>Step 1</strong>: H₀: π ≥ 0.65　H₁: π &lt; 0.65 (left-tailed)</p>
+    <p><strong>Step 2</strong>: nπ₀ = 585 ≥ 5, n(1−π₀) = 315 ≥ 5 ✓; α = 0.02 → critical value −2.054</p>
+    <p><strong>Step 3</strong>: SE = √(0.65×0.35/900) = 0.0159; Z_cal = (0.6667 − 0.65)/0.0159 = <strong>+1.05</strong></p>
+    <p><strong>Step 4</strong>: Reject H₀ if Z_cal &lt; −2.054</p>
+    <p><strong>Step 5</strong>: +1.05 is not in the rejection region → <strong>fail to reject H₀</strong></p>
+    <div class="answer">At the 2% level, the data are not sufficient to conclude the proportion preferring stocks
+    has declined (the sample proportion, 66.7%, is in fact slightly above 65%).</div>
+  </details>
+
+  <details>
+    <summary><strong>Q1(b) Two-sample pooled t (1+2+3 Marks)</strong></summary>
+    <p><strong>(i)</strong> H₀: μ_B ≤ μ_A　H₁: μ_B &gt; μ_A (right-tailed; the manager's belief goes to H₁)</p>
+    <p><strong>(ii)</strong> Type I error: concluding B lasts longer when it does not (rejecting a true H₀; probability α).
+    Type II error: failing to conclude B lasts longer when it actually does (failing to reject a false H₀; probability β).</p>
+    <p><strong>(iii)</strong> Equal but unknown variances → pooled t:</p>
+    <div class="formula">
+      s_p² = (39×85.1929 + 36×138.7684) ⁄ 75 = 110.909 → s_p = 10.531<br>
+      SE = 10.531 × √(1/40 + 1/37) = 2.402<br>
+      t_cal = (69.47 − 52.30) ⁄ 2.402 = <strong>7.15</strong>；df = 75, t(0.01,75) ≈ 2.377
+    </div>
+    <p>7.15 &gt; 2.377 → <strong>Reject H₀</strong>.</p>
+    <div class="answer">At the 1% level, the manager's belief is valid — process B items last longer on average.</div>
+  </details>
+
+  <details>
+    <summary><strong>Q2(a) Production line probabilities (2+2+1 Marks)</strong></summary>
+    <p><strong>(i)</strong> P(at least one B) = 1 − 0.85² = <strong>0.2775</strong></p>
+    <p><strong>(ii)</strong> P(neither good) = 0.20² = <strong>0.04</strong></p>
+    <p><strong>(iii)</strong> P(both G | at least one G) = 0.64 ⁄ (1 − 0.04) = 0.64 ⁄ 0.96 = <strong>2/3 ≈ 0.667</strong></p>
+  </details>
+
+  <details>
+    <summary><strong>Q2(b) Bayes — defective bolt (5 Marks)</strong></summary>
+    <div class="formula">
+      P(M₁|D) = (0.75×0.05) ⁄ (0.75×0.05 + 0.25×0.08) = 0.0375 ⁄ 0.0575 = <strong>0.6522</strong>
+    </div>
+    <div class="answer">Given the bolt is defective, the probability it came from the first machine is about 65.2%.</div>
+  </details>
+
+  <details>
+    <summary><strong>Q3 Multiple regression output (10 Marks)</strong></summary>
+    <p><strong>(i)</strong> Ŷ = 2.405 + 1.4261X₁ − 0.3663X₂</p>
+    <p><strong>(ii)</strong> β̂₀ = 2.405: baseline when X₁ = X₂ = 0. β̂₁ = 1.4261: holding experience constant,
+    each additional microcomputer raises expected service time by ≈1.43. β̂₂ = −0.3663: holding the number of
+    computers constant, each extra month of experience lowers expected service time by ≈0.37.</p>
+    <p><strong>(iii)</strong> R-Sq = 94.0%: 94% of the variation in service time is explained jointly by the two
+    predictors; only 6% is unexplained — a very good fit (R-Sq(adj) = 92.3%).</p>
+    <p><strong>(iv)</strong> n = DF(Total) + 1 = 9 + 1 = <strong>10</strong></p>
+    <p><strong>(v)</strong> Overall F test: H₀: β₁ = β₂ = 0 vs H₁: at least one βⱼ ≠ 0.
+    F = 54.81, p = 0.000 &lt; 0.01 → <strong>Reject H₀</strong> — the model is significant overall (good fit);
+    both predictors are also individually significant (p = 0.000 and 0.027).</p>
+  </details>
+
+  <details>
+    <summary><strong>Q4(a) Mean and SD of profit (4 Marks)</strong></summary>
+    <div class="formula">
+      E(X) = 6.5(0.3) + 2.2(0.5) + (−1.5)(0.2) = <strong>2.75 ($M)</strong><br>
+      E(X²) = 12.675 + 2.42 + 0.45 = 15.545<br>
+      Var(X) = 15.545 − 2.75² = <strong>7.9825</strong>；σ = <strong>2.83 ($M)</strong>
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>Q4(b) Chi-square independence (6 Marks, α = 0.01)</strong></summary>
+    <p><strong>Step 1</strong>: H₀: grade and length of stay are independent; H₁: not independent.</p>
+    <p><strong>Step 2</strong>: df = (3−1)(3−1) = 4; critical value χ²(0.01, 4) = 13.277.</p>
+    <p><strong>Step 3</strong>: E = row × column ⁄ 200 (e.g. Managerial/0–2: 21×61/200 = 6.405).</p>
+    <p><strong>Step 4</strong>: χ² = Σ(O−E)²/E = 0.903+3.097+0.538+2.154+0.333+3.326+0.800+1.793+3.990 = <strong>16.93</strong></p>
+    <p><strong>Step 5</strong>: 16.93 &gt; 13.277 → <strong>Reject H₀</strong>.</p>
+    <div class="answer">At the 1% level, there is sufficient evidence of a relationship between grade and length of
+    stay (driven mainly by unskilled workers staying &gt;5 years: observed 50 vs expected 37.7).</div>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">十五、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
