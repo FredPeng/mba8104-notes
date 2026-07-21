@@ -3487,6 +3487,166 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<h2 contenteditable="false">附：期末试卷 July 2022 与解答（End of Semester Exam）</h2>
+
+<p contenteditable="false"><em>来源：<a href="MBA 8104 QA  Question paper-July 2022.pdf">MBA 8104 QA Question paper-July 2022.pdf</a>（6 页）。
+3 小时；Q1 必答（20 分）+ 任选四题（各 10 分）。</em></p>
+
+<div class="box" contenteditable="false">
+  <h3>Q1 (a) 样本量确定（2 分）</h3>
+  <p><strong>原题</strong>：估计 12 月单户家庭平均电费。σ ≈ $20，要求 99% 置信、精度 ±$5。求所需样本量。</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <div class="formula">n = (z·σ ⁄ E)² = (2.58 × 20 ⁄ 5)² = (10.32)² = 106.5 → <strong>n = 107</strong>（向上取整）</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q1 (b) 抽样分布：MBA 起薪（3 + 2 分）</h3>
+  <p><strong>原题</strong>：男性 MBA 起薪 μ = $15,000、σ = $1,200。随机抽 36 名<strong>女性</strong> MBA，样本均值 $15,600。
+  (i) 若按男性分布，抽 36 人样本均值 ≥ $15,600 的概率？(ii) 据此判断女性起薪是否服从与男性相同的分布？</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> SE = 1200 ⁄ √36 = 200；Z = (15600 − 15000) ⁄ 200 = <strong>3.00</strong>；
+    P(x̄ ≥ 15600) = P(Z ≥ 3) = 1 − 0.99865 = <strong>0.00135</strong></p>
+    <p><strong>(ii)</strong> 若女性起薪与男性同分布，出现这一样本均值的概率仅 0.14%——几乎不可能。
+    → <strong>女性起薪不服从男性的分布</strong>，其平均起薪高于 $15,000。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q1 (c) 周薪置信区间（4 + 2 分）</h3>
+  <p><strong>原题</strong>：n = 40，x̄ = 32.83，s = 10.12（百 Kshs）。(i) 求 95% 与 99% CI；
+  (ii) 董事会拟据此加薪，应推荐哪个置信水平？</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <p>SE = 10.12 ⁄ √40 = 1.600</p>
+    <div class="formula">
+      95%：32.83 ± 1.96×1.600 = 32.83 ± 3.14 = <strong>(29.69, 35.97)</strong><br>
+      99%：32.83 ± 2.576×1.600 = 32.83 ± 4.12 = <strong>(28.71, 36.95)</strong>
+    </div>
+    <p><strong>(ii)</strong> 推荐 <strong>99%</strong>：加薪是高代价、难撤回的财务决策，更高置信水平（更宽区间）对真实均值的覆盖更有把握，决策更稳妥。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q1 (d) 入学原因列联表（1 + 3 分）</h3>
+  <p><strong>原题</strong>：全日制 F：Q 754、C 62、O 61；非全日制 P：Q 157、C 7、O 6。随机抽一名学生：
+  (i) P(因其他原因 O)；(ii) 已知因成本/便利 C，求是非全日制的概率。</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <p>总计 1047；列合计 Q=911、C=69、O=67。</p>
+    <p><strong>(i)</strong> P(O) = 67 ⁄ 1047 = <strong>0.064</strong></p>
+    <p><strong>(ii)</strong> P(P | C) = 7 ⁄ 69 = <strong>0.1014</strong></p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q1 (e) 私立 vs 公立医院薪资（1 + 2 分）</h3>
+  <p><strong>原题</strong>：12 对配对健康工作者年薪。私立：mean 20967、median 18350、s 8511、kurtosis 2.75；
+  公立：mean 20304、median 18150、s 8682、kurtosis 4.09。(i) 评述分布形态；(ii) 求 CV 并评述。</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> 两部门均 Mean &gt; Median → <strong>右偏（正偏）</strong>；峰度高（尖峰厚尾），
+    最大值远超 Q3——少数极高薪者拉高均值。</p>
+    <p><strong>(ii)</strong> CV(私立) = 8511/20967 = <strong>40.59%</strong>；CV(公立) = 8682/20304 = <strong>42.76%</strong>。
+    两者相对波动都很大且接近，公立略高——薪资"可比性"大体维持，但内部差异都显著。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q2 股票回报 + 审计贝叶斯（10 分）</h3>
+  <p><strong>原题 (a)</strong>：GDP 升/平/降（等可能），回报 20%、5%、−10%。列分布表，求期望与标准差。
+  <strong>(b)</strong>：零售账户占 70%（错误率 10%），批发占 30%（错误率 20%）。发现一处错误，判断来自哪个部门。</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <p><strong>(a)</strong> X：20、5、−10，各 P = 1/3。E(X) = 15/3 = <strong>5%</strong>；
+    E(X²) = 525/3 = 175 → Var = 175 − 25 = 150 → σ = <strong>12.25%</strong></p>
+    <p><strong>(b)</strong> P(R|E) = 0.07 ⁄ (0.07 + 0.06) = <strong>0.5385</strong>；P(W|E) = <strong>0.4615</strong>
+    → 错误<strong>更可能来自零售部门</strong>（虽然批发错误率高一倍，但零售基数大）。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q3 银行利润回归解读（10 分）</h3>
+  <p><strong>原题</strong>：Y = 2021 利润 vs X = 2020 利润（10 家银行，千美元）。输出：Constant 1.691（p=0.394）；
+  X 0.3813（t=0.71, p=0.502）；S=0.681，R-Sq=6.7%，R-Sq(adj)=0.0%；F=0.50（p=0.502）。写出完整解读。</p>
+  <details><summary><strong>📌 解答（五段式）</strong></summary>
+    <p><strong>(i) 方程与系数</strong>：Ŷ = 1.691 + 0.3813X。β̂₀=1.691：X=0 时的基准预测；
+    β̂₁=0.3813：2020 利润每多 1 千美元，2021 利润平均多 0.3813 千美元。</p>
+    <p><strong>(ii) R²</strong> = 6.7%：仅 6.7% 的 2021 利润变异由 2020 利润解释（adj = 0%）——解释力几乎为零。</p>
+    <p><strong>(iii) 假设与结论</strong>：H₀: β₁=0 vs H₁: β₁≠0；t=0.71，p=0.502 &gt; 0.05 → 不拒绝 H₀，无显著线性关系。</p>
+    <p><strong>(iv) 相关系数</strong>：r = +√0.067 = <strong>0.259</strong>（弱正相关）。</p>
+    <p><strong>(v) 拟合讨论</strong>：模型不显著、R² 极低 → 不宜用于预测；Obs 1 缺 X（实际 n=9 参与回归）；
+    Obs 6 标准化残差 −1.98 接近 ±2，为潜在异常点。管理含义：银行前后两年利润几乎无线性"记忆"。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q4 态度卡方 + 自尊 pooled t（10 分）</h3>
+  <p><strong>原题 (a)</strong>：2017–2019 年男性对"已婚女性工作"的赞成/反对数：410/252、412/176、409/151。
+  α=0.05，态度是否在变化？<strong>(b)</strong>：常换工作者 A（n=10, x̄=52.30, s=9.23）自尊是否低于
+  不常换者 B（n=17, x̄=69.47, s=11.78）？正态、等方差未知，α=0.01。</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <p><strong>(a)</strong> H₀：态度与年份独立。行合计 1231/579，列合计 662/588/560，N=1810；
+    df=(2−1)(3−1)=2 → 临界值 5.991。</p>
+    <div class="formula">χ² = 3.59+0.37+2.07+7.63+0.78+4.41 = <strong>18.88</strong> &gt; 5.991 → 拒绝 H₀</div>
+    <p>✅ 态度在变化：赞成率 61.9% → 70.1% → 73.0% 逐年上升。</p>
+    <p><strong>(b)</strong> H₀: μ_A ≥ μ_B　H₁: μ_A &lt; μ_B（左尾）；df = 25 → 临界值 −2.485</p>
+    <div class="formula">
+      s_p² = (9×85.1929 + 16×138.7684) ⁄ 25 = 119.48 → s_p = 10.931<br>
+      SE = 10.931 × √(1/10 + 1/17) = 4.356<br>
+      t = (52.30 − 69.47) ⁄ 4.356 = <strong>−3.94</strong> &lt; −2.485 → 拒绝 H₀
+    </div>
+    <p>✅ 1% 水平下信念成立：常换工作者平均自尊显著更低。
+    ⚠️ 数据与 Make-up CAT Q1(b) 相同但 n 不同（10/17 vs 40/37）——df、SE、临界值全不同，勿照抄。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q5 马尔可夫链：生物识别系统维护（10 分）⭐ 新题型</h3>
+  <p><strong>原题</strong>：系统每周检查，状态 1 好 / 2 小修 / 3 大修 / 4 报废。转移矩阵（From 行 → To 列）：</p>
+  <table>
+    <thead><tr><th>From ＼ To</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>0</td><td>0.8</td><td>0.1</td><td>0.1</td></tr>
+      <tr><td>2</td><td>0</td><td>0.5</td><td>0.4</td><td>0.1</td></tr>
+      <tr><td>3</td><td>0</td><td>0</td><td>0.4</td><td>0.6</td></tr>
+      <tr><td>4</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+    </tbody>
+  </table>
+  <p>成本（Kshs）：状态 1：0/0；2：5万/5万；3：25万/30万；4：50万/50万（Policy 1 / Policy 2）。
+  (a) 求长期处于各状态的比例；(b) 哪个策略长期成本最低？</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <p><strong>(a) 稳态方程 πP = π，Σπ = 1</strong>：</p>
+    <div class="formula">
+      π₁ = π₄；π₂ = 0.8π₁ + 0.5π₂ → π₂ = 1.6π₁；<br>
+      0.6π₃ = 0.1π₁ + 0.4π₂ = 0.74π₁ → π₃ = (37/30)π₁<br>
+      归一化 → <strong>π = (6/29, 48/145, 37/145, 6/29) ≈ (0.207, 0.331, 0.255, 0.207)</strong>
+    </div>
+    <p>即长期约 20.7% 时间"好"、33.1% 小修、25.5% 大修、20.7% 报废更换。</p>
+    <p><strong>(b) 长期期望每周成本</strong>（稳态加权）：</p>
+    <div class="formula">
+      Policy 1：50,000×0.331 + 250,000×0.255 + 500,000×0.207 = <strong>Kshs 183,793</strong><br>
+      Policy 2：50,000×0.331 + 300,000×0.255 + 500,000×0.207 = <strong>Kshs 196,552</strong>
+    </div>
+    <div class="answer">✅ 选 <strong>Policy 1</strong>，每周期节省约 Kshs 12,759。</div>
+    <p style="font-size:0.9em;color:#666;">注：扫描件只显示一个转移矩阵，此处按两策略共用稳态分布、仅成本不同处理；若两策略各有矩阵，方法相同（各求稳态再加权比较）。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>Q6 跳槽间隔期望方差 + 并购比例检验（10 分）</h3>
+  <p><strong>原题 (a)</strong>：1,191 名经理跳槽间隔（取组中点 X = 1.5~9.5，百分比为概率）。求 E(X) 与 Var(X) 并解读。
+  <strong>(b)</strong>：2,778 家公司中 748 家在 2000 年宣布并购。α=0.05，检验真实比例是否低于 30%。</p>
+  <details><summary><strong>📌 解答</strong></summary>
+    <p><strong>(a)</strong> E(X) = Σx·p = <strong>4.32 年</strong>；E(X²) = 23.29 →
+    Var = 23.29 − 4.32² = <strong>4.60 年²</strong>，σ = 2.15 年。
+    解读：经理平均约 4.3 年跳一次，典型偏差 ±2.1 年（多数落在约 2.2~6.5 年）。</p>
+    <p><strong>(b)</strong> p̂ = 748/2778 = 0.2693；H₀: π ≥ 0.30　H₁: π &lt; 0.30（左尾），临界值 −1.645</p>
+    <div class="formula">
+      SE = √(0.30×0.70/2778) = 0.00869<br>
+      Z = (0.2693 − 0.30) ⁄ 0.00869 = <strong>−3.54</strong> &lt; −1.645 → 拒绝 H₀
+    </div>
+    <p>✅ 5% 水平下有充分证据表明 2000 年宣布并购的公司比例<strong>低于 30%</strong>。</p>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">十五、复习题（Probability Revision Questions）</h2>
 
 <p contenteditable="false"><em>来源：Questions.pptx — 课堂复习幻灯片</em></p>
