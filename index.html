@@ -3985,6 +3985,83 @@ window.addEventListener('load', lookupZ);
 </div>
 
 
+<div class="box" contenteditable="false">
+  <h3>📝 过往试卷 Q2：三商店次品 + Catherine 面试（贝叶斯，双语）</h3>
+
+  <details>
+    <summary><strong>📄 英文原题（Original Question, 10 Marks）</strong></summary>
+    <p style="font-style:italic;">"(a) In a city there are 3 stores each having 20 pieces of an item. Let these
+    stores be denoted by S₁, S₂ and S₃. The stores S₁, S₂ and S₃ have 10%, 20% and 30% defective items,
+    respectively. A customer first chooses a store randomly and then selects an item randomly from the store.<br>
+    a) Find the probability that the selected item is defective. (2 Marks)<br>
+    b) Suppose an item chosen from one of the stores is defective, determine which store could have stocked this
+    defective item. (3 Marks)</p>
+    <p style="font-style:italic;">(b) A commercial bank is considering Catherine for a key position in Financial
+    Management. After interviewing Catherine and reviewing her credentials, the personnel manager feels there is a
+    65% chance that Catherine would do well in the job and a 35% chance that she would not. According to the
+    experience of other companies, the consulting firm is reasonably accurate in evaluating financial managers:
+    P(predict well | does well) = 0.85, P(predict not well | does well) = 0.15; P(predict well | does not do well)
+    = 0.2, P(predict not well | does not do well) = 0.8.<br>
+    (i) If the consulting firm predicts Catherine will do well, determine the probability that this will be true. (3 Marks)<br>
+    (ii) If the consulting firm predicts Catherine will not do well, determine the probability that this will be true. (2 Marks)"</p>
+  </details>
+
+  <details>
+    <summary><strong>📌 (a) 三商店次品 — 中文解答</strong></summary>
+    <p>P(S₁)=P(S₂)=P(S₃)=1/3；P(D|S₁)=0.10，P(D|S₂)=0.20，P(D|S₃)=0.30。</p>
+    <p><strong>a) 全概率</strong>：P(D) = (0.10+0.20+0.30) ⁄ 3 = <strong>0.20</strong></p>
+    <p><strong>b) 贝叶斯表格法</strong>：</p>
+    <table>
+      <thead><tr><th>事件</th><th>先验</th><th>P(D|·)</th><th>联合</th><th>后验</th></tr></thead>
+      <tbody>
+        <tr><td>S₁</td><td>1/3</td><td>0.10</td><td>0.0333</td><td>0.10/0.60 = <strong>1/6 ≈ 0.167</strong></td></tr>
+        <tr><td>S₂</td><td>1/3</td><td>0.20</td><td>0.0667</td><td>0.20/0.60 = <strong>1/3 ≈ 0.333</strong></td></tr>
+        <tr><td>S₃</td><td>1/3</td><td>0.30</td><td>0.1000</td><td>0.30/0.60 = <strong>1/2 = 0.500</strong></td></tr>
+        <tr class="total"><td>合计</td><td>1</td><td>—</td><td>P(D)=0.20</td><td>1 ✓</td></tr>
+      </tbody>
+    </table>
+    <div class="answer">✅ 次品最可能来自 <strong>S₃</strong>（50%）。先验相等 → 后验正比于次品率 1:2:3
+    （与"Jane/Tom/Mary 次品报告"同构）。</div>
+  </details>
+
+  <details>
+    <summary><strong>📌 (a) English Solution</strong></summary>
+    <p>P(S₁)=P(S₂)=P(S₃)=1/3; defect rates 0.10, 0.20, 0.30.</p>
+    <p><strong>a)</strong> Total probability: P(D) = (0.10+0.20+0.30)/3 = <strong>0.20</strong>.</p>
+    <p><strong>b)</strong> By Bayes (equal priors cancel — posteriors ∝ defect rates 1:2:3):
+    P(S₁|D) = <strong>1/6</strong>, P(S₂|D) = <strong>1/3</strong>, P(S₃|D) = <strong>1/2</strong>.
+    The defective item most likely came from <strong>store S₃</strong> (0.50).</p>
+  </details>
+
+  <details>
+    <summary><strong>📌 (b) Catherine — 中文解答</strong></summary>
+    <p>W/W' = 实际干得好/不好；PW/PN = 预测会干好/干不好。
+    P(W)=0.65，P(W')=0.35；P(PW|W)=0.85，P(PN|W)=0.15；P(PW|W')=0.20，P(PN|W')=0.80。</p>
+    <p><strong>(i) P(W|PW)</strong>：</p>
+    <div class="formula">
+      = (0.85×0.65) ⁄ (0.85×0.65 + 0.20×0.35)<br>
+      = 0.5525 ⁄ 0.6225 = <strong>0.888（88.8%）</strong>
+    </div>
+    <p><strong>(ii) P(W'|PN)</strong>：</p>
+    <div class="formula">
+      = (0.80×0.35) ⁄ (0.80×0.35 + 0.15×0.65)<br>
+      = 0.28 ⁄ 0.3775 = <strong>0.742（74.2%）</strong>
+    </div>
+    <div class="answer">✅ "好评"可信度（88.8%）高于"差评"（74.2%）——先验已偏向她会干好（65%），
+    正向预测顺势，负向预测逆流。（本题是 Patricia 题的变体：先验 65/35、准确率 0.85/0.8。）</div>
+  </details>
+
+  <details>
+    <summary><strong>📌 (b) English Solution</strong></summary>
+    <p><strong>(i)</strong> P(W|PW) = (0.85×0.65) ⁄ (0.85×0.65 + 0.20×0.35) = 0.5525 ⁄ 0.6225 = <strong>0.888</strong></p>
+    <p><strong>(ii)</strong> P(W'|PN) = (0.80×0.35) ⁄ (0.80×0.35 + 0.15×0.65) = 0.28 ⁄ 0.3775 = <strong>0.742</strong></p>
+    <p>A favourable prediction is right ≈ 88.8% of the time; an unfavourable one only ≈ 74.2% —
+    the prior already leans toward Catherine doing well (65%), so a positive forecast "goes with the current"
+    while a negative one must swim against it.</p>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">十六、CAT 复习（描述统计与综合例题）</h2>
 
 <p contenteditable="false"><em>本节汇总今天课堂的内容：描述统计概念 + 综合例题 + 置信区间引子。</em></p>
