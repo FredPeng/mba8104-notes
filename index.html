@@ -3822,6 +3822,36 @@ window.addEventListener('load', lookupZ);
     是真阳性（90）的 11 倍——检测"准"（90%）敌不过基础率悬殊。
     实践上应<strong>二次独立复检</strong>（以 1/12 为新先验再算，后验将大幅上升）。
   </div>
+
+  <details>
+    <summary><strong>🇬🇧 English Solution（英文版解答）</strong></summary>
+    <p><strong>Step 1 — Define the events</strong>: D / D' = has / does not have the disease;
+    T / T' = test indicates the disease (positive) / indicates no disease.</p>
+    <p><strong>Step 2 — Translate the given information</strong>:
+    P(T|D) = 0.90 ("correctly detects 90% of those who have it");
+    P(T'|D') = 0.90 → so the false-positive rate P(T|D') = 0.10;
+    P(D) = 0.01 → P(D') = 0.99. <em>Required:</em> P(D|T).</p>
+    <p style="font-size:0.9em;color:#666;">Key reading point: the question gives P(T|D) but asks for the reverse
+    direction P(D|T) — reversing the conditioning is exactly what Bayes' theorem does.</p>
+    <p><strong>Step 3 — Apply Bayes' theorem</strong>:</p>
+    <div class="formula">
+      P(D|T) = P(T|D)·P(D) ⁄ [ P(T|D)·P(D) + P(T|D')·P(D') ]<br>
+      Numerator (true positives) = 0.90 × 0.01 = 0.009<br>
+      False-positive path = 0.10 × 0.99 = 0.099<br>
+      P(T) = 0.009 + 0.099 = 0.108<br>
+      P(D|T) = 0.009 ⁄ 0.108 = <strong>1/12 ≈ 0.0833 (about 8.33%)</strong>
+    </div>
+    <p><strong>Step 4 — Tabular check</strong>: joint probabilities 0.009 (D) and 0.099 (D') sum to
+    P(T) = 0.108; posteriors 1/12 and 11/12 sum to 1 ✓.</p>
+    <p><strong>Step 5 — The 10,000-people intuition</strong>: 100 diseased → 90 test positive;
+    9,900 healthy → 990 test positive. Of the 1,080 positives, only 90 are truly diseased →
+    90/1,080 = 1/12.</p>
+    <div class="answer">Even with a positive test, the probability she actually has the disease is only
+    <strong>1/12 ≈ 8.33%</strong> — the <strong>base-rate fallacy</strong>: healthy people outnumber the sick
+    99 to 1, so a 10% false-positive rate yields 11 times as many false positives as true positives.
+    A single positive result is not a diagnosis; an independent second test is needed
+    (with 1/12 as the new prior, a second positive raises the posterior dramatically).</div>
+  </details>
 </div>
 
 <h2 contenteditable="false">十六、CAT 复习（描述统计与综合例题）</h2>
