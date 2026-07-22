@@ -3765,32 +3765,62 @@ window.addEventListener('load', lookupZ);
   <p>从人群中随机选一人接受测试，若测试结果显示她患病，
   问：她实际患病的条件概率是多少？</p>
 
-  <h4>✅ 解法（贝叶斯定理）</h4>
-  <p><strong>定义事件：</strong></p>
-  <ul>
-    <li>D = 患有该疾病</li>
-    <li>H = 测试结果显示患病</li>
-  </ul>
+  <h4>✅ 详细解法（贝叶斯定理，5 步）</h4>
 
-  <p><strong>已知：</strong></p>
-  <ul>
-    <li>P(H|D) = 0.9</li>
-    <li>P(D) = 0.01，P(D') = 0.99</li>
-    <li>P(H|D') = 1 − 0.9 = 0.1（假阳性率）</li>
-  </ul>
+  <p><strong>Step 1：定义事件</strong></p>
+  <table>
+    <thead><tr><th>符号</th><th>事件</th></tr></thead>
+    <tbody>
+      <tr><td>D / D'</td><td>确实患病 / 未患病</td></tr>
+      <tr><td>T / T'</td><td>检测报阳性（显示患病）/ 报阴性</td></tr>
+    </tbody>
+  </table>
 
-  <p><strong>应用贝叶斯公式：</strong></p>
+  <p><strong>Step 2：把题目条件翻译成概率</strong>（逐句）：</p>
+  <table>
+    <thead><tr><th>题目原文</th><th>概率</th><th>数值</th></tr></thead>
+    <tbody>
+      <tr><td>正确检出 90% 的患病者</td><td>P(T|D)</td><td>0.90</td></tr>
+      <tr><td>未患病者以 0.9 概率报阴</td><td>P(T'|D')</td><td>0.90</td></tr>
+      <tr><td>人群中仅 1% 患病</td><td>P(D)</td><td>0.01</td></tr>
+      <tr><td>→ 推出</td><td>P(D')；P(T|D') 假阳性率</td><td>0.99；0.10</td></tr>
+    </tbody>
+  </table>
+  <div class="note">⚠️ 审题关键：题给 P(T|D)（患病者中报阳的比例），要求的是<strong>反方向</strong>的
+  P(D|T)（报阳者中真患病的比例）——方向翻转正是贝叶斯定理的用途。</div>
+
+  <p><strong>Step 3：贝叶斯公式逐项代入</strong></p>
   <div class="formula">
-    P(D|H) = [P(H|D)·P(D)] / [P(H|D)·P(D) + P(H|D')·P(D')]<br>
-    = (0.9 × 0.01) / (0.9 × 0.01 + 0.1 × 0.99)<br>
-    = 0.009 / (0.009 + 0.099)<br>
-    = 0.009 / 0.108<br>
-    = <strong>1/12 ≈ 0.0833</strong>
+    P(D|T) = P(T|D)·P(D) ⁄ [ P(T|D)·P(D) + P(T|D')·P(D') ]<br>
+    分子（真阳性）= 0.90 × 0.01 = 0.009<br>
+    假阳性路径 = 0.10 × 0.99 = 0.099<br>
+    分母（全概率）P(T) = 0.009 + 0.099 = 0.108<br>
+    P(D|T) = 0.009 ⁄ 0.108 = <strong>1/12 ≈ 0.0833</strong>
   </div>
 
+  <p><strong>Step 4：表格法验证</strong></p>
+  <table>
+    <thead><tr><th>事件</th><th>先验</th><th>条件 P(T|·)</th><th>联合</th><th>后验</th></tr></thead>
+    <tbody>
+      <tr><td>D 患病</td><td>0.01</td><td>0.90</td><td>0.009</td><td>0.009/0.108 = <strong>1/12 ≈ 0.0833</strong></td></tr>
+      <tr><td>D' 未患病</td><td>0.99</td><td>0.10</td><td>0.099</td><td>11/12 ≈ 0.9167</td></tr>
+      <tr class="total"><td>合计</td><td>1.00</td><td>—</td><td>P(T)=0.108</td><td>1.0000</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Step 5：用"1 万人"讲直觉</strong></p>
+  <pre style="background:#f7fafc;padding:12px;border-radius:4px;font-family:monospace;">10,000 人
+├─ 患病 100（1%）──→ 报阳  90 ✓ 真阳性
+│                  └→ 报阴  10（漏检）
+└─ 未患病 9,900 ──→ 报阳 990 ✗ 假阳性
+                   └→ 报阴 8,910 ✓
+报阳共 90+990 = 1,080 人，真患病仅 90 人 → 90/1080 = 1/12</pre>
+
   <div class="answer">
-    🎯 即使测试结果显示患病，实际患病概率也只有约 <strong>8.33%</strong>。
-    这同样是基础率谬误的经典例子——疾病罕见时，假阳性主导结果。
+    🎯 即使检测呈阳性，实际患病概率也只有约 <strong>8.33%</strong>。
+    <strong>基础率谬误</strong>：健康人基数是患者的 99 倍，10% 的假阳性率产生的假阳性（990）
+    是真阳性（90）的 11 倍——检测"准"（90%）敌不过基础率悬殊。
+    实践上应<strong>二次独立复检</strong>（以 1/12 为新先验再算，后验将大幅上升）。
   </div>
 </div>
 
