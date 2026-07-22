@@ -3854,6 +3854,78 @@ window.addEventListener('load', lookupZ);
   </details>
 </div>
 
+<div class="box" contenteditable="false">
+  <h3>📝 Q24：失业者是男性还是女性？（贝叶斯，双语解答）</h3>
+  <p><strong>题目</strong>：某镇男女各占人口 50%。已知 20% 的男性失业、5% 的女性失业
+  （题面两处误写为 females，按给定答案 0.8/0.2 反推勘误）。研究者随机选中一名<strong>失业者</strong>，
+  求此人是 (a) 男性、(b) 女性的概率。</p>
+  <details>
+    <summary><strong>📌 中文解答</strong></summary>
+    <p><strong>Step 1</strong>：M = 男性，F = 女性，U = 失业。</p>
+    <p><strong>Step 2</strong>：P(M) = P(F) = 0.50；P(U|M) = 0.20；P(U|F) = 0.05。求 P(M|U)、P(F|U)（方向翻转 → 贝叶斯）。</p>
+    <p><strong>Step 3 表格法</strong>：</p>
+    <table>
+      <thead><tr><th>事件</th><th>先验</th><th>条件 P(U|·)</th><th>联合</th><th>后验</th></tr></thead>
+      <tbody>
+        <tr><td>M</td><td>0.50</td><td>0.20</td><td>0.100</td><td>0.100/0.125 = <strong>0.8</strong></td></tr>
+        <tr><td>F</td><td>0.50</td><td>0.05</td><td>0.025</td><td>0.025/0.125 = <strong>0.2</strong></td></tr>
+        <tr class="total"><td>合计</td><td>1.00</td><td>—</td><td>P(U)=0.125</td><td>1.0 ✓</td></tr>
+      </tbody>
+    </table>
+    <div class="answer">✅ (a) P(M|U) = <strong>0.8</strong>；(b) P(F|U) = <strong>0.2</strong>（与题给答案一致）。</div>
+    <p>直觉（1000 人）：500 男失业 100 人、500 女失业 25 人 → 失业者 125 人中男性 100 人 → 0.8。</p>
+  </details>
+  <details>
+    <summary><strong>📌 English Solution</strong></summary>
+    <p><strong>Events</strong>: M = male, F = female, U = unemployed.
+    <strong>Given</strong>: P(M) = P(F) = 0.50; P(U|M) = 0.20; P(U|F) = 0.05. Required: P(M|U), P(F|U).</p>
+    <div class="formula">
+      P(M|U) = (0.5×0.20) ⁄ (0.5×0.20 + 0.5×0.05) = 0.100 ⁄ 0.125 = <strong>0.8</strong><br>
+      P(F|U) = 0.025 ⁄ 0.125 = <strong>0.2</strong>
+    </div>
+    <p>Intuition (per 1,000 people): 100 of 500 males and 25 of 500 females are unemployed →
+    of the 125 unemployed, 100 are male → 0.8.</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 工作满意度：概率分布与期望（双语解答）</h3>
+  <p><strong>题目</strong>：管理层 A 与支持人员 B 的满意度评分（1 最低 ~ 5 最高）频数如下。
+  (i)(ii) 分别建立两组的概率分布；(iii) 求管理层报 4 或 5 分的概率；(iv) 用期望比较两组总体满意度。</p>
+  <table>
+    <thead><tr><th>满意度</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>合计</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Management (A)</strong></td><td>11</td><td>9</td><td>7</td><td>44</td><td>12</td><td>83</td></tr>
+      <tr><td><strong>Support (B)</strong></td><td>10</td><td>10</td><td>15</td><td>47</td><td>21</td><td>103</td></tr>
+    </tbody>
+  </table>
+  <div class="note">⚠️ 表格标题写 "percent frequency"，但两列合计为 83 与 103（≠100）——按<strong>频数归一化</strong>处理：
+  P(x) = f ÷ Σf（这正是"develop a probability distribution"的标准做法）。</div>
+  <details>
+    <summary><strong>📌 中文解答</strong></summary>
+    <p><strong>(i) A 的概率分布</strong>（÷83）：0.1325, 0.1084, 0.0843, 0.5301, 0.1446（和 = 1 ✓）</p>
+    <p><strong>(ii) B 的概率分布</strong>（÷103）：0.0971, 0.0971, 0.1456, 0.4563, 0.2039（和 = 1 ✓）</p>
+    <p><strong>(iii)</strong> P(4 或 5) = (44+12) ⁄ 83 = 56 ⁄ 83 = <strong>0.675</strong>（互斥相加）</p>
+    <p><strong>(iv)</strong> 期望：</p>
+    <div class="formula">
+      E(A) = (1×11 + 2×9 + 3×7 + 4×44 + 5×12) ⁄ 83 = 286 ⁄ 83 = <strong>3.45</strong><br>
+      E(B) = (1×10 + 2×10 + 3×15 + 4×47 + 5×21) ⁄ 103 = 368 ⁄ 103 = <strong>3.57</strong>
+    </div>
+    <div class="answer">✅ E(B) &gt; E(A)——<strong>支持人员的平均满意度略高于管理层</strong>：
+    B 组打 5 分比例更高（20.4% vs 14.5%）、低分更少，分布整体偏向高满意度。</div>
+  </details>
+  <details>
+    <summary><strong>📌 English Solution</strong></summary>
+    <p><strong>(i)</strong> Management (÷83): 0.1325, 0.1084, 0.0843, 0.5301, 0.1446 (sum = 1 ✓)</p>
+    <p><strong>(ii)</strong> Support (÷103): 0.0971, 0.0971, 0.1456, 0.4563, 0.2039 (sum = 1 ✓)</p>
+    <p><strong>(iii)</strong> P(4 or 5) = (44+12) ⁄ 83 = <strong>0.675</strong> (mutually exclusive scores, so add)</p>
+    <p><strong>(iv)</strong> E(A) = 286/83 = <strong>3.45</strong>; E(B) = 368/103 = <strong>3.57</strong>.
+    Since E(B) &gt; E(A), <strong>support staff report slightly higher overall job satisfaction</strong> —
+    they have a larger share of 5s (20.4% vs 14.5%) and fewer low scores.</p>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">十六、CAT 复习（描述统计与综合例题）</h2>
 
 <p contenteditable="false"><em>本节汇总今天课堂的内容：描述统计概念 + 综合例题 + 置信区间引子。</em></p>
