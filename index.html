@@ -4411,6 +4411,97 @@ Key: 5 | 4 = 54</pre>
   </details>
 </div>
 
+<div class="box" contenteditable="false">
+  <h3>📝 C11. 例题：高管每周电脑使用时长（40 个数据）</h3>
+  <p>某研究调查了一周内高管在家使用个人电脑的小时数（40 个样本）。要求：(i) 茎叶图；
+  (ii) 7 个等距组的频数分布表；(iii) 结合汇总量做评论。</p>
+  <p style="font-size:0.9em;color:#666;">数据：4.1,1.5,1.4,5.9,3.4,5.7,1.6,6.1,3.1,4.8,2.0,8.8,5.4,4.2,3.9,4.1,4.1,4.1,8.8,5.6,4.3,3.3,7.1,1.3,1.8,2.8,9.5,2.9,1.1,0.7,4.0,9.2,7.2,6.1,5.7,5.9,4.7,3.9,3.7,3.1
+  （n=40，最小 0.7，最大 9.5，全距 8.8）</p>
+
+  <h4>(i) 茎叶图（茎=整数位，叶=小数位）</h4>
+  <pre style="background:#f7fafc;padding:12px;border-radius:4px;font-family:monospace;">茎 | 叶
+ 0 | 7
+ 1 | 1 3 4 5 6 8
+ 2 | 0 8 9
+ 3 | 1 1 3 4 7 9 9
+ 4 | 0 1 1 1 1 2 3 7 8
+ 5 | 4 6 7 7 9 9
+ 6 | 1 1
+ 7 | 1 2
+ 8 | 8 8
+ 9 | 2 5
+Key: 4 | 1 = 4.1 小时</pre>
+  <p style="font-size:0.9em;color:#666;">各茎频数：0→1，1→6，2→3，3→7，4→9，5→6，6→2，7→2，8→2，9→2（合计 40 ✓）</p>
+
+  <h4>(ii) 频数分布表（7 个等距组）</h4>
+  <p>组距 = 向上取整(全距 ÷ 组数) = 向上取整(8.8 ÷ 7) = 向上取整(1.257) = <strong>1.3</strong>，从最小值 0.7 起：</p>
+  <table>
+    <thead><tr><th>组（小时）</th><th>频数 f</th></tr></thead>
+    <tbody>
+      <tr><td>0.7 – &lt;2.0</td><td>7</td></tr>
+      <tr><td>2.0 – &lt;3.3</td><td>5</td></tr>
+      <tr><td>3.3 – &lt;4.6</td><td>12（众数组）</td></tr>
+      <tr><td>4.6 – &lt;5.9</td><td>6</td></tr>
+      <tr><td>5.9 – &lt;7.2</td><td>5</td></tr>
+      <tr><td>7.2 – &lt;8.5</td><td>1</td></tr>
+      <tr><td>8.5 – &lt;9.8</td><td>4</td></tr>
+      <tr class="total"><td>合计</td><td>40</td></tr>
+    </tbody>
+  </table>
+  <div style="overflow-x:auto;">
+<svg viewBox="0 0 620 350" style="width:100%;max-width:620px;height:auto;background:#fcfcfc;border:1px solid #e2e8f0;border-radius:6px;" xmlns="http://www.w3.org/2000/svg">
+<line x1="70" y1="300.0" x2="574" y2="300.0" stroke="#eee" stroke-width="1"/>
+<text x="62" y="304.0" text-anchor="end" font-size="11" fill="#777">0</text>
+<line x1="70" y1="258.3" x2="574" y2="258.3" stroke="#eee" stroke-width="1"/>
+<text x="62" y="262.3" text-anchor="end" font-size="11" fill="#777">2</text>
+<line x1="70" y1="216.7" x2="574" y2="216.7" stroke="#eee" stroke-width="1"/>
+<text x="62" y="220.7" text-anchor="end" font-size="11" fill="#777">4</text>
+<line x1="70" y1="175.0" x2="574" y2="175.0" stroke="#eee" stroke-width="1"/>
+<text x="62" y="179.0" text-anchor="end" font-size="11" fill="#777">6</text>
+<line x1="70" y1="133.3" x2="574" y2="133.3" stroke="#eee" stroke-width="1"/>
+<text x="62" y="137.3" text-anchor="end" font-size="11" fill="#777">8</text>
+<line x1="70" y1="91.7" x2="574" y2="91.7" stroke="#eee" stroke-width="1"/>
+<text x="62" y="95.7" text-anchor="end" font-size="11" fill="#777">10</text>
+<line x1="70" y1="50.0" x2="574" y2="50.0" stroke="#eee" stroke-width="1"/>
+<text x="62" y="54.0" text-anchor="end" font-size="11" fill="#777">12</text>
+<rect x="70.0" y="154.2" width="72" height="145.8" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="106.0" y="149.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">7</text>
+<text x="106.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">0.7–2.0</text>
+<rect x="142.0" y="195.8" width="72" height="104.2" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="178.0" y="190.8" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">5</text>
+<text x="178.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">2.0–3.3</text>
+<rect x="214.0" y="50.0" width="72" height="250.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="250.0" y="45.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">12</text>
+<text x="250.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">3.3–4.6</text>
+<rect x="286.0" y="175.0" width="72" height="125.0" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="322.0" y="170.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">6</text>
+<text x="322.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">4.6–5.9</text>
+<rect x="358.0" y="195.8" width="72" height="104.2" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="394.0" y="190.8" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">5</text>
+<text x="394.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">5.9–7.2</text>
+<rect x="430.0" y="279.2" width="72" height="20.8" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="466.0" y="274.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">1</text>
+<text x="466.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">7.2–8.5</text>
+<rect x="502.0" y="216.7" width="72" height="83.3" fill="#378ADD" fill-opacity="0.75" stroke="#185FA5" stroke-width="1"/>
+<text x="538.0" y="211.7" text-anchor="middle" font-size="12" font-weight="bold" fill="#185FA5">4</text>
+<text x="538.0" y="316.0" text-anchor="middle" font-size="10" fill="#555">8.5–9.8</text>
+<line x1="70" y1="300" x2="574" y2="300" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="70" y1="50" x2="70" y2="300" stroke="#5a6b7b" stroke-width="1.4"/>
+<text x="322.0" y="338.0" text-anchor="middle" font-size="12" fill="#444">每周电脑使用时长（小时）</text>
+<text x="22" y="175" text-anchor="middle" font-size="12" fill="#444" transform="rotate(-90 22 175)">频数 f</text>
+</svg></div>
+
+  <h4>(iii) 评论与观察（结合汇总量）</h4>
+  <p><strong>汇总统计</strong>：均值 = 4.42，中位数 = 4.1，众数 = 4.1，样本标准差 ≈ 2.28，Q1 = 2.95，Q3 = 5.85（IQR = 2.90）小时。</p>
+  <ul>
+    <li><strong>典型时长</strong>：多数高管每周用电脑约 <strong>3.3–4.6 小时</strong>（众数组 12 人 = 30%）；中位数/众数都是 4.1 小时。</li>
+    <li><strong>分布形状</strong>：均值 4.42 &gt; 中位数 4.1 → <strong>轻微右偏（正偏）</strong>；Pearson 偏度 = 3(4.42−4.1)/2.28 ≈ 0.42（轻度）。右侧 8.5–9.8 小时有一小簇（4 人）拉出长尾。</li>
+    <li><strong>离散程度</strong>：数据从 0.7 到 9.5 分布很广，标准差 ≈ 2.28 小时，个体差异较大。</li>
+    <li><strong>结论</strong>：大部分高管每周家用电脑时间集中在 3–6 小时，但有少数（约 4 人）明显偏高（8–9.5 小时），可能是重度使用者或在家办公较多者。</li>
+  </ul>
+</div>
+
+
 <h2 contenteditable="false">十七、核心知识点</h2>
 
 <div class="box" contenteditable="false">
