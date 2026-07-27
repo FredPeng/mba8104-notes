@@ -4562,6 +4562,30 @@ Key: 4 | 1 = 4.1 小时</pre>
 </div>
 
 
+<div class="box" contenteditable="false">
+  <h3>📝 C13. 例题：新产品利润 + Var(3X+4)（方差线性性质）</h3>
+  <p>某制造公司推新产品：高销量年利润 +$4.5m（概率 0.32），中销量 +$1.2m（0.51），低销量 −$2.3m（0.17）。
+  设利润为随机变量 X。(i) 建概率分布表；(ii) 求期望利润；(iii) 求 Y=3X+4 的方差。</p>
+  <table>
+    <thead><tr><th>X（百万$）</th><th>4.5</th><th>1.2</th><th>−2.3</th></tr></thead>
+    <tbody><tr><td>P(X)</td><td>0.32</td><td>0.51</td><td>0.17</td></tr></tbody>
+  </table>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> 概率分布表见上（概率和 = 1 ✓）</p>
+    <p><strong>(ii) E(X)</strong> = 4.5(0.32) + 1.2(0.51) + (−2.3)(0.17)
+    = 1.44 + 0.612 − 0.391 = <strong>1.661 百万$</strong></p>
+    <p><strong>(iii)</strong> 用性质 <strong>Var(aX+b) = a²·Var(X)</strong>（常数 +4 消失）：</p>
+    <div class="formula">
+      E(X²) = 20.25(0.32) + 1.44(0.51) + 5.29(0.17) = 6.48 + 0.7344 + 0.8993 = 8.1137<br>
+      Var(X) = 8.1137 − 1.661² = 8.1137 − 2.7589 = <strong>5.3548</strong><br>
+      Var(Y) = Var(3X+4) = 9·Var(X) = 9 × 5.3548 = <strong>48.19</strong>
+    </div>
+    <div class="answer">✅ E(X)=1.661 百万$；Var(Y)=48.19。考点：系数 3 → 平方成 9；常数 +4 平移不改变方差。</div>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">十七、核心知识点</h2>
 
 <div class="box" contenteditable="false">
