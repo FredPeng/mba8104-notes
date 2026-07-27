@@ -4586,6 +4586,84 @@ Key: 4 | 1 = 4.1 小时</pre>
 </div>
 
 
+<div class="box" contenteditable="false">
+  <h3>📝 C14. 例题：两审计员比较（变异系数 + 偏度）</h3>
+  <table>
+    <thead><tr><th>审计员</th><th>Count</th><th>Mean</th><th>StDev</th><th>Median</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>39</td><td>15.974</td><td>5.747</td><td>15.000</td></tr>
+      <tr><td>B</td><td>43</td><td>19.12</td><td>7.31</td><td>17.00</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.9em;color:#666;">变量=审计文件中的错误数（越少越好、越稳定越好）。(i) 用 CV 决定留用谁；(ii) 偏度如何帮助 HR 决策。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> CV = StDev÷Mean×100%：CV(A)=5.747÷15.974=<strong>35.98%</strong>；CV(B)=7.31÷19.12=<strong>38.23%</strong>。
+    CV 越小越稳定 → <strong>留用 A</strong>（且 A 平均错误更少）。</p>
+    <p><strong>(ii)</strong> 偏度=3(均值−中位数)÷SD：A=3(0.974)÷5.747=<strong>+0.51</strong>；B=3(2.12)÷7.31=<strong>+0.87</strong>。
+    两人都右偏（偶发高错误），B 更严重 → 尾部风险更大。HR 应看中位数（更代表平时），并关注"最坏情况"频率 → 支持留 A。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C15. 例题：三种投资策略（期望利润）</h3>
+  <p>$1000 投资：S1 盈利$10000(0.15)/亏$1000(0.15)〔余 0.70 为$0〕；S2 盈$10000(0.50)/盈$500(0.30)/亏$500(0.20)；S3 确定盈$400。选期望利润最高的。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>E(S1)=10000(0.15)+(−1000)(0.15)+0(0.70)=<strong>$1350</strong></p>
+    <p>E(S2)=10000(0.50)+500(0.30)+(−500)(0.20)=5000+150−100=<strong>$5050</strong></p>
+    <p>E(S3)=<strong>$400</strong></p>
+    <div class="answer">✅ 选 <strong>Strategy 2</strong>（期望利润 $5050 最高）。</div>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C16. 例题：投票民调所需样本量（总体比例）</h3>
+  <p>误差界限 3%，95% 置信，求样本量。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>公式：n = z²·p(1−p) ÷ E²。p 未知取最保守 p=0.5（使 p(1−p)=0.25 最大）。</p>
+    <div class="formula">n = (1.96² × 0.25) ÷ 0.03² = 0.9604 ÷ 0.0009 = 1067.11 → 向上取整 = <strong>1068</strong></div>
+    <p>💡 比例样本量用 p(1−p)；均值样本量用 σ²。p 未知取 0.5 最保守。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C17. 例题：周薪的 95% 与 99% 置信区间</h3>
+  <p>n=40，均值=32.83，StDev=10.12（百 Kshs）。求 95% 与 99% 置信区间并解读；加薪推荐哪个置信水平。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p>n≥30 用 Z。SE = 10.12÷√40 = 1.600</p>
+    <p><strong>95%</strong>（z=1.96）：E=3.14 → CI = 32.83±3.14 = <strong>(29.69, 35.97)</strong></p>
+    <p><strong>99%</strong>（z=2.576）：E=4.12 → CI = 32.83±4.12 = <strong>(28.71, 36.95)</strong></p>
+    <p>解读：99% 区间更宽（置信越高越宽）。加薪推荐 <strong>99%</strong>——重要财务决策需更高把握、降低误判风险。</p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C18. 例题：手机日销量（正态分布）</h3>
+  <p>日销量 ~ N(60, 15²)。(i) P(85&lt;X&lt;95)；(ii) 前 10% 高销量的临界点。</p>
+  <details>
+    <summary><strong>📌 解答</strong></summary>
+    <p><strong>(i)</strong> Z₁=(85−60)/15=1.67；Z₂=(95−60)/15=2.33</p>
+    <p>P = P(Z≤2.33)−P(Z≤1.67) = 0.99010−0.95254 = <strong>0.0376（3.76%）</strong></p>
+    <p><strong>(ii)</strong> 前 10% → P(X&lt;k)=0.90 → 反查 Z≈1.28；k = 60+1.28×15 = <strong>79.2</strong></p>
+  </details>
+</div>
+
+<div class="box" contenteditable="false">
+  <h3>📝 C19. 例题：医疗实习生起薪报告（工会谈判）</h3>
+  <p>n=30，均值=36.880，方差=1.413，Min=34.9，Q1=36.175，中位数=36.65，Q3=37.975，Max=39.4，偏度=0.43，峰度=−0.46（千 Kshs）。撰写加薪谈判报告。</p>
+  <details>
+    <summary><strong>📌 要点</strong></summary>
+    <p>导出量：SD=√1.413=1.189；CV=1.189÷36.88=<strong>3.22%</strong>（很低，薪资高度一致）；
+    IQR=1.8；95% CI（t,df=29,t=2.045）= 36.88±2.045×0.217 = <strong>(36.44, 37.32)</strong>。</p>
+    <p>报告要点：①平均起薪 36,880 Kshs，95% 置信区间 (36.44,37.32) 千；②CV 仅 3.22% → 薪资极一致、普遍偏低，支持整体上调；
+    ③偏度 +0.43 右偏 → 多数人在低端，中位数(36.65)更代表实际；④以 CI 下限 36.44 作保守基准要求加薪。</p>
+  </details>
+</div>
+
+
 <h2 contenteditable="false">十七、核心知识点</h2>
 
 <div class="box" contenteditable="false">
